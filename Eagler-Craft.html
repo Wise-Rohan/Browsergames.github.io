@@ -1,0 +1,789 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Eaglercraft | Browser Games</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Space Grotesk',sans-serif;
+
+    background:#020617;
+
+    color:white;
+
+    overflow-x:hidden;
+
+}
+
+
+/* SPACE BACKGROUND */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background-image:
+
+    radial-gradient(white 1px,transparent 1px),
+    radial-gradient(#5da8ff 1px,transparent 1px),
+    radial-gradient(#ffffff 2px,transparent 2px);
+
+    background-size:
+
+    140px 140px,
+    220px 220px,
+    300px 300px;
+
+    opacity:.3;
+
+    z-index:-1;
+
+}
+
+
+/* HEADER */
+
+header{
+
+    padding:75px 10% 55px;
+
+    background:
+
+    radial-gradient(
+        circle at right,
+        #163d7a,
+        transparent 45%
+    ),
+
+    linear-gradient(
+        135deg,
+        #020617,
+        #0b2348
+    );
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+
+header h1{
+
+    font-size:60px;
+
+    margin-bottom:15px;
+
+}
+
+
+header p{
+
+    font-size:21px;
+
+    color:#b5caea;
+
+    max-width:750px;
+
+    line-height:1.7;
+
+}
+
+
+/* MAIN CONTAINER */
+
+.container{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:65px 8%;
+
+}
+
+
+/* GAME BANNER */
+
+.banner{
+
+    height:380px;
+
+    border-radius:24px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #315b27,
+        #172b16,
+        #071120
+    );
+
+    border:1px solid rgba(255,255,255,.1);
+
+    margin-bottom:45px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+    0 0 45px rgba(50,150,50,.18);
+
+}
+
+
+.banner-content{
+
+    padding:30px;
+
+}
+
+
+.banner-title{
+
+    font-size:55px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+
+.banner-subtitle{
+
+    font-size:20px;
+
+    color:#b8d8b2;
+
+}
+
+
+/* MAIN LAYOUT */
+
+.grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 2fr;
+
+    gap:35px;
+
+    align-items:start;
+
+}
+
+
+/* CARDS */
+
+.card{
+
+    background:
+
+    rgba(255,255,255,.05);
+
+    border:
+
+    1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:30px;
+
+    backdrop-filter:blur(12px);
+
+    transition:.3s;
+
+}
+
+
+.card:hover{
+
+    border-color:#4da3ff;
+
+    transform:translateY(-3px);
+
+}
+
+
+.card h2{
+
+    font-size:29px;
+
+    margin-bottom:18px;
+
+}
+
+
+.card p{
+
+    line-height:1.9;
+
+    color:#d5e3f7;
+
+}
+
+
+/* INFORMATION BOXES */
+
+.info{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:14px;
+
+}
+
+
+.info-box{
+
+    background:
+
+    rgba(255,255,255,.05);
+
+    padding:17px;
+
+    border-radius:12px;
+
+}
+
+
+.label{
+
+    font-size:12px;
+
+    text-transform:uppercase;
+
+    color:#8db6ff;
+
+    margin-bottom:6px;
+
+}
+
+
+.value{
+
+    font-size:17px;
+
+}
+
+
+/* PLAY BUTTON */
+
+.play{
+
+    display:block;
+
+    text-align:center;
+
+    margin-top:25px;
+
+    padding:17px 30px;
+
+    background:#2563eb;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+.play:hover{
+
+    background:#3b82f6;
+
+    transform:translateY(-4px);
+
+}
+
+
+/* BACK BUTTON */
+
+.back{
+
+    display:inline-block;
+
+    margin-top:25px;
+
+    color:#8db6ff;
+
+    text-decoration:none;
+
+}
+
+
+.back:hover{
+
+    color:white;
+
+}
+
+
+/* CONTROLS */
+
+.controls{
+
+    margin-top:20px;
+
+}
+
+
+.controls div{
+
+    background:rgba(255,255,255,.05);
+
+    padding:13px 16px;
+
+    border-radius:10px;
+
+    margin-bottom:10px;
+
+    color:#d5e3f7;
+
+}
+
+
+/* NOTICE */
+
+.notice{
+
+    margin-top:30px;
+
+    padding:20px;
+
+    border-left:4px solid #3b82f6;
+
+    background:rgba(37,99,235,.08);
+
+    border-radius:8px;
+
+    color:#cdddf5;
+
+    line-height:1.7;
+
+}
+
+
+/* FOOTER */
+
+footer{
+
+    margin-top:70px;
+
+    padding:45px;
+
+    text-align:center;
+
+    background:#07142b;
+
+    color:#8aa7d6;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    header{
+
+        padding:55px 7% 45px;
+
+    }
+
+    header h1{
+
+        font-size:43px;
+
+    }
+
+    header p{
+
+        font-size:18px;
+
+    }
+
+    .container{
+
+        padding:45px 6%;
+
+    }
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .banner{
+
+        height:270px;
+
+    }
+
+    .banner-title{
+
+        font-size:40px;
+
+    }
+
+}
+
+
+@media(max-width:550px){
+
+    .info{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .banner-title{
+
+        font-size:32px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <h1>Eaglercraft</h1>
+
+    <p>
+        Explore a block-building world directly in your browser.
+        Build, explore, and create without needing a traditional game launcher.
+    </p>
+
+</header>
+
+
+
+<div class="container">
+
+
+    <div class="banner">
+
+        <div class="banner-content">
+
+            <div class="banner-title">
+                EAGLERCRAFT
+            </div>
+
+            <div class="banner-subtitle">
+                A browser-based block-building experience
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="grid">
+
+
+        <!-- LEFT SIDE -->
+
+        <div>
+
+
+            <div class="card">
+
+                <h2>Game Information</h2>
+
+                <div class="info">
+
+
+                    <div class="info-box">
+
+                        <div class="label">
+                            Developer
+                        </div>
+
+                        <div class="value">
+                            Student Developer
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <div class="label">
+                            Genre
+                        </div>
+
+                        <div class="value">
+                            Sandbox
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <div class="label">
+                            Players
+                        </div>
+
+                        <div class="value">
+                            Single / Multiplayer
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <div class="label">
+                            Platform
+                        </div>
+
+                        <div class="value">
+                            Web Browser
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <div class="label">
+                            Version
+                        </div>
+
+                        <div class="value">
+                            1.12.2
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <div class="label">
+                            Status
+                        </div>
+
+                        <div class="value">
+                            Playable
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- LINK TO YOUR ACTUAL GAME -->
+
+                <a class="play" href="Eaglercraft-1.12.2.html">
+
+                    Play Eaglercraft
+
+                </a>
+
+
+                <a class="back" href="index.html">
+
+                    ← Back to Homepage
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- RIGHT SIDE -->
+
+        <div>
+
+
+            <div class="card">
+
+                <h2>About the Game</h2>
+
+                <p>
+
+                    Eaglercraft is a browser-based block-building
+                    game experience.
+
+                    <br><br>
+
+                    Explore a world made from blocks, gather resources,
+                    build structures, and create your own adventures.
+
+                    <br><br>
+
+                    The game is designed to run directly inside a
+                    compatible web browser.
+
+                </p>
+
+
+                <div class="notice">
+
+                    <strong>Ready to play?</strong>
+
+                    <br>
+
+                    Click the button on the left to open the
+                    playable Eaglercraft game.
+
+                </div>
+
+            </div>
+
+
+            <br>
+
+
+            <div class="card">
+
+                <h2>Controls</h2>
+
+
+                <div class="controls">
+
+                    <div>
+                        <strong>W A S D</strong> — Move
+                    </div>
+
+                    <div>
+                        <strong>Mouse</strong> — Look around
+                    </div>
+
+                    <div>
+                        <strong>Space</strong> — Jump
+                    </div>
+
+                    <div>
+                        <strong>Mouse Click</strong> — Interact
+                    </div>
+
+                    <div>
+                        <strong>E</strong> — Inventory
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <br>
+
+
+            <div class="card">
+
+                <h2>Release Information</h2>
+
+                <p>
+
+                    Platform: Web Browser
+
+                    <br><br>
+
+                    Version: 1.12.2
+
+                    <br><br>
+
+                    Status: Available
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<footer>
+
+    <h2>Browser Games</h2>
+
+    <p>
+        Student-created games for everyone.
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 Browser Games
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
+```
