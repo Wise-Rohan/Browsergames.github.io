@@ -1,1482 +1,474 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
-
-
 
 <head>
 
-
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 
 <title>Browser Games</title>
 
-
-
 <link rel="icon" type="image/png" href="logo.png">
 
-
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 
-
-
-
 <style>
 
-
-
 *{
-
 margin:0;
-
 padding:0;
-
 box-sizing:border-box;
-
 }
-
-
-
 
 
 html{
-
 scroll-behavior:smooth;
-
 }
-
-
-
 
 
 body{
 
-
-
 font-family:'Space Grotesk',sans-serif;
-
 background:#020617;
-
 color:white;
-
 overflow-x:hidden;
 
-
-
 }
-
-
-
 
 
 /* STAR BACKGROUND */
 
-
-
 body::before{
-
-
 
 content:"";
 
-
-
 position:fixed;
 
-
-
 top:0;
-
 left:0;
 
-
-
 width:100%;
-
 height:100%;
-
-
 
 background-image:
 
-
-
 radial-gradient(white 1px,transparent 1px),
-
 radial-gradient(#8ab4ff 1px,transparent 1px),
-
 radial-gradient(white 2px,transparent 2px);
-
-
 
 background-size:
 
-
-
 120px 120px,
-
 180px 180px,
-
 250px 250px;
-
-
-
-
 
 opacity:.45;
 
-
-
 z-index:-1;
-
-
 
 animation:stars 180s linear infinite;
 
-
-
 }
-
-
-
 
 
 @keyframes stars{
 
-
-
 from{
-
 transform:translateY(0);
-
 }
-
-
 
 to{
-
 transform:translateY(-600px);
-
 }
 
-
-
 }
-
-
-
 
 
 /* NAVIGATION */
 
-
-
-
-
 nav{
-
-
 
 position:fixed;
 
-
-
 top:0;
-
-
 
 width:100%;
 
-
-
 padding:22px 10%;
-
-
 
 display:flex;
 
-
-
 justify-content:space-between;
-
-
 
 align-items:center;
 
-
-
-
-
 background:rgba(0,0,0,.35);
-
-
 
 backdrop-filter:blur(14px);
 
-
-
 border-bottom:1px solid rgba(255,255,255,.08);
-
-
 
 z-index:100;
 
-
-
 }
-
-
-
 
 
 .logo{
 
-
-
 font-size:28px;
-
-
 
 font-weight:700;
 
-
-
 letter-spacing:2px;
 
-
-
 }
-
-
-
 
 
 nav ul{
 
-
-
 display:flex;
-
-
 
 list-style:none;
 
-
-
 gap:35px;
 
-
-
 }
-
-
-
 
 
 nav a{
 
-
-
 color:white;
-
-
 
 text-decoration:none;
 
-
-
 transition:.3s;
 
-
-
 }
-
-
-
 
 
 nav a:hover{
 
-
-
 color:#5ab0ff;
-
-
 
 }
 
 
-
-
-
 /* HERO */
-
-
-
-
 
 .hero{
 
-
-
 height:100vh;
-
-
 
 display:flex;
 
-
-
 justify-content:center;
-
-
 
 align-items:center;
 
-
-
 text-align:center;
-
-
 
 padding:40px;
 
-
-
-
-
 background:
-
-
 
 radial-gradient(circle at top,#163d7a 0%,transparent 45%),
 
 linear-gradient(#020617,#000814);
 
-
-
 }
-
-
-
 
 
 .hero-content{
 
-
-
 max-width:850px;
 
-
-
 }
-
-
-
 
 
 .hero h1{
 
-
-
 font-size:72px;
-
-
 
 margin-bottom:25px;
 
-
-
 }
-
-
-
 
 
 .hero p{
 
-
-
 font-size:22px;
-
-
 
 line-height:1.8;
 
-
-
 color:#d7e3ff;
-
-
 
 margin-bottom:45px;
 
-
-
 }
-
-
-
 
 
 .buttons{
 
-
-
 display:flex;
-
-
 
 justify-content:center;
 
-
-
 gap:20px;
-
-
 
 flex-wrap:wrap;
 
-
-
 }
-
-
-
 
 
 .btn{
 
-
-
 padding:18px 40px;
-
-
 
 border-radius:12px;
 
-
-
 text-decoration:none;
-
-
 
 font-weight:600;
 
-
-
 transition:.3s;
 
-
-
 }
-
-
-
 
 
 .primary{
 
-
-
 background:#2563eb;
-
-
 
 color:white;
 
-
-
 }
-
-
-
 
 
 .primary:hover{
 
-
-
 background:#3b82f6;
-
-
 
 transform:translateY(-5px);
 
-
-
 }
-
-
-
 
 
 .secondary{
 
-
-
 border:2px solid #2563eb;
-
-
 
 color:white;
 
-
-
 }
-
-
-
 
 
 .secondary:hover{
 
-
-
 background:#2563eb;
-
-
 
 transform:translateY(-5px);
 
-
-
 }
-
-
-
 
 
 /* GAMES */
 
-
-
-
-
 .games-section{
-
-
 
 padding:100px 10%;
 
-
-
 background:linear-gradient(#000814,#07142b);
 
-
-
 }
-
-
-
 
 
 .section-title{
 
-
-
 font-size:42px;
-
-
 
 margin-bottom:10px;
 
-
-
 }
-
-
-
 
 
 .section-subtitle{
 
-
-
 color:#9db5d9;
-
-
 
 margin-bottom:50px;
 
-
-
 }
-
-
-
 
 
 .games-grid{
 
-
-
 display:grid;
-
-
 
 grid-template-columns:repeat(auto-fit,minmax(330px,1fr));
 
-
-
 gap:40px;
 
-
-
 }
-
-
-
 
 
 .game-card{
 
-
-
 background:rgba(255,255,255,.05);
-
-
 
 border:1px solid rgba(255,255,255,.08);
 
-
-
 border-radius:20px;
-
-
 
 overflow:hidden;
 
-
-
 backdrop-filter:blur(12px);
-
-
 
 transition:.35s;
 
-
-
 }
-
-
-
 
 
 .game-card:hover{
 
-
-
 transform:translateY(-10px);
-
-
 
 border-color:#4da3ff;
 
-
-
 box-shadow:0 0 35px rgba(70,140,255,.4);
 
-
-
 }
-
-
-
 
 
 .game-image{
 
-
-
 height:220px;
-
-
 
 display:flex;
 
-
-
 justify-content:center;
-
-
 
 align-items:center;
 
-
-
 background:linear-gradient(135deg,#14305f,#08111f);
-
-
 
 color:#8fb9ff;
 
-
-
 font-size:26px;
 
-
-
 }
-
-
-
 
 
 .game-content{
 
-
-
 padding:25px;
 
-
-
 }
-
-
-
 
 
 .game-title{
 
-
-
 font-size:32px;
-
-
 
 margin-bottom:15px;
 
-
-
 }
-
-
-
 
 
 .game-description{
 
-
-
 color:#cdd9ee;
-
-
 
 line-height:1.8;
 
-
-
 margin-bottom:25px;
 
-
-
 }
-
-
-
 
 
 .info{
 
-
-
 display:grid;
-
-
 
 grid-template-columns:1fr 1fr;
 
-
-
 gap:15px;
-
-
 
 margin-bottom:25px;
 
-
-
 }
-
-
-
 
 
 .info-box{
 
-
-
 background:rgba(255,255,255,.05);
-
-
 
 padding:12px;
 
-
-
 border-radius:10px;
 
-
-
 }
-
-
-
 
 
 .label{
 
-
-
 font-size:12px;
-
-
 
 color:#82a5d5;
 
-
-
 text-transform:uppercase;
 
-
-
 }
-
-
-
 
 
 .value{
 
-
-
 font-size:16px;
 
-
-
 }
-
-
-
 
 
 .play-button{
 
-
-
 display:inline-block;
-
-
 
 padding:15px 35px;
 
-
-
 background:#2563eb;
-
-
 
 border-radius:10px;
 
-
-
 text-decoration:none;
-
-
 
 color:white;
 
-
-
 font-weight:600;
 
-
+transition:.3s;
 
 }
-
-
-
 
 
 .play-button:hover{
 
-
-
 background:#3b82f6;
 
-
-
-}
-
-
-
-
-
-/* FOOTER */
-
-
-
-
-
-footer{
-
-
-
-padding:50px;
-
-
-
-background:#020617;
-
-
-
-text-align:center;
-
-
-
-color:#8aa7d6;
-
-
+transform:translateY(-3px);
 
 }
 
 
-
-
-
-/* MOBILE */
-
-
-
-
-
-@media(max-width:900px){
-
-
-
-.hero h1{
-
-
-
-font-size:45px;
-
-
-
-}
-
-
-
-
-
-nav ul{
-
-
-
-display:none;
-
-
-
-}
-
-
-
-}
-
-
-
-
-
-</style>
-
-
-
-</head>
-
-
-
-
-
-
-
-<body>
-
-
-
-
-
-<nav>
-
-
-
-<div class="logo">
-
-
-
-Browser GAMES
-
-
-
-</div>
-
-
-
-
-
-<ul>
-
-
-
-<li><a href="#">Home</a></li>
-
-
-
-<li><a href="#games">Games</a></li>
-
-
-
-<li><a href="#">Developers</a></li>
-
-
-
-<li><a href="#">Submit</a></li>
-
-
-
-<li><a href="#">About</a></li>
-
-
-
-</ul>
-
-
-
-
-
-</nav>
-
-
-
-
-
-
-
-
-
-<section class="hero">
-
-
-
-
-
-<div class="hero-content">
-
-
-
-
-
-<h1>
-
-
-
-Play<br>
-
-
-
-Now.
-
-
-
-</h1>
-
-
-
-
-
-<p>
-
-
-
-Browser Games is a platform where anyone can create,
-
-share, and discover games made with scratch.
-
-
-
-</p>
-
-
-
-
-
-<div class="buttons">
-
-
-
-
-
-<a href="#games" class="btn primary">
-
-
-
-Browse Games
-
-
-
-</a>
-
-
-
-
-
-<a href="#" class="btn secondary">
-
-
-
-Submit a Game
-
-
-
-</a>
-
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-
-
-<section class="games-section" id="games">
-
-
-
-
-
-<h2 class="section-title">
-
-
-
-Featured Games
-
-
-
-</h2>
-
-
-
-
-
-<p class="section-subtitle">
-
-
-
-Discover games created by student developers.
-
-
-
-</p>
-
-
-
-
-
-
-
-<div class="games-grid">
-
-
-
-
-
-
-
-<div class="game-card">
-
-
-
-
-
-<div class="game-image">
-
-
-
-GAME PREVIEW
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="game-content">
-
-
-
-
-
-<h3 class="game-title">
-
-
-
-Lemonoid Invasion
-
-
-
-</h3>
-
-
-
-
-
-<p class="game-description">
-
-
-
-A fast-paced arcade shooter where you defend the galaxy
-
-against invading lemons.
-
-
-
-</p>
-
-
-
-
-
-
-
-<div class="info">
-
-
-
-
-
-<div class="info-box">
-
-
-
-<div class="label">
-
-Developer
-
-</div>
-
-
-
-<div class="value">
-
-Rohan_Playz_Scratch
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="info-box">
-
-
-
-<div class="label">
-
-Genre
-
-</div>
-
-
-
-<div class="value">
-
-Arcade Shooter
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="info-box">
-
-
-
-<div class="label">
-
-Difficulty
-
-</div>
-
-
-
-<div class="value">
-
-Medium
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-<div class="info-box">
-
-
-
-<div class="label">
-
-Version
-
-</div>
-
-
-
-<div class="value">
-
-1.0
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-<a class="play-button" href="lemonoid-invasion-Game.html">
-
-
-
-View Game
-
-
-
-</a>
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-
-
-
-</section>
-
-
-
-
-
-
-
-
-
-<!-- ===========================
-
-DEVELOPER PORTAL
-
-=========================== -->
-
-
-
-
-
-<style>
-
-
+/* DEVELOPER PORTAL */
 
 .developer-section{
 
-
-
 padding:100px 10%;
 
-
-
 background:
-
-
 
 linear-gradient(
 
@@ -1488,584 +480,670 @@ to bottom,
 
 );
 
-
-
 }
-
-
-
 
 
 .dev-title{
 
-
-
 font-size:42px;
-
-
 
 margin-bottom:15px;
 
-
-
 }
-
-
-
 
 
 .dev-subtitle{
 
-
-
 color:#9db5d9;
-
-
 
 font-size:18px;
 
-
-
 margin-bottom:50px;
 
-
-
 }
-
-
-
 
 
 .dev-grid{
 
-
-
 display:grid;
-
-
 
 grid-template-columns:
 
-
-
 repeat(auto-fit,minmax(300px,1fr));
-
-
 
 gap:30px;
 
-
-
 }
-
-
-
 
 
 .dev-card{
 
-
-
 background:
-
-
 
 rgba(255,255,255,.05);
 
-
-
 border:
-
-
 
 1px solid rgba(255,255,255,.08);
 
-
-
 padding:30px;
-
-
 
 border-radius:18px;
 
-
-
 transition:.3s;
 
-
-
 }
-
-
-
 
 
 .dev-card:hover{
 
-
-
 transform:translateY(-8px);
-
-
 
 border-color:#4da3ff;
 
-
-
 box-shadow:
-
-
 
 0 0 30px rgba(50,130,255,.25);
 
-
-
 }
-
-
-
 
 
 .dev-card h3{
 
-
-
 font-size:25px;
-
-
 
 margin-bottom:15px;
 
-
-
 color:#8dbaff;
 
-
-
 }
-
-
-
 
 
 .dev-card p{
 
-
-
 line-height:1.8;
-
-
 
 color:#d5e3f7;
 
-
-
 }
-
-
-
 
 
 .dev-button{
 
-
-
 display:inline-block;
-
-
 
 margin-top:40px;
 
-
-
 padding:18px 40px;
-
-
 
 background:#2563eb;
 
-
-
 color:white;
-
-
 
 text-decoration:none;
 
-
-
 border-radius:12px;
-
-
 
 font-weight:600;
 
-
-
 transition:.3s;
 
-
-
 }
-
-
-
 
 
 .dev-button:hover{
 
-
-
 background:#3b82f6;
 
-
-
 transform:translateY(-5px);
-
-
 
 }
 
 
+/* FOOTER */
 
+footer{
+
+padding:50px;
+
+background:#020617;
+
+text-align:center;
+
+color:#8aa7d6;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:45px;
+
+}
+
+
+nav ul{
+
+display:none;
+
+}
+
+}
 
 
 </style>
 
+</head>
 
 
+<body>
 
 
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="logo">
+
+Browser GAMES
+
+</div>
 
 
-<section class="developer-section">
+<ul>
+
+<li><a href="#">Home</a></li>
+
+<li><a href="#games">Games</a></li>
+
+<li><a href="#">Developers</a></li>
+
+<li><a href="#">Submit</a></li>
+
+<li><a href="#">About</a></li>
+
+</ul>
+
+</nav>
 
 
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+
+Play<br>
+
+Now.
+
+</h1>
 
 
+<p>
 
-<h2 class="dev-title">
+Browser Games is a platform where anyone can create,
 
-
-
-Become a Student Developer
-
-
-
-</h2>
-
-
-
-
-
-<p class="dev-subtitle">
-
-
-
-Create games, share your ideas, and become part of the Browser Games community.
-
-
+share, and discover games made with Scratch.
 
 </p>
 
 
+<div class="buttons">
+
+<a href="#games" class="btn primary">
+
+Browse Games
+
+</a>
 
 
+<a href="#" class="btn secondary">
 
+Submit a Game
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section class="games-section" id="games">
+
+
+<h2 class="section-title">
+
+Featured Games
+
+</h2>
+
+
+<p class="section-subtitle">
+
+Discover games created by student developers.
+
+</p>
+
+
+<div class="games-grid">
+
+
+<!-- ========================= -->
+<!-- LEMONOID INVASION -->
+<!-- ========================= -->
+
+<div class="game-card">
+
+
+<div class="game-image">
+
+GAME PREVIEW
+
+</div>
+
+
+<div class="game-content">
+
+
+<h3 class="game-title">
+
+Lemonoid Invasion
+
+</h3>
+
+
+<p class="game-description">
+
+A fast-paced arcade shooter where you defend the galaxy
+
+against invading lemons.
+
+</p>
+
+
+<div class="info">
+
+
+<div class="info-box">
+
+<div class="label">
+
+Developer
+
+</div>
+
+<div class="value">
+
+Rohan_Playz_Scratch
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+
+Genre
+
+</div>
+
+<div class="value">
+
+Arcade Shooter
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+
+Difficulty
+
+</div>
+
+<div class="value">
+
+Medium
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+
+Version
+
+</div>
+
+<div class="value">
+
+1.0
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<a class="play-button"
+href="lemonoid-invasion-Game.html">
+
+View Game
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<!-- ========================= -->
+<!-- EAGLERCRAFT -->
+<!-- ========================= -->
+
+<div class="game-card">
+
+
+<div class="game-image">
+
+EAGLERCRAFT
+
+</div>
+
+
+<div class="game-content">
+
+
+<h3 class="game-title">
+
+Eaglercraft
+
+</h3>
+
+
+<p class="game-description">
+
+Explore, build, and survive in a block-based world
+
+directly in your browser.
+
+</p>
+
+
+<div class="info">
+
+
+<div class="info-box">
+
+<div class="label">
+
+Genre
+
+</div>
+
+<div class="value">
+
+Sandbox
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+
+Version
+
+</div>
+
+<div class="value">
+
+1.12.2
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+
+Players
+
+</div>
+
+<div class="value">
+
+Single / Multiplayer
+
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+
+Platform
+
+</div>
+
+<div class="value">
+
+Browser
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<a class="play-button"
+href="Eagler-Craft.html">
+
+View Game
+
+</a>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- ===========================
+DEVELOPER PORTAL
+=========================== -->
+
+<section class="developer-section">
+
+
+<h2 class="dev-title">
+
+Become a Student Developer
+
+</h2>
+
+
+<p class="dev-subtitle">
+
+Create games, share your ideas, and become part of the Browser Games community.
+
+</p>
 
 
 <div class="dev-grid">
 
 
-
-
-
-
-
 <div class="dev-card">
-
-
-
 
 
 <h3>
 
-
-
 1. Create Your Game
-
-
 
 </h3>
 
 
-
-
-
 <p>
-
-
 
 Build your game using tools like HTML, JavaScript, Scratch, Python,
 
 or any other technology you enjoy.
 
-
-
 Focus on creativity, learning, and making something fun.
 
-
-
 </p>
-
-
-
 
 
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <div class="dev-card">
 
 
-
-
-
 <h3>
-
-
 
 2. Prepare Your Submission
 
-
-
 </h3>
-
-
-
 
 
 <p>
 
-
-
 Before submitting your game, include:
-
-
 
 <br><br>
 
-
-
 • Game title
 
-
-
 <br>
-
-
 
 • Description
 
-
-
 <br>
-
-
 
 • Developer name
 
-
-
 <br>
-
-
 
 • Screenshots
 
-
-
 <br>
-
-
 
 • Controls
 
-
-
 <br>
-
-
 
 • Version number
 
-
-
 </p>
-
-
-
 
 
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <div class="dev-card">
-
-
-
 
 
 <h3>
 
-
-
 3. Share Your Game
-
-
 
 </h3>
 
 
-
-
-
 <p>
-
-
 
 After your game is reviewed, it can appear on Browser Games
 
 for other students to discover and play.
 
-
-
 </p>
 
 
-
-
-
 </div>
 
 
-
-
-
-
-
-
-
 </div>
-
-
-
-
-
 
 
 <a href="#" class="dev-button">
 
-
-
 Submit A Game
-
-
 
 </a>
 
 
-
-
-
-
-
 </section>
+
+
+<!-- FOOTER -->
 
 <footer>
 
 
-
-
-
 <h2>
 
-
-
-Broswer Games
-
-
+Browser Games
 
 </h2>
 
 
-
-
-
 <p>
-
-
 
 Student-created games for everyone.
 
-
-
 </p>
-
-
-
 
 
 <br>
 
 
-
-
-
 <p>
 
-
-
-© 2026 Broswer Games
-
-
+© 2026 Browser Games
 
 </p>
-
-
-
 
 
 </footer>
 
 
-
-
-
-
-
 </body>
 
-
-
-
-
 </html>
+```
