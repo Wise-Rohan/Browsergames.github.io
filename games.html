@@ -1,0 +1,1120 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Games | Browser Games</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+body{
+    font-family:'Space Grotesk',sans-serif;
+    background:#020617;
+    color:white;
+    overflow-x:hidden;
+}
+
+
+/* =========================
+   STAR BACKGROUND
+========================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background-image:
+        radial-gradient(white 1px,transparent 1px),
+        radial-gradient(#8ab4ff 1px,transparent 1px),
+        radial-gradient(white 2px,transparent 2px);
+
+    background-size:
+        120px 120px,
+        180px 180px,
+        250px 250px;
+
+    opacity:.45;
+
+    z-index:-1;
+
+    animation:stars 180s linear infinite;
+}
+
+
+@keyframes stars{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-600px);
+    }
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+
+    width:100%;
+
+    padding:22px 10%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    z-index:100;
+}
+
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    text-decoration:none;
+}
+
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+}
+
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+
+nav a:hover{
+
+    color:#5ab0ff;
+}
+
+
+nav a.active{
+
+    color:#5ab0ff;
+}
+
+
+/* =========================
+   PAGE HEADER
+========================= */
+
+.games-header{
+
+    padding:
+
+        170px 10% 80px;
+
+    text-align:center;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            #163d7a 0%,
+            transparent 55%
+        ),
+
+        linear-gradient(
+            #020617,
+            #000814
+        );
+}
+
+
+.games-header h1{
+
+    font-size:64px;
+
+    margin-bottom:20px;
+}
+
+
+.games-header p{
+
+    max-width:700px;
+
+    margin:0 auto;
+
+    color:#b9cbed;
+
+    font-size:19px;
+
+    line-height:1.8;
+}
+
+
+/* =========================
+   GAMES PAGE
+========================= */
+
+.games-page{
+
+    padding:70px 10% 120px;
+
+    background:
+
+        linear-gradient(
+            #000814,
+            #07142b
+        );
+}
+
+
+/* =========================
+   SEARCH BAR
+========================= */
+
+.games-tools{
+
+    max-width:1100px;
+
+    margin:0 auto 55px;
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+
+
+.search-box{
+
+    flex:1;
+
+    min-width:260px;
+
+    position:relative;
+}
+
+
+.search-box input{
+
+    width:100%;
+
+    padding:17px 20px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:rgba(255,255,255,.06);
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    outline:none;
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
+}
+
+
+.search-box input::placeholder{
+
+    color:#7890b7;
+}
+
+
+.search-box input:focus{
+
+    border-color:#4da3ff;
+
+    box-shadow:
+
+        0 0 20px
+        rgba(70,140,255,.15);
+}
+
+
+/* =========================
+   CATEGORY BUTTONS
+========================= */
+
+.categories{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    margin-bottom:65px;
+}
+
+
+.category{
+
+    padding:11px 20px;
+
+    border-radius:30px;
+
+    border:1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#cbd9ef;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+
+.category:hover{
+
+    color:white;
+
+    background:#2563eb;
+
+    border-color:#3b82f6;
+
+    transform:translateY(-2px);
+}
+
+
+.category.active{
+
+    background:#2563eb;
+
+    color:white;
+
+    border-color:#3b82f6;
+
+    box-shadow:
+
+        0 0 20px
+        rgba(37,99,235,.25);
+}
+
+
+/* =========================
+   SECTION HEADER
+========================= */
+
+.directory-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:end;
+
+    gap:20px;
+
+    margin-bottom:30px;
+
+    border-bottom:1px solid
+        rgba(255,255,255,.08);
+
+    padding-bottom:20px;
+}
+
+
+.directory-header h2{
+
+    font-size:32px;
+}
+
+
+.directory-header p{
+
+    color:#819bc4;
+
+    font-size:14px;
+}
+
+
+/* =========================
+   GAME GRID
+========================= */
+
+.games-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fill,
+            minmax(230px,1fr)
+        );
+
+    gap:25px;
+}
+
+
+/* =========================
+   EMPTY GAME CARD
+========================= */
+
+.game-card{
+
+    min-height:300px;
+
+    border-radius:18px;
+
+    border:1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
+    overflow:hidden;
+
+    backdrop-filter:blur(10px);
+
+    transition:.35s;
+
+    display:flex;
+
+    flex-direction:column;
+}
+
+
+.game-card:hover{
+
+    transform:translateY(-7px);
+
+    border-color:#4da3ff;
+
+    box-shadow:
+
+        0 0 30px
+        rgba(70,140,255,.25);
+}
+
+
+.game-thumbnail{
+
+    height:170px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #102b55,
+            #07111f
+        );
+
+    color:#5879a8;
+
+    font-size:14px;
+
+    letter-spacing:1px;
+}
+
+
+.game-card-content{
+
+    padding:20px;
+}
+
+
+.game-card-title{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+
+.game-card-category{
+
+    color:#7198d1;
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================
+   EMPTY STATE
+========================= */
+
+.empty-state{
+
+    grid-column:1 / -1;
+
+    padding:80px 30px;
+
+    text-align:center;
+
+    border-radius:20px;
+
+    border:1px dashed
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.empty-icon{
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        rgba(37,99,235,.12);
+
+    border:1px solid
+        rgba(77,163,255,.25);
+
+    color:#5aaeff;
+
+    font-size:30px;
+}
+
+
+.empty-state h3{
+
+    font-size:26px;
+
+    margin-bottom:12px;
+}
+
+
+.empty-state p{
+
+    max-width:550px;
+
+    margin:0 auto;
+
+    color:#8fa8ce;
+
+    line-height:1.8;
+}
+
+
+/* =========================
+   DEVELOPER CTA
+========================= */
+
+.developer-cta{
+
+    margin-top:70px;
+
+    padding:55px;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            rgba(37,99,235,.25),
+            transparent 70%
+        ),
+
+        rgba(255,255,255,.035);
+
+    border:1px solid
+        rgba(77,163,255,.15);
+}
+
+
+.developer-cta h2{
+
+    font-size:32px;
+
+    margin-bottom:15px;
+}
+
+
+.developer-cta p{
+
+    max-width:650px;
+
+    margin:0 auto 30px;
+
+    color:#a5badb;
+
+    line-height:1.8;
+}
+
+
+.dev-button{
+
+    display:inline-block;
+
+    padding:15px 32px;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+
+.dev-button:hover{
+
+    background:#3b82f6;
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(37,99,235,.25);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+
+    padding:50px;
+
+    background:#020617;
+
+    text-align:center;
+
+    color:#8aa7d6;
+
+    border-top:1px solid
+        rgba(255,255,255,.06);
+}
+
+
+footer h2{
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    nav{
+
+        padding:20px 6%;
+    }
+
+
+    nav ul{
+
+        display:none;
+    }
+
+
+    .games-header{
+
+        padding:
+            140px 6% 65px;
+    }
+
+
+    .games-header h1{
+
+        font-size:45px;
+    }
+
+
+    .games-page{
+
+        padding:
+            55px 6% 90px;
+    }
+
+
+    .directory-header{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+    }
+
+
+    .games-grid{
+
+        grid-template-columns:
+            repeat(
+                auto-fill,
+                minmax(200px,1fr)
+            );
+    }
+
+
+    .developer-cta{
+
+        padding:40px 25px;
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .games-header h1{
+
+        font-size:38px;
+    }
+
+
+    .games-header p{
+
+        font-size:16px;
+    }
+
+
+    .games-grid{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .game-card{
+
+        min-height:280px;
+    }
+
+
+    .categories{
+
+        justify-content:flex-start;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+<a href="index.html" class="logo">
+
+Browser GAMES
+
+</a>
+
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="games.html" class="active">
+Games
+</a>
+</li>
+
+<li>
+<a href="index.html#developers">
+Developers
+</a>
+</li>
+
+<li>
+<a href="#">
+Submit
+</a>
+</li>
+
+<li>
+<a href="#">
+About
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+<!-- =========================
+     PAGE HEADER
+========================= -->
+
+<header class="games-header">
+
+<h1>
+
+Games
+
+</h1>
+
+
+<p>
+
+Explore the Browser Games library.
+
+Discover games created by students,
+independent developers, and creators
+from the community.
+
+</p>
+
+</header>
+
+
+<!-- =========================
+     GAMES DIRECTORY
+========================= -->
+
+<main class="games-page">
+
+
+<!-- SEARCH -->
+
+<div class="games-tools">
+
+<div class="search-box">
+
+<input
+    type="search"
+    placeholder="Search games..."
+    aria-label="Search games"
+>
+
+</div>
+
+</div>
+
+
+<!-- CATEGORIES -->
+
+<div class="categories">
+
+<a href="#" class="category active">
+All
+</a>
+
+<a href="#" class="category">
+Action
+</a>
+
+<a href="#" class="category">
+Arcade
+</a>
+
+<a href="#" class="category">
+Adventure
+</a>
+
+<a href="#" class="category">
+Puzzle
+</a>
+
+<a href="#" class="category">
+Racing
+</a>
+
+<a href="#" class="category">
+Sports
+</a>
+
+<a href="#" class="category">
+Strategy
+</a>
+
+<a href="#" class="category">
+Sandbox
+</a>
+
+</div>
+
+
+<!-- DIRECTORY TITLE -->
+
+<div class="directory-header">
+
+<div>
+
+<h2>
+
+Game Library
+
+</h2>
+
+</div>
+
+
+<p>
+
+Games will appear here as they are published.
+
+</p>
+
+</div>
+
+
+<!-- =========================
+     GAME GRID
+========================= -->
+
+<div class="games-grid">
+
+
+<!--
+
+================================================
+
+GAME CARDS WILL GO HERE
+
+Example structure for a future game:
+
+<div class="game-card">
+
+    <div class="game-thumbnail">
+        GAME IMAGE
+    </div>
+
+    <div class="game-card-content">
+
+        <h3 class="game-card-title">
+            Game Name
+        </h3>
+
+        <p class="game-card-category">
+            Arcade
+        </p>
+
+    </div>
+
+</div>
+
+================================================
+
+-->
+
+
+<!-- EMPTY STATE -->
+
+<div class="empty-state">
+
+
+<div class="empty-icon">
+
++
+
+</div>
+
+
+<h3>
+
+No games yet
+
+</h3>
+
+
+<p>
+
+The game library is currently empty.
+New student-created games will appear
+here once they are published.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     DEVELOPER CTA
+========================= -->
+
+<section class="developer-cta">
+
+
+<h2>
+
+Have a game to share?
+
+</h2>
+
+
+<p>
+
+Create something awesome and submit it
+to Browser Games. Your game could become
+part of the community library.
+
+</p>
+
+
+<a href="#" class="dev-button">
+
+Submit a Game
+
+</a>
+
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+
+<h2>
+
+Browser Games
+
+</h2>
+
+
+<p>
+
+Student-created games for everyone.
+
+</p>
+
+
+<br>
+
+
+<p>
+
+© 2026 Browser Games
+
+</p>
+
+
+</footer>
+
+
+</body>
+
+</html>
+```
