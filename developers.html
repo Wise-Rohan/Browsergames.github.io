@@ -1,0 +1,948 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Developers | Browser Games</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Space Grotesk',sans-serif;
+
+    background:#020617;
+
+    color:white;
+
+    overflow-x:hidden;
+}
+
+
+/* STARS */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background-image:
+
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            #8ab4ff 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            white 2px,
+            transparent 2px
+        );
+
+    background-size:
+
+        120px 120px,
+        180px 180px,
+        250px 250px;
+
+    opacity:.45;
+
+    z-index:-1;
+
+    animation:stars 180s linear infinite;
+}
+
+
+@keyframes stars{
+
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-600px);
+    }
+
+}
+
+
+/* NAVIGATION */
+
+nav{
+
+    position:fixed;
+
+    top:0;
+
+    width:100%;
+
+    padding:22px 10%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid
+        rgba(255,255,255,.08);
+
+    z-index:100;
+}
+
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    color:white;
+
+    text-decoration:none;
+}
+
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:35px;
+}
+
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+}
+
+
+nav a:hover{
+
+    color:#5ab0ff;
+}
+
+
+nav a.active{
+
+    color:#5ab0ff;
+}
+
+
+/* HERO */
+
+.hero{
+
+    padding:170px 10% 100px;
+
+    text-align:center;
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            #163d7a 0%,
+            transparent 55%
+        ),
+
+        linear-gradient(
+            #020617,
+            #000814
+        );
+}
+
+
+.hero-content{
+
+    max-width:850px;
+
+    margin:auto;
+}
+
+
+.hero h1{
+
+    font-size:64px;
+
+    margin-bottom:25px;
+}
+
+
+.hero p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    color:#c4d5f2;
+}
+
+
+/* MAIN */
+
+main{
+
+    padding:80px 10% 120px;
+
+    background:
+
+        linear-gradient(
+            #000814,
+            #07142b
+        );
+}
+
+
+.section-title{
+
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+
+.section-subtitle{
+
+    color:#91a9cf;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    margin-bottom:45px;
+}
+
+
+/* CARDS */
+
+.steps{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(270px,1fr)
+        );
+
+    gap:25px;
+
+    margin-bottom:90px;
+}
+
+
+.step{
+
+    padding:30px;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:1px solid
+        rgba(255,255,255,.08);
+
+    transition:.3s;
+}
+
+
+.step:hover{
+
+    transform:translateY(-8px);
+
+    border-color:#4da3ff;
+
+    box-shadow:
+        0 0 30px
+        rgba(50,130,255,.25);
+}
+
+
+.number{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:22px;
+
+    border-radius:12px;
+
+    background:#2563eb;
+
+    font-size:20px;
+
+    font-weight:700;
+}
+
+
+.step h3{
+
+    font-size:23px;
+
+    margin-bottom:12px;
+
+    color:#9cc4ff;
+}
+
+
+.step p{
+
+    color:#d0def2;
+
+    line-height:1.8;
+}
+
+
+/* REQUIREMENTS */
+
+.requirements{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(280px,1fr)
+        );
+
+    gap:25px;
+
+    margin-bottom:90px;
+}
+
+
+.requirement-box{
+
+    padding:30px;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    border:1px solid
+        rgba(255,255,255,.08);
+}
+
+
+.requirement-box h3{
+
+    font-size:23px;
+
+    margin-bottom:18px;
+
+    color:#8dbaff;
+}
+
+
+.requirement-box ul{
+
+    list-style:none;
+}
+
+
+.requirement-box li{
+
+    padding:10px 0;
+
+    color:#cbd9ed;
+
+    border-bottom:1px solid
+        rgba(255,255,255,.05);
+}
+
+
+.requirement-box li:last-child{
+
+    border-bottom:none;
+}
+
+
+.requirement-box li::before{
+
+    content:"✓";
+
+    color:#4da3ff;
+
+    font-weight:bold;
+
+    margin-right:10px;
+}
+
+
+/* SUBMISSION SECTION */
+
+.submit-section{
+
+    padding:60px;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    border:1px solid
+        rgba(77,163,255,.18);
+
+    background:
+
+        radial-gradient(
+            circle at top,
+            rgba(37,99,235,.22),
+            transparent 70%
+        ),
+
+        rgba(255,255,255,.035);
+}
+
+
+.submit-section h2{
+
+    font-size:35px;
+
+    margin-bottom:15px;
+}
+
+
+.submit-section p{
+
+    max-width:650px;
+
+    margin:0 auto 30px;
+
+    color:#a7bddd;
+
+    line-height:1.8;
+}
+
+
+.submit-button{
+
+    display:inline-block;
+
+    padding:17px 38px;
+
+    background:#2563eb;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+
+.submit-button:hover{
+
+    background:#3b82f6;
+
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(37,99,235,.3);
+}
+
+
+/* FOOTER */
+
+footer{
+
+    padding:50px;
+
+    text-align:center;
+
+    background:#020617;
+
+    color:#8aa7d6;
+
+    border-top:1px solid
+        rgba(255,255,255,.06);
+}
+
+
+footer h2{
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    nav{
+
+        padding:20px 6%;
+    }
+
+
+    nav ul{
+
+        display:none;
+    }
+
+
+    .hero{
+
+        padding:
+            140px 6% 80px;
+    }
+
+
+    .hero h1{
+
+        font-size:45px;
+    }
+
+
+    main{
+
+        padding:
+            60px 6% 90px;
+    }
+
+
+    .submit-section{
+
+        padding:40px 25px;
+    }
+
+}
+
+
+@media(max-width:500px){
+
+    .hero h1{
+
+        font-size:38px;
+    }
+
+
+    .hero p{
+
+        font-size:17px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="index.html" class="logo">
+Browser GAMES
+</a>
+
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="games.html">
+Games
+</a>
+</li>
+
+<li>
+<a href="developers.html" class="active">
+Developers
+</a>
+</li>
+
+<li>
+<a href="submit.html">
+Submit
+</a>
+</li>
+
+<li>
+<a href="#">
+About
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<h1>
+Become a Developer
+</h1>
+
+<p>
+
+Build something creative, share your game,
+and introduce your work to the Browser Games
+community.
+
+</p>
+
+</div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main>
+
+
+<!-- HOW IT WORKS -->
+
+<section>
+
+<h2 class="section-title">
+How It Works
+</h2>
+
+
+<p class="section-subtitle">
+
+Submitting a game to Browser Games is simple.
+Create your game, prepare the information,
+send your submission, and wait for review.
+
+</p>
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div class="number">
+1
+</div>
+
+<h3>
+Create Your Game
+</h3>
+
+<p>
+
+Build a game using Scratch, HTML, JavaScript,
+Python, or another technology you enjoy.
+Focus on making something fun and creative.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+2
+</div>
+
+<h3>
+Prepare Your Game
+</h3>
+
+<p>
+
+Make sure your game works correctly and can
+be played by other people. Test your controls,
+links, loading, and overall experience.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+3
+</div>
+
+<h3>
+Prepare Your Information
+</h3>
+
+<p>
+
+Choose a title, write a description, select
+a genre, provide your developer name, and
+prepare a screenshot or thumbnail.
+
+</p>
+
+</div>
+
+
+<div class="step">
+
+<div class="number">
+4
+</div>
+
+<h3>
+Submit Your Game
+</h3>
+
+<p>
+
+Use the submission page to send your game
+information. Your submission will be reviewed
+before it appears on Browser Games.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- REQUIREMENTS -->
+
+<section>
+
+<h2 class="section-title">
+Submission Requirements
+</h2>
+
+
+<p class="section-subtitle">
+
+Have these things ready before submitting
+your game.
+
+</p>
+
+
+<div class="requirements">
+
+
+<div class="requirement-box">
+
+<h3>
+Game Information
+</h3>
+
+<ul>
+
+<li>
+Game title
+</li>
+
+<li>
+Game description
+</li>
+
+<li>
+Developer name
+</li>
+
+<li>
+Game genre
+</li>
+
+<li>
+Version number
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="requirement-box">
+
+<h3>
+Game Details
+</h3>
+
+<ul>
+
+<li>
+Game URL
+</li>
+
+<li>
+Controls
+</li>
+
+<li>
+Platform
+</li>
+
+<li>
+Player count
+</li>
+
+<li>
+Difficulty
+</li>
+
+</ul>
+
+</div>
+
+
+<div class="requirement-box">
+
+<h3>
+Media
+</h3>
+
+<ul>
+
+<li>
+Game thumbnail
+</li>
+
+<li>
+Game screenshot
+</li>
+
+<li>
+Optional additional screenshots
+</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- SUBMIT -->
+
+<section class="submit-section">
+
+<h2>
+Ready to Submit?
+</h2>
+
+
+<p>
+
+Once your game is ready, send us the details
+through the submission page. We will review
+the submission before publishing it.
+
+</p>
+
+
+<a href="submit.html" class="submit-button">
+
+Submit a Game
+
+</a>
+
+</section>
+
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<h2>
+Browser Games
+</h2>
+
+<p>
+Student-created games for everyone.
+</p>
+
+<br>
+
+<p>
+© 2026 Browser Games
+</p>
+
+</footer>
+
+
+</body>
+
+</html>
+```
