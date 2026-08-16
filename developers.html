@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,571 +15,338 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-
-    font-family:'Space Grotesk',sans-serif;
-
-    background:#020617;
-
-    color:white;
-
-    overflow-x:hidden;
+font-family:'Space Grotesk',sans-serif;
+background:#020617;
+color:white;
+overflow-x:hidden;
+min-height:100vh;
 }
 
-
-/* STARS */
+/* STAR BACKGROUND */
 
 body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
 
-    content:"";
+background-image:
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(#8ab4ff 1px,transparent 1px),
+radial-gradient(white 2px,transparent 2px);
 
-    position:fixed;
+background-size:
+120px 120px,
+180px 180px,
+250px 250px;
 
-    top:0;
-    left:0;
+opacity:.45;
+z-index:-1;
 
-    width:100%;
-    height:100%;
-
-    background-image:
-
-        radial-gradient(
-            white 1px,
-            transparent 1px
-        ),
-
-        radial-gradient(
-            #8ab4ff 1px,
-            transparent 1px
-        ),
-
-        radial-gradient(
-            white 2px,
-            transparent 2px
-        );
-
-    background-size:
-
-        120px 120px,
-        180px 180px,
-        250px 250px;
-
-    opacity:.45;
-
-    z-index:-1;
-
-    animation:stars 180s linear infinite;
+animation:stars 180s linear infinite;
 }
-
 
 @keyframes stars{
 
-    from{
-        transform:translateY(0);
-    }
-
-    to{
-        transform:translateY(-600px);
-    }
-
+from{
+transform:translateY(0);
 }
 
+to{
+transform:translateY(-600px);
+}
+
+}
 
 /* NAVIGATION */
 
 nav{
+position:fixed;
+top:0;
+width:100%;
+padding:22px 10%;
 
-    position:fixed;
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-    top:0;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(14px);
 
-    width:100%;
+border-bottom:1px solid rgba(255,255,255,.08);
 
-    padding:22px 10%;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    background:rgba(0,0,0,.45);
-
-    backdrop-filter:blur(14px);
-
-    border-bottom:1px solid
-        rgba(255,255,255,.08);
-
-    z-index:100;
+z-index:100;
 }
-
 
 .logo{
-
-    font-size:28px;
-
-    font-weight:700;
-
-    letter-spacing:2px;
-
-    color:white;
-
-    text-decoration:none;
+font-size:28px;
+font-weight:700;
+letter-spacing:2px;
 }
-
 
 nav ul{
-
-    display:flex;
-
-    list-style:none;
-
-    gap:35px;
+display:flex;
+list-style:none;
+gap:35px;
 }
-
 
 nav a{
-
-    color:white;
-
-    text-decoration:none;
-
-    transition:.3s;
+color:white;
+text-decoration:none;
+transition:.3s;
 }
-
 
 nav a:hover{
-
-    color:#5ab0ff;
+color:#5ab0ff;
 }
-
-
-nav a.active{
-
-    color:#5ab0ff;
-}
-
-
-/* HERO */
-
-.hero{
-
-    padding:170px 10% 100px;
-
-    text-align:center;
-
-    background:
-
-        radial-gradient(
-            circle at top,
-            #163d7a 0%,
-            transparent 55%
-        ),
-
-        linear-gradient(
-            #020617,
-            #000814
-        );
-}
-
-
-.hero-content{
-
-    max-width:850px;
-
-    margin:auto;
-}
-
-
-.hero h1{
-
-    font-size:64px;
-
-    margin-bottom:25px;
-}
-
-
-.hero p{
-
-    font-size:20px;
-
-    line-height:1.8;
-
-    color:#c4d5f2;
-}
-
 
 /* MAIN */
 
 main{
-
-    padding:80px 10% 120px;
-
-    background:
-
-        linear-gradient(
-            #000814,
-            #07142b
-        );
+padding:150px 10% 100px;
+max-width:1400px;
+margin:auto;
 }
 
+/* HERO */
 
-.section-title{
-
-    font-size:40px;
-
-    margin-bottom:15px;
+.dev-hero{
+text-align:center;
+max-width:850px;
+margin:0 auto 80px;
 }
 
+.dev-hero h1{
+font-size:64px;
+margin-bottom:25px;
 
-.section-subtitle{
+background:linear-gradient(
+90deg,
+#ffffff,
+#7db7ff
+);
 
-    color:#91a9cf;
-
-    font-size:18px;
-
-    line-height:1.8;
-
-    margin-bottom:45px;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
+.dev-hero p{
+font-size:20px;
+line-height:1.8;
+color:#bcd0ef;
+}
+
+/* BUTTON */
+
+.button{
+display:inline-block;
+margin-top:35px;
+padding:16px 35px;
+
+background:#2563eb;
+color:white;
+
+text-decoration:none;
+font-weight:600;
+
+border-radius:12px;
+
+transition:.3s;
+
+box-shadow:0 10px 30px rgba(37,99,235,.25);
+}
+
+.button:hover{
+background:#3b82f6;
+transform:translateY(-5px);
+}
 
 /* CARDS */
 
-.steps{
+.dev-grid{
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
 
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(270px,1fr)
-        );
-
-    gap:25px;
-
-    margin-bottom:90px;
+gap:30px;
 }
 
+.dev-card{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:20px;
+
+padding:35px;
+
+backdrop-filter:blur(14px);
+
+transition:.3s;
+}
+
+.dev-card:hover{
+transform:translateY(-8px);
+
+border-color:#4da3ff;
+
+box-shadow:
+0 0 35px rgba(70,140,255,.25);
+}
+
+.dev-icon{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.dev-card h2{
+font-size:25px;
+margin-bottom:15px;
+}
+
+.dev-card p{
+color:#cbd9ed;
+line-height:1.8;
+}
+
+/* STEPS */
+
+.steps{
+margin-top:90px;
+}
+
+.section-title{
+font-size:42px;
+margin-bottom:40px;
+}
 
 .step{
+display:flex;
+gap:25px;
 
-    padding:30px;
+padding:30px;
+margin-bottom:20px;
 
-    border-radius:18px;
+background:rgba(255,255,255,.04);
 
-    background:
-        rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.07);
 
-    border:1px solid
-        rgba(255,255,255,.08);
-
-    transition:.3s;
+border-radius:18px;
 }
 
+.step-number{
 
-.step:hover{
+min-width:50px;
+height:50px;
 
-    transform:translateY(-8px);
+display:flex;
+align-items:center;
+justify-content:center;
 
-    border-color:#4da3ff;
+border-radius:50%;
 
-    box-shadow:
-        0 0 30px
-        rgba(50,130,255,.25);
+background:#2563eb;
+
+font-size:20px;
+font-weight:700;
 }
-
-
-.number{
-
-    width:48px;
-
-    height:48px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    margin-bottom:22px;
-
-    border-radius:12px;
-
-    background:#2563eb;
-
-    font-size:20px;
-
-    font-weight:700;
-}
-
 
 .step h3{
-
-    font-size:23px;
-
-    margin-bottom:12px;
-
-    color:#9cc4ff;
+font-size:22px;
+margin-bottom:8px;
 }
-
 
 .step p{
-
-    color:#d0def2;
-
-    line-height:1.8;
+color:#b9cbe4;
+line-height:1.7;
 }
-
 
 /* REQUIREMENTS */
 
 .requirements{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fit,
-            minmax(280px,1fr)
-        );
-
-    gap:25px;
-
-    margin-bottom:90px;
+margin-top:90px;
 }
 
+.requirements-box{
 
-.requirement-box{
+background:
+linear-gradient(
+135deg,
+rgba(37,99,235,.16),
+rgba(255,255,255,.04)
+);
 
-    padding:30px;
+border:1px solid rgba(77,163,255,.25);
 
-    border-radius:18px;
+padding:40px;
 
-    background:
-        rgba(255,255,255,.04);
-
-    border:1px solid
-        rgba(255,255,255,.08);
+border-radius:20px;
 }
 
-
-.requirement-box h3{
-
-    font-size:23px;
-
-    margin-bottom:18px;
-
-    color:#8dbaff;
+.requirements-box h2{
+font-size:30px;
+margin-bottom:25px;
 }
 
-
-.requirement-box ul{
-
-    list-style:none;
+.requirements-box ul{
+padding-left:25px;
+color:#cbd9ed;
+line-height:2;
 }
-
-
-.requirement-box li{
-
-    padding:10px 0;
-
-    color:#cbd9ed;
-
-    border-bottom:1px solid
-        rgba(255,255,255,.05);
-}
-
-
-.requirement-box li:last-child{
-
-    border-bottom:none;
-}
-
-
-.requirement-box li::before{
-
-    content:"✓";
-
-    color:#4da3ff;
-
-    font-weight:bold;
-
-    margin-right:10px;
-}
-
-
-/* SUBMISSION SECTION */
-
-.submit-section{
-
-    padding:60px;
-
-    text-align:center;
-
-    border-radius:22px;
-
-    border:1px solid
-        rgba(77,163,255,.18);
-
-    background:
-
-        radial-gradient(
-            circle at top,
-            rgba(37,99,235,.22),
-            transparent 70%
-        ),
-
-        rgba(255,255,255,.035);
-}
-
-
-.submit-section h2{
-
-    font-size:35px;
-
-    margin-bottom:15px;
-}
-
-
-.submit-section p{
-
-    max-width:650px;
-
-    margin:0 auto 30px;
-
-    color:#a7bddd;
-
-    line-height:1.8;
-}
-
-
-.submit-button{
-
-    display:inline-block;
-
-    padding:17px 38px;
-
-    background:#2563eb;
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:12px;
-
-    font-weight:600;
-
-    transition:.3s;
-}
-
-
-.submit-button:hover{
-
-    background:#3b82f6;
-
-    transform:translateY(-5px);
-
-    box-shadow:
-        0 10px 30px
-        rgba(37,99,235,.3);
-}
-
 
 /* FOOTER */
 
 footer{
+padding:50px;
 
-    padding:50px;
+background:#020617;
 
-    text-align:center;
+text-align:center;
 
-    background:#020617;
+color:#8aa7d6;
 
-    color:#8aa7d6;
-
-    border-top:1px solid
-        rgba(255,255,255,.06);
+border-top:1px solid rgba(255,255,255,.06);
 }
-
-
-footer h2{
-
-    color:white;
-
-    margin-bottom:10px;
-}
-
 
 /* MOBILE */
 
 @media(max-width:900px){
 
-    nav{
-
-        padding:20px 6%;
-    }
-
-
-    nav ul{
-
-        display:none;
-    }
-
-
-    .hero{
-
-        padding:
-            140px 6% 80px;
-    }
-
-
-    .hero h1{
-
-        font-size:45px;
-    }
-
-
-    main{
-
-        padding:
-            60px 6% 90px;
-    }
-
-
-    .submit-section{
-
-        padding:40px 25px;
-    }
-
+nav ul{
+display:none;
 }
 
+main{
+padding:130px 6% 70px;
+}
 
-@media(max-width:500px){
+.dev-hero h1{
+font-size:45px;
+}
 
-    .hero h1{
+.dev-hero p{
+font-size:18px;
+}
 
-        font-size:38px;
-    }
-
-
-    .hero p{
-
-        font-size:17px;
-    }
+.step{
+flex-direction:column;
+}
 
 }
 
@@ -588,18 +354,13 @@ footer h2{
 
 </head>
 
-
 <body>
-
-
-<!-- NAVIGATION -->
 
 <nav>
 
-<a href="index.html" class="logo">
+<div class="logo">
 Browser GAMES
-</a>
-
+</div>
 
 <ul>
 
@@ -610,13 +371,13 @@ Home
 </li>
 
 <li>
-<a href="games.html">
+<a href="index.html#games">
 Games
 </a>
 </li>
 
 <li>
-<a href="developers.html" class="active">
+<a href="developer.html">
 Developers
 </a>
 </li>
@@ -627,145 +388,184 @@ Submit
 </a>
 </li>
 
-<li>
-<a href="#">
-About
-</a>
-</li>
-
 </ul>
 
 </nav>
 
 
-<!-- HERO -->
+<main>
 
-<header class="hero">
 
-<div class="hero-content">
+<section class="dev-hero">
 
 <h1>
-Become a Developer
+Build. Create. Share.
 </h1>
 
 <p>
+Browser Games gives student developers a place to
+share their games, experiment with new ideas,
+and build something other people can enjoy.
+</p>
 
-Build something creative, share your game,
-and introduce your work to the Browser Games
-community.
+<a href="submit.html" class="button">
+Start Developing
+</a>
 
+</section>
+
+
+<section class="dev-grid">
+
+
+<div class="dev-card">
+
+<div class="dev-icon">
+🎮
+</div>
+
+<h2>
+Create Games
+</h2>
+
+<p>
+Build games using Scratch, HTML, JavaScript,
+Python, or other technologies. Your project
+doesn't have to be perfect — creativity comes first.
 </p>
 
 </div>
 
-</header>
+
+<div class="dev-card">
+
+<div class="dev-icon">
+🚀
+</div>
+
+<h2>
+Publish Your Work
+</h2>
+
+<p>
+Submit your project to Browser Games and,
+after review, your game can be featured on
+the platform for other students to discover.
+</p>
+
+</div>
 
 
-<!-- MAIN -->
+<div class="dev-card">
 
-<main>
+<div class="dev-icon">
+🌎
+</div>
+
+<h2>
+Reach Players
+</h2>
+
+<p>
+Give your games a home where people can
+discover new projects and see what student
+developers are creating.
+</p>
+
+</div>
 
 
-<!-- HOW IT WORKS -->
+</section>
 
-<section>
+
+<section class="steps">
 
 <h2 class="section-title">
 How It Works
 </h2>
 
 
-<p class="section-subtitle">
-
-Submitting a game to Browser Games is simple.
-Create your game, prepare the information,
-send your submission, and wait for review.
-
-</p>
-
-
-<div class="steps">
-
-
 <div class="step">
 
-<div class="number">
+<div class="step-number">
 1
 </div>
 
+<div>
+
 <h3>
-Create Your Game
+Create an account
 </h3>
 
 <p>
-
-Build a game using Scratch, HTML, JavaScript,
-Python, or another technology you enjoy.
-Focus on making something fun and creative.
-
+Sign in using your Google Account to create
+your Browser Games developer profile.
 </p>
+
+</div>
 
 </div>
 
 
 <div class="step">
 
-<div class="number">
+<div class="step-number">
 2
 </div>
 
+<div>
+
 <h3>
-Prepare Your Game
+Create your game
 </h3>
 
 <p>
-
-Make sure your game works correctly and can
-be played by other people. Test your controls,
-links, loading, and overall experience.
-
+Use the + Create Game button inside your
+developer dashboard to start a new submission.
 </p>
+
+</div>
 
 </div>
 
 
 <div class="step">
 
-<div class="number">
+<div class="step-number">
 3
 </div>
 
+<div>
+
 <h3>
-Prepare Your Information
+Add your game information
 </h3>
 
 <p>
-
-Choose a title, write a description, select
-a genre, provide your developer name, and
-prepare a screenshot or thumbnail.
-
+Provide the title, description, category,
+controls, version, screenshots, and game URL.
 </p>
+
+</div>
 
 </div>
 
 
 <div class="step">
 
-<div class="number">
+<div class="step-number">
 4
 </div>
 
+<div>
+
 <h3>
-Submit Your Game
+Submit for review
 </h3>
 
 <p>
-
-Use the submission page to send your game
-information. Your submission will be reviewed
-before it appears on Browser Games.
-
+Your game is sent for review. Once approved,
+it can appear in the Browser Games collection.
 </p>
 
 </div>
@@ -775,153 +575,47 @@ before it appears on Browser Games.
 </section>
 
 
-<!-- REQUIREMENTS -->
+<section class="requirements">
 
-<section>
-
-<h2 class="section-title">
-Submission Requirements
-</h2>
-
-
-<p class="section-subtitle">
-
-Have these things ready before submitting
-your game.
-
-</p>
-
-
-<div class="requirements">
-
-
-<div class="requirement-box">
-
-<h3>
-Game Information
-</h3>
-
-<ul>
-
-<li>
-Game title
-</li>
-
-<li>
-Game description
-</li>
-
-<li>
-Developer name
-</li>
-
-<li>
-Game genre
-</li>
-
-<li>
-Version number
-</li>
-
-</ul>
-
-</div>
-
-
-<div class="requirement-box">
-
-<h3>
-Game Details
-</h3>
-
-<ul>
-
-<li>
-Game URL
-</li>
-
-<li>
-Controls
-</li>
-
-<li>
-Platform
-</li>
-
-<li>
-Player count
-</li>
-
-<li>
-Difficulty
-</li>
-
-</ul>
-
-</div>
-
-
-<div class="requirement-box">
-
-<h3>
-Media
-</h3>
-
-<ul>
-
-<li>
-Game thumbnail
-</li>
-
-<li>
-Game screenshot
-</li>
-
-<li>
-Optional additional screenshots
-</li>
-
-</ul>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<!-- SUBMIT -->
-
-<section class="submit-section">
+<div class="requirements-box">
 
 <h2>
-Ready to Submit?
+What You Need
 </h2>
 
+<ul>
 
-<p>
+<li>A Browser Games developer account</li>
 
-Once your game is ready, send us the details
-through the submission page. We will review
-the submission before publishing it.
+<li>A game you created</li>
 
-</p>
+<li>Game title and description</li>
 
+<li>Developer name</li>
 
-<a href="submit.html" class="submit-button">
+<li>Game category</li>
 
-Submit a Game
+<li>Controls/instructions</li>
 
+<li>Version number</li>
+
+<li>Game URL or hosted game files</li>
+
+<li>A game thumbnail or screenshot</li>
+
+</ul>
+
+<a href="submit.html" class="button">
+Create Developer Account
 </a>
+
+</div>
 
 </section>
 
 
 </main>
 
-
-<!-- FOOTER -->
 
 <footer>
 
@@ -941,8 +635,6 @@ Student-created games for everyone.
 
 </footer>
 
-
 </body>
 
 </html>
-```
