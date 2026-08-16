@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Developer Dashboard | Browser Games</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://accounts.google.com/gsi/client" async></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Space Grotesk',sans-serif;
+
+background:#020617;
+
+color:white;
+
+min-height:100vh;
+
+overflow-x:hidden;
+
+}
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background-image:
+
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(#8ab4ff 1px,transparent 1px),
+radial-gradient(white 2px,transparent 2px);
+
+background-size:
+120px 120px,
+180px 180px,
+250px 250px;
+
+opacity:.4;
+
+z-index:-1;
+
+animation:stars 180s linear infinite;
+
+}
+
+@keyframes stars{
+
+from{
+transform:translateY(0);
+}
+
+to{
+transform:translateY(-600px);
+}
+
+}
+
+/* NAV */
+
+nav{
+
+position:fixed;
+
+top:0;
+
+width:100%;
+
+padding:22px 10%;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(0,0,0,.4);
+
+backdrop-filter:blur(14px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+z-index:100;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:30px;
+
+list-style:none;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+}
+
+nav a:hover{
+
+color:#5ab0ff;
+
+}
+
+/* PAGE */
+
+main{
+
+padding:140px 8% 80px;
+
+max-width:1400px;
+
+margin:auto;
+
+}
+
+/* LOGIN */
+
+.login-container{
+
+max-width:550px;
+
+margin:70px auto;
+
+text-align:center;
+
+padding:50px 40px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.09);
+
+border-radius:25px;
+
+backdrop-filter:blur(15px);
+
+box-shadow:0 20px 70px rgba(0,0,0,.3);
+
+}
+
+.login-container h1{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+}
+
+.login-container p{
+
+color:#aebfda;
+
+line-height:1.7;
+
+margin-bottom:35px;
+
+}
+
+.google-button{
+
+display:flex;
+
+justify-content:center;
+
+}
+
+/* DASHBOARD */
+
+.dashboard{
+
+display:none;
+
+}
+
+.dashboard-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+gap:30px;
+
+padding:30px;
+
+margin-bottom:30px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:20px;
+
+}
+
+.profile{
+
+display:flex;
+
+align-items:center;
+
+gap:18px;
+
+}
+
+.profile-picture{
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+border:3px solid #2563eb;
+
+}
+
+.profile h1{
+
+font-size:28px;
+
+}
+
+.profile p{
+
+color:#8fa8ca;
+
+margin-top:5px;
+
+}
+
+.logout{
+
+padding:12px 22px;
+
+border:1px solid rgba(255,255,255,.15);
+
+background:rgba(255,255,255,.05);
+
+color:white;
+
+border-radius:10px;
+
+cursor:pointer;
+
+font-family:inherit;
+
+}
+
+.logout:hover{
+
+background:#ef4444;
+
+}
+
+/* DASHBOARD GRID */
+
+.dashboard-grid{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(300px,1fr));
+
+gap:25px;
+
+}
+
+.dashboard-card{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:20px;
+
+padding:30px;
+
+}
+
+.dashboard-card h2{
+
+margin-bottom:10px;
+
+}
+
+.dashboard-card p{
+
+color:#aebfd9;
+
+line-height:1.7;
+
+}
+
+/* CREATE BUTTON */
+
+.create-card{
+
+border-color:rgba(37,99,235,.5);
+
+background:
+
+linear-gradient(
+135deg,
+rgba(37,99,235,.18),
+rgba(255,255,255,.04)
+);
+
+}
+
+.create-button{
+
+width:100%;
+
+margin-top:25px;
+
+padding:18px;
+
+border:none;
+
+border-radius:12px;
+
+background:#2563eb;
+
+color:white;
+
+font-family:inherit;
+
+font-size:16px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.create-button:hover{
+
+background:#3b82f6;
+
+transform:translateY(-3px);
+
+}
+
+/* EMPTY */
+
+.empty{
+
+text-align:center;
+
+padding:45px;
+
+margin-top:30px;
+
+border:1px dashed rgba(255,255,255,.15);
+
+border-radius:20px;
+
+color:#8299b9;
+
+}
+
+/* FORM */
+
+.create-form{
+
+display:none;
+
+margin-top:35px;
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:20px;
+
+padding:35px;
+
+}
+
+.create-form h2{
+
+font-size:30px;
+
+margin-bottom:25px;
+
+}
+
+.form-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+}
+
+.form-group{
+
+display:flex;
+
+flex-direction:column;
+
+gap:8px;
+
+}
+
+.form-group.full{
+
+grid-column:1 / -1;
+
+}
+
+label{
+
+font-size:14px;
+
+color:#9db5d9;
+
+}
+
+input,
+select,
+textarea{
+
+width:100%;
+
+padding:14px;
+
+background:#07142b;
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:10px;
+
+color:white;
+
+font-family:inherit;
+
+outline:none;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+border-color:#3b82f6;
+
+}
+
+textarea{
+
+min-height:130px;
+
+resize:vertical;
+
+}
+
+.submit-button{
+
+margin-top:25px;
+
+padding:16px 35px;
+
+background:#2563eb;
+
+border:none;
+
+border-radius:10px;
+
+color:white;
+
+font-family:inherit;
+
+font-weight:600;
+
+cursor:pointer;
+
+}
+
+.cancel-button{
+
+margin-left:10px;
+
+padding:16px 25px;
+
+background:transparent;
+
+border:1px solid rgba(255,255,255,.15);
+
+border-radius:10px;
+
+color:white;
+
+cursor:pointer;
+
+font-family:inherit;
+
+}
+
+/* FOOTER */
+
+footer{
+
+padding:45px;
+
+text-align:center;
+
+color:#8aa7d6;
+
+border-top:1px solid rgba(255,255,255,.07);
+
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+nav ul{
+
+display:none;
+
+}
+
+main{
+
+padding:120px 5% 60px;
+
+}
+
+.dashboard-header{
+
+align-items:flex-start;
+
+flex-direction:column;
+
+}
+
+.form-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.form-group.full{
+
+grid-column:auto;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<nav>
+
+<div class="logo">
+Browser GAMES
+</div>
+
+<ul>
+
+<li>
+<a href="index.html">
+Home
+</a>
+</li>
+
+<li>
+<a href="index.html#games">
+Games
+</a>
+</li>
+
+<li>
+<a href="developer.html">
+Developers
+</a>
+</li>
+
+<li>
+<a href="submit.html">
+Submit
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+
+<main>
+
+
+<!-- LOGIN -->
+
+<section class="login-container" id="loginSection">
+
+<h1>
+Developer Login
+</h1>
+
+<p>
+Sign in with your Google Account to create your
+Browser Games developer profile and submit games.
+</p>
+
+
+<div class="google-button">
+
+<div id="g_id_onload"
+
+data-client_id="YOUR_GOOGLE_CLIENT_ID"
+
+data-callback="handleGoogleLogin"
+
+data-auto_prompt="false">
+
+</div>
+
+
+<div class="g_id_signin"
+
+data-type="standard"
+
+data-size="large"
+
+data-theme="filled_blue"
+
+data-text="signin_with"
+
+data-shape="rectangular"
+
+data-logo_alignment="left">
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="dashboard" id="dashboard">
+
+
+<div class="dashboard-header">
+
+<div class="profile">
+
+<img
+id="profilePicture"
+class="profile-picture"
+src="https://via.placeholder.com/100"
+alt="Profile picture"
+>
+
+<div>
+
+<h1 id="profileName">
+Developer
+</h1>
+
+<p id="profileEmail">
+developer@example.com
+</p>
+
+</div>
+
+</div>
+
+
+<button
+class="logout"
+onclick="logout()">
+
+Log Out
+
+</button>
+
+</div>
+
+
+<div class="dashboard-grid">
+
+
+<div class="dashboard-card create-card">
+
+<h2>
+Create a Game
+</h2>
+
+<p>
+Ready to submit something new?
+Create a game submission and send it
+to the Browser Games review team.
+</p>
+
+<button
+class="create-button"
+onclick="showCreateForm()">
+
+＋ Create Game
+
+</button>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h2>
+My Games
+</h2>
+
+<p>
+Games you submit will appear here with
+their current review status.
+</p>
+
+</div>
+
+
+<div class="dashboard-card">
+
+<h2>
+Developer Profile
+</h2>
+
+<p>
+Your Google profile is used to create
+your Browser Games developer identity.
+</p>
+
+</div>
+
+
+</div>
+
+
+<div class="empty" id="emptyGames">
+
+You haven't submitted any games yet.
+
+<br><br>
+
+Click <strong>＋ Create Game</strong>
+to start your first submission.
+
+</div>
+
+
+<!-- CREATE GAME FORM -->
+
+<div class="create-form" id="createForm">
+
+<h2>
+Create Game Submission
+</h2>
+
+
+<div class="form-grid">
+
+
+<div class="form-group">
+
+<label>
+Game Title
+</label>
+
+<input
+type="text"
+id="gameTitle"
+placeholder="My Awesome Game"
+required
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Category
+</label>
+
+<select id="gameCategory">
+
+<option value="">
+Choose a category
+</option>
+
+<option>
+Action
+</option>
+
+<option>
+Adventure
+</option>
+
+<option>
+Arcade
+</option>
+
+<option>
+Puzzle
+</option>
+
+<option>
+Racing
+</option>
+
+<option>
+Sports
+</option>
+
+<option>
+Strategy
+</option>
+
+<option>
+Educational
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Version
+</label>
+
+<input
+type="text"
+id="gameVersion"
+placeholder="1.0"
+>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Developer Name
+</label>
+
+<input
+type="text"
+id="developerName"
+placeholder="Your developer name"
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Game Description
+</label>
+
+<textarea
+id="gameDescription"
+placeholder="Tell players what your game is about..."
+></textarea>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Game URL
+</label>
+
+<input
+type="url"
+id="gameUrl"
+placeholder="https://example.com/my-game"
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Game Thumbnail URL
+</label>
+
+<input
+type="url"
+id="gameThumbnail"
+placeholder="https://example.com/my-thumbnail.png"
+>
+
+</div>
+
+
+<div class="form-group full">
+
+<label>
+Controls
+</label>
+
+<textarea
+id="gameControls"
+placeholder="Example: WASD to move, Space to jump..."
+></textarea>
+
+</div>
+
+
+</div>
+
+
+<button
+class="submit-button"
+onclick="submitGame()">
+
+Submit Game
+
+</button>
+
+
+<button
+class="cancel-button"
+onclick="hideCreateForm()">
+
+Cancel
+
+</button>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+<h2>
+Browser Games
+</h2>
+
+<p>
+Student-created games for everyone.
+</p>
+
+<br>
+
+<p>
+© 2026 Browser Games
+</p>
+
+</footer>
+
+
+<script>
+
+/*
+==========================================
+GOOGLE LOGIN
+==========================================
+
+Replace:
+
+YOUR_GOOGLE_CLIENT_ID
+
+with your Google OAuth Web Client ID.
+*/
+
+
+function handleGoogleLogin(response){
+
+try{
+
+const token = response.credential;
+
+const payload =
+JSON.parse(
+atob(
+token.split('.')[1]
+.replace(/-/g,'+')
+.replace(/_/g,'/')
+)
+);
+
+
+document.getElementById("loginSection").style.display="none";
+
+document.getElementById("dashboard").style.display="block";
+
+
+document.getElementById("profileName").textContent =
+payload.name || "Developer";
+
+
+document.getElementById("profileEmail").textContent =
+payload.email || "";
+
+
+if(payload.picture){
+
+document.getElementById("profilePicture").src =
+payload.picture;
+
+}
+
+
+localStorage.setItem(
+"browserGamesUser",
+JSON.stringify({
+name:payload.name,
+email:payload.email,
+picture:payload.picture
+})
+);
+
+}
+
+catch(error){
+
+console.error(error);
+
+alert(
+"Google sign-in could not be completed."
+);
+
+}
+
+}
+
+
+/* RESTORE LOGIN DISPLAY */
+
+window.addEventListener("load",function(){
+
+const savedUser =
+localStorage.getItem("browserGamesUser");
+
+if(!savedUser){
+
+return;
+
+}
+
+try{
+
+const user =
+JSON.parse(savedUser);
+
+
+document.getElementById("loginSection").style.display="none";
+
+document.getElementById("dashboard").style.display="block";
+
+
+document.getElementById("profileName").textContent =
+user.name || "Developer";
+
+
+document.getElementById("profileEmail").textContent =
+user.email || "";
+
+
+if(user.picture){
+
+document.getElementById("profilePicture").src =
+user.picture;
+
+}
+
+}
+catch(error){
+
+localStorage.removeItem("browserGamesUser");
+
+}
+
+});
+
+
+/* LOGOUT */
+
+function logout(){
+
+localStorage.removeItem("browserGamesUser");
+
+location.reload();
+
+}
+
+
+/* CREATE GAME */
+
+function showCreateForm(){
+
+document.getElementById("createForm").style.display="block";
+
+document.getElementById("emptyGames").style.display="none";
+
+window.scrollTo({
+
+top:document.getElementById("createForm").offsetTop - 120,
+
+behavior:"smooth"
+
+});
+
+}
+
+
+/* CANCEL */
+
+function hideCreateForm(){
+
+document.getElementById("createForm").style.display="none";
+
+document.getElementById("emptyGames").style.display="block";
+
+}
+
+
+/* SUBMIT */
+
+function submitGame(){
+
+const title =
+document.getElementById("gameTitle").value.trim();
+
+const category =
+document.getElementById("gameCategory").value;
+
+const version =
+document.getElementById("gameVersion").value.trim();
+
+const developer =
+document.getElementById("developerName").value.trim();
+
+const description =
+document.getElementById("gameDescription").value.trim();
+
+const url =
+document.getElementById("gameUrl").value.trim();
+
+const thumbnail =
+document.getElementById("gameThumbnail").value.trim();
+
+const controls =
+document.getElementById("gameControls").value.trim();
+
+
+if(!title ||
+!category ||
+!description ||
+!url){
+
+alert(
+"Please fill in the game title, category, description, and game URL."
+);
+
+return;
+
+}
+
+
+const submission = {
+
+title:title,
+
+category:category,
+
+version:version,
+
+developer:developer,
+
+description:description,
+
+url:url,
+
+thumbnail:thumbnail,
+
+controls:controls,
+
+status:"Pending Review",
+
+submittedAt:new Date().toISOString()
+
+};
+
+
+localStorage.setItem(
+"browserGamesSubmission",
+JSON.stringify(submission)
+);
+
+
+alert(
+"Your game submission has been created!"
+);
+
+
+document.getElementById("createForm").style.display="none";
+
+
+document.getElementById("emptyGames").innerHTML =
+
+"<strong>" +
+title +
+"</strong>" +
+
+"<br><br>" +
+
+"Status: <span style='color:#fbbf24'>" +
+"Pending Review" +
+"</span>";
+
+document.getElementById("emptyGames").style.display="block";
+
+}
+
+</script>
+
+</body>
+
+</html>
