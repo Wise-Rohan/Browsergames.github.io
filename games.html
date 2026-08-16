@@ -19,21 +19,15 @@
 
 <style>
 
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-
 html{
     scroll-behavior:smooth;
 }
-
 
 body{
     font-family:'Space Grotesk',sans-serif;
@@ -43,9 +37,7 @@ body{
 }
 
 
-/* =========================
-   STAR BACKGROUND
-========================= */
+/* STAR BACKGROUND */
 
 body::before{
 
@@ -76,7 +68,6 @@ body::before{
     animation:stars 180s linear infinite;
 }
 
-
 @keyframes stars{
 
     from{
@@ -90,9 +81,7 @@ body::before{
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* NAVIGATION */
 
 nav{
 
@@ -119,7 +108,6 @@ nav{
     z-index:100;
 }
 
-
 .logo{
 
     font-size:28px;
@@ -133,7 +121,6 @@ nav{
     text-decoration:none;
 }
 
-
 nav ul{
 
     display:flex;
@@ -142,7 +129,6 @@ nav ul{
 
     gap:35px;
 }
-
 
 nav a{
 
@@ -153,12 +139,10 @@ nav a{
     transition:.3s;
 }
 
-
 nav a:hover{
 
     color:#5ab0ff;
 }
-
 
 nav a.active{
 
@@ -166,15 +150,11 @@ nav a.active{
 }
 
 
-/* =========================
-   PAGE HEADER
-========================= */
+/* PAGE HEADER */
 
 .games-header{
 
-    padding:
-
-        170px 10% 80px;
+    padding:170px 10% 80px;
 
     text-align:center;
 
@@ -192,14 +172,12 @@ nav a.active{
         );
 }
 
-
 .games-header h1{
 
     font-size:64px;
 
     margin-bottom:20px;
 }
-
 
 .games-header p{
 
@@ -215,9 +193,7 @@ nav a.active{
 }
 
 
-/* =========================
-   GAMES PAGE
-========================= */
+/* GAMES PAGE */
 
 .games-page{
 
@@ -232,15 +208,13 @@ nav a.active{
 }
 
 
-/* =========================
-   SEARCH BAR
-========================= */
+/* SEARCH */
 
 .games-tools{
 
     max-width:1100px;
 
-    margin:0 auto 55px;
+    margin:0 auto 35px;
 
     display:flex;
 
@@ -251,16 +225,12 @@ nav a.active{
     justify-content:center;
 }
 
-
 .search-box{
 
-    flex:1;
-
-    min-width:260px;
+    width:100%;
 
     position:relative;
 }
-
 
 .search-box input{
 
@@ -287,27 +257,22 @@ nav a.active{
     transition:.3s;
 }
 
-
 .search-box input::placeholder{
 
     color:#7890b7;
 }
-
 
 .search-box input:focus{
 
     border-color:#4da3ff;
 
     box-shadow:
-
         0 0 20px
         rgba(70,140,255,.15);
 }
 
 
-/* =========================
-   CATEGORY BUTTONS
-========================= */
+/* CATEGORIES */
 
 .categories{
 
@@ -321,7 +286,6 @@ nav a.active{
 
     margin-bottom:65px;
 }
-
 
 .category{
 
@@ -344,7 +308,6 @@ nav a.active{
     transition:.3s;
 }
 
-
 .category:hover{
 
     color:white;
@@ -356,7 +319,6 @@ nav a.active{
     transform:translateY(-2px);
 }
 
-
 .category.active{
 
     background:#2563eb;
@@ -366,15 +328,12 @@ nav a.active{
     border-color:#3b82f6;
 
     box-shadow:
-
         0 0 20px
         rgba(37,99,235,.25);
 }
 
 
-/* =========================
-   SECTION HEADER
-========================= */
+/* DIRECTORY HEADER */
 
 .directory-header{
 
@@ -394,12 +353,10 @@ nav a.active{
     padding-bottom:20px;
 }
 
-
 .directory-header h2{
 
     font-size:32px;
 }
-
 
 .directory-header p{
 
@@ -409,9 +366,7 @@ nav a.active{
 }
 
 
-/* =========================
-   GAME GRID
-========================= */
+/* GAME GRID */
 
 .games-grid{
 
@@ -420,57 +375,49 @@ nav a.active{
     grid-template-columns:
         repeat(
             auto-fill,
-            minmax(230px,1fr)
+            minmax(280px,1fr)
         );
 
-    gap:25px;
+    gap:30px;
 }
 
 
-/* =========================
-   EMPTY GAME CARD
-========================= */
+/* GAME CARD */
 
 .game-card{
 
-    min-height:300px;
-
-    border-radius:18px;
+    border-radius:20px;
 
     border:1px solid
         rgba(255,255,255,.08);
 
     background:
-        rgba(255,255,255,.035);
+        rgba(255,255,255,.05);
 
     overflow:hidden;
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(12px);
 
     transition:.35s;
-
-    display:flex;
-
-    flex-direction:column;
 }
-
 
 .game-card:hover{
 
-    transform:translateY(-7px);
+    transform:translateY(-10px);
 
     border-color:#4da3ff;
 
     box-shadow:
-
-        0 0 30px
-        rgba(70,140,255,.25);
+        0 0 35px
+        rgba(70,140,255,.4);
 }
 
 
-.game-thumbnail{
+/* GAME IMAGE */
 
-    height:170px;
+.game-image{
+
+    height:210px;
 
     display:flex;
 
@@ -479,120 +426,116 @@ nav a.active{
     justify-content:center;
 
     background:
-
         linear-gradient(
             135deg,
-            #102b55,
-            #07111f
+            #14305f,
+            #08111f
         );
 
-    color:#5879a8;
+    color:#8fb9ff;
 
-    font-size:14px;
+    font-size:25px;
 
-    letter-spacing:1px;
-}
-
-
-.game-card-content{
-
-    padding:20px;
-}
-
-
-.game-card-title{
-
-    font-size:20px;
-
-    margin-bottom:8px;
-}
-
-
-.game-card-category{
-
-    color:#7198d1;
-
-    font-size:13px;
-
-    text-transform:uppercase;
+    font-weight:600;
 
     letter-spacing:1px;
 }
 
 
-/* =========================
-   EMPTY STATE
-========================= */
+/* GAME CONTENT */
 
-.empty-state{
+.game-content{
 
-    grid-column:1 / -1;
-
-    padding:80px 30px;
-
-    text-align:center;
-
-    border-radius:20px;
-
-    border:1px dashed
-        rgba(255,255,255,.12);
-
-    background:
-        rgba(255,255,255,.025);
+    padding:25px;
 }
 
+.game-title{
 
-.empty-icon{
-
-    width:70px;
-
-    height:70px;
-
-    margin:0 auto 25px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:
-        rgba(37,99,235,.12);
-
-    border:1px solid
-        rgba(77,163,255,.25);
-
-    color:#5aaeff;
-
-    font-size:30px;
-}
-
-
-.empty-state h3{
-
-    font-size:26px;
+    font-size:28px;
 
     margin-bottom:12px;
 }
 
+.game-description{
 
-.empty-state p{
+    color:#cdd9ee;
 
-    max-width:550px;
+    line-height:1.7;
 
-    margin:0 auto;
-
-    color:#8fa8ce;
-
-    line-height:1.8;
+    margin-bottom:22px;
 }
 
 
-/* =========================
-   DEVELOPER CTA
-========================= */
+/* INFO */
+
+.info{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    margin-bottom:22px;
+}
+
+.info-box{
+
+    background:
+        rgba(255,255,255,.05);
+
+    padding:11px;
+
+    border-radius:10px;
+}
+
+.label{
+
+    font-size:11px;
+
+    color:#82a5d5;
+
+    text-transform:uppercase;
+
+    margin-bottom:4px;
+}
+
+.value{
+
+    font-size:14px;
+}
+
+
+/* PLAY BUTTON */
+
+.play-button{
+
+    display:inline-block;
+
+    padding:14px 28px;
+
+    background:#2563eb;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.play-button:hover{
+
+    background:#3b82f6;
+
+    transform:translateY(-3px);
+}
+
+
+/* DEVELOPER CTA */
 
 .developer-cta{
 
@@ -618,14 +561,12 @@ nav a.active{
         rgba(77,163,255,.15);
 }
 
-
 .developer-cta h2{
 
     font-size:32px;
 
     margin-bottom:15px;
 }
-
 
 .developer-cta p{
 
@@ -637,7 +578,6 @@ nav a.active{
 
     line-height:1.8;
 }
-
 
 .dev-button{
 
@@ -658,22 +598,15 @@ nav a.active{
     transition:.3s;
 }
 
-
 .dev-button:hover{
 
     background:#3b82f6;
 
     transform:translateY(-4px);
-
-    box-shadow:
-        0 10px 25px
-        rgba(37,99,235,.25);
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* FOOTER */
 
 footer{
 
@@ -689,7 +622,6 @@ footer{
         rgba(255,255,255,.06);
 }
 
-
 footer h2{
 
     color:white;
@@ -698,9 +630,7 @@ footer h2{
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media(max-width:900px){
 
@@ -709,12 +639,10 @@ footer h2{
         padding:20px 6%;
     }
 
-
     nav ul{
 
         display:none;
     }
-
 
     .games-header{
 
@@ -722,19 +650,16 @@ footer h2{
             140px 6% 65px;
     }
 
-
     .games-header h1{
 
         font-size:45px;
     }
-
 
     .games-page{
 
         padding:
             55px 6% 90px;
     }
-
 
     .directory-header{
 
@@ -743,54 +668,42 @@ footer h2{
         flex-direction:column;
     }
 
-
     .games-grid{
 
         grid-template-columns:
             repeat(
                 auto-fill,
-                minmax(200px,1fr)
+                minmax(240px,1fr)
             );
-    }
-
-
-    .developer-cta{
-
-        padding:40px 25px;
     }
 
 }
 
-
-@media(max-width:500px){
+@media(max-width:550px){
 
     .games-header h1{
 
         font-size:38px;
     }
 
-
     .games-header p{
 
         font-size:16px;
     }
-
 
     .games-grid{
 
         grid-template-columns:1fr;
     }
 
+    .info{
 
-    .game-card{
-
-        min-height:280px;
+        grid-template-columns:1fr 1fr;
     }
 
+    .developer-cta{
 
-    .categories{
-
-        justify-content:flex-start;
+        padding:40px 25px;
     }
 
 }
@@ -803,16 +716,12 @@ footer h2{
 <body>
 
 
-<!-- =========================
-     NAVIGATION
-========================= -->
+<!-- NAVIGATION -->
 
 <nav>
 
 <a href="index.html" class="logo">
-
 Browser GAMES
-
 </a>
 
 
@@ -853,35 +762,26 @@ About
 </nav>
 
 
-<!-- =========================
-     PAGE HEADER
-========================= -->
+<!-- PAGE HEADER -->
 
 <header class="games-header">
 
 <h1>
-
 Games
-
 </h1>
-
 
 <p>
 
-Explore the Browser Games library.
-
-Discover games created by students,
-independent developers, and creators
-from the community.
+Explore the Browser Games library and
+discover games created by students and
+developers from the community.
 
 </p>
 
 </header>
 
 
-<!-- =========================
-     GAMES DIRECTORY
-========================= -->
+<!-- GAMES -->
 
 <main class="games-page">
 
@@ -946,107 +846,236 @@ Sandbox
 </div>
 
 
-<!-- DIRECTORY TITLE -->
+<!-- DIRECTORY HEADER -->
 
 <div class="directory-header">
 
-<div>
-
 <h2>
-
-Game Library
-
+All Games
 </h2>
 
-</div>
-
-
 <p>
-
-Games will appear here as they are published.
-
+2 games available
 </p>
 
 </div>
 
 
-<!-- =========================
-     GAME GRID
-========================= -->
+<!-- GAME GRID -->
 
 <div class="games-grid">
 
 
-<!--
-
-================================================
-
-GAME CARDS WILL GO HERE
-
-Example structure for a future game:
+<!-- LEMONOID INVASION -->
 
 <div class="game-card">
 
-    <div class="game-thumbnail">
-        GAME IMAGE
-    </div>
 
-    <div class="game-card-content">
+<div class="game-image">
 
-        <h3 class="game-card-title">
-            Game Name
-        </h3>
-
-        <p class="game-card-category">
-            Arcade
-        </p>
-
-    </div>
-
-</div>
-
-================================================
-
--->
-
-
-<!-- EMPTY STATE -->
-
-<div class="empty-state">
-
-
-<div class="empty-icon">
-
-+
+LEMONOID INVASION
 
 </div>
 
 
-<h3>
+<div class="game-content">
 
-No games yet
+
+<h3 class="game-title">
+
+Lemonoid Invasion
 
 </h3>
 
 
-<p>
+<p class="game-description">
 
-The game library is currently empty.
-New student-created games will appear
-here once they are published.
+A fast-paced arcade shooter where
+you defend the galaxy against
+invading lemons.
 
 </p>
 
 
+<div class="info">
+
+
+<div class="info-box">
+
+<div class="label">
+Developer
+</div>
+
+<div class="value">
+Rohan_Playz_Scratch
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Genre
+</div>
+
+<div class="value">
+Arcade Shooter
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Difficulty
+</div>
+
+<div class="value">
+Medium
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Version
+</div>
+
+<div class="value">
+1.0
+</div>
+
+</div>
+
+</div>
+
+
+<a
+    class="play-button"
+    href="lemonoid-invasion-Game.html"
+>
+
+View Game
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<!-- EAGLERCRAFT -->
+
+<div class="game-card">
+
+
+<div class="game-image">
+
+EAGLERCRAFT
+
+</div>
+
+
+<div class="game-content">
+
+
+<h3 class="game-title">
+
+Eaglercraft
+
+</h3>
+
+
+<p class="game-description">
+
+Explore, build, and survive in a
+block-based world directly in
+your browser.
+
+</p>
+
+
+<div class="info">
+
+
+<div class="info-box">
+
+<div class="label">
+Genre
+</div>
+
+<div class="value">
+Sandbox
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Version
+</div>
+
+<div class="value">
+1.12.2
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Players
+</div>
+
+<div class="value">
+Single / Multiplayer
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Platform
+</div>
+
+<div class="value">
+Browser
+</div>
+
+</div>
+
+</div>
+
+
+<a
+    class="play-button"
+    href="Eagler-Craft.html"
+>
+
+View Game
+
+</a>
+
+
+</div>
+
 </div>
 
 
 </div>
 
 
-<!-- =========================
-     DEVELOPER CTA
-========================= -->
+<!-- DEVELOPER CTA -->
 
 <section class="developer-cta">
 
@@ -1080,24 +1109,18 @@ Submit a Game
 </main>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+<!-- FOOTER -->
 
 <footer>
 
 
 <h2>
-
 Browser Games
-
 </h2>
 
 
 <p>
-
 Student-created games for everyone.
-
 </p>
 
 
@@ -1105,9 +1128,7 @@ Student-created games for everyone.
 
 
 <p>
-
 © 2026 Browser Games
-
 </p>
 
 
