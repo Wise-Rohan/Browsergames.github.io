@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Drive Mad | Browser Games</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #020617;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+
+            background-image:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(#8ab4ff 1px, transparent 1px),
+                radial-gradient(white 2px, transparent 2px);
+
+            background-size:
+                120px 120px,
+                180px 180px,
+                250px 250px;
+
+            opacity: .35;
+            z-index: -1;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 22px 10%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+            z-index: 1000;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+
+            font-size: 28px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 35px;
+
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+
+            transition: .3s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: #5ab0ff;
+        }
+
+        /* HEADER */
+
+        .game-header {
+            padding: 145px 6% 45px;
+
+            text-align: center;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    #163d7a 0%,
+                    transparent 60%
+                ),
+                linear-gradient(
+                    #020617,
+                    #000814
+                );
+        }
+
+        .game-header h1 {
+            font-size: 56px;
+            margin-bottom: 12px;
+        }
+
+        .game-header p {
+            max-width: 700px;
+            margin: auto;
+
+            color: #b9cbed;
+
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* GAME AREA */
+
+        .game-section {
+            padding: 30px 5% 90px;
+
+            background:
+                linear-gradient(
+                    #000814,
+                    #07142b
+                );
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 1400px;
+
+            margin: auto;
+
+            overflow: hidden;
+
+            border-radius: 20px;
+
+            background: #000;
+
+            border: 1px solid rgba(77, 163, 255, .25);
+
+            box-shadow:
+                0 0 50px
+                rgba(37, 99, 235, .20);
+        }
+
+        .game-frame {
+            position: relative;
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            min-height: 500px;
+
+            background: #000;
+        }
+
+        .game-frame iframe {
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+            height: 100%;
+
+            border: 0;
+        }
+
+        /* CONTROLS */
+
+        .game-controls {
+            max-width: 1400px;
+
+            margin: 20px auto 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+        .back-button,
+        .fullscreen-button {
+            padding: 13px 23px;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .back-button {
+            color: white;
+            text-decoration: none;
+
+            background: rgba(255, 255, 255, .07);
+
+            border: 1px solid rgba(255, 255, 255, .12);
+        }
+
+        .back-button:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        .fullscreen-button {
+            color: white;
+
+            background: #2563eb;
+
+            border: 0;
+        }
+
+        .fullscreen-button:hover {
+            background: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        /* INFORMATION */
+
+        .game-info {
+            max-width: 1400px;
+
+            margin: 55px auto 0;
+
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+
+            gap: 30px;
+        }
+
+        .info-panel {
+            padding: 30px;
+
+            border-radius: 18px;
+
+            background: rgba(255, 255, 255, .045);
+
+            border: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .info-panel h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .info-panel p {
+            color: #b8c8e3;
+
+            line-height: 1.8;
+        }
+
+        .details {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 12px;
+
+            margin-top: 20px;
+        }
+
+        .detail-box {
+            padding: 15px;
+
+            border-radius: 10px;
+
+            background: rgba(255, 255, 255, .05);
+        }
+
+        .detail-label {
+            color: #82a5d5;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+        }
+
+        .controls-list {
+            margin-top: 15px;
+
+            padding-left: 20px;
+
+            color: #b8c8e3;
+
+            line-height: 2;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 50px;
+
+            text-align: center;
+
+            color: #8aa7d6;
+
+            background: #020617;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, .06);
+        }
+
+        footer h2 {
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 20px 6%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            .game-header {
+                padding: 120px 6% 35px;
+            }
+
+            .game-header h1 {
+                font-size: 42px;
+            }
+
+            .game-frame {
+                min-height: 400px;
+
+                aspect-ratio: 16 / 10;
+            }
+
+            .game-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .game-header h1 {
+                font-size: 34px;
+            }
+
+            .game-frame {
+                min-height: 300px;
+
+                aspect-ratio: 4 / 3;
+            }
+
+            .game-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .back-button,
+            .fullscreen-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .details {
+                grid-template-columns: 1fr;
+            }
+
+            .info-panel {
+                padding: 22px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            Browser GAMES
+        </a>
+
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="games.html" class="active">
+                    Games
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#developers">
+                    Developers
+                </a>
+            </li>
+
+            <li>
+                <a href="submit.html">
+                    Submit
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- HEADER -->
+
+    <header class="game-header">
+
+        <h1>
+            Drive Mad
+        </h1>
+
+        <p>
+            Drive over obstacles, balance your vehicle,
+            and make it through each challenging level
+            in Drive Mad.
+        </p>
+
+    </header>
+
+
+    <!-- GAME -->
+
+    <main class="game-section">
+
+        <div class="game-container">
+
+            <div class="game-frame" id="gameFrame">
+
+                <iframe
+                    src="https://www.drivemad.com/"
+                    title="Drive Mad"
+                    allow="autoplay; fullscreen; gamepad"
+                    allowfullscreen>
+                </iframe>
+
+            </div>
+
+        </div>
+
+
+        <!-- CONTROLS -->
+
+        <div class="game-controls">
+
+            <a
+                href="games.html"
+                class="back-button">
+
+                ← Back to Games
+
+            </a>
+
+            <button
+                class="fullscreen-button"
+                onclick="toggleFullscreen()">
+
+                ⛶ Fullscreen
+
+            </button>
+
+        </div>
+
+
+        <!-- INFORMATION -->
+
+        <section class="game-info">
+
+            <div class="info-panel">
+
+                <h2>
+                    About Drive Mad
+                </h2>
+
+                <p>
+                    Drive Mad is a physics-based driving
+                    game where you have to carefully control
+                    your vehicle across challenging obstacle
+                    courses. Keep your vehicle balanced and
+                    reach the finish line without crashing.
+                </p>
+
+
+                <div class="details">
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Genre
+                        </div>
+
+                        <div class="detail-value">
+                            Racing / Physics
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Platform
+                        </div>
+
+                        <div class="detail-value">
+                            Browser
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Type
+                        </div>
+
+                        <div class="detail-value">
+                            Driving
+                        </div>
+
+                    </div>
+
+
+                    <div class="detail-box">
+
+                        <div class="detail-label">
+                            Players
+                        </div>
+
+                        <div class="detail-value">
+                            Single Player
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-panel">
+
+                <h2>
+                    Controls
+                </h2>
+
+                <ul class="controls-list">
+
+                    <li>
+                        W / Arrow Up — Accelerate
+                    </li>
+
+                    <li>
+                        S / Arrow Down — Brake
+                    </li>
+
+                    <li>
+                        A / Arrow Left — Balance
+                    </li>
+
+                    <li>
+                        D / Arrow Right — Balance
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h2>
+            Browser Games
+        </h2>
+
+        <p>
+            Student-created games for everyone.
+        </p>
+
+        <br>
+
+        <p>
+            © 2026 Browser Games
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        function toggleFullscreen() {
+
+            const gameFrame =
+                document.getElementById("gameFrame");
+
+            if (!document.fullscreenElement) {
+
+                if (gameFrame.requestFullscreen) {
+
+                    gameFrame.requestFullscreen();
+
+                } else if (gameFrame.webkitRequestFullscreen) {
+
+                    gameFrame.webkitRequestFullscreen();
+
+                }
+
+            } else {
+
+                if (document.exitFullscreen) {
+
+                    document.exitFullscreen();
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
