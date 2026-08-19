@@ -18,7 +18,7 @@ href="logo.png">
 href="https://fonts.googleapis.com">
 
 <link rel="preconnect"
-href="https://fonts.gstatic.com"
+href="https://fonts.googleapis.com"
 crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
@@ -422,6 +422,10 @@ nav a.active{
     letter-spacing:1px;
 
     text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 
@@ -442,6 +446,53 @@ nav a.active{
     text-shadow:
         0 0 15px
         rgba(77,163,255,.8);
+}
+
+
+/* DRIVE MAD IMAGE */
+
+.game-card.drive-mad
+.game-image{
+
+    background:
+        radial-gradient(
+            circle at center,
+            #e85d04,
+            #7f2704 45%,
+            #160b05 100%
+        );
+
+    color:#fff;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,140,40,.9);
+
+    font-weight:700;
+
+    letter-spacing:2px;
+}
+
+
+/* DRIVE MAD GLOW */
+
+.game-card.drive-mad
+.game-image::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,180,50,.18);
+
+    filter:blur(25px);
 }
 
 
@@ -866,7 +917,7 @@ All Games
 </h2>
 
 <p id="gameCount">
-3 games available
+4 games available
 </p>
 
 </div>
@@ -1177,6 +1228,109 @@ Kart Battle
 <a
 class="play-button"
 href="Smashkarts.html">
+
+View Game
+
+</a>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     DRIVE MAD
+========================= -->
+
+<div class="game-card drive-mad"
+data-category="racing action"
+data-name="drive mad">
+
+<div class="game-image">
+
+DRIVE MAD
+
+</div>
+
+
+<div class="game-content">
+
+<h3 class="game-title">
+
+Drive Mad
+
+</h3>
+
+
+<p class="game-description">
+
+Drive through challenging obstacle
+courses, balance your vehicle, and
+make it to the finish without crashing.
+
+</p>
+
+
+<div class="info">
+
+
+<div class="info-box">
+
+<div class="label">
+Genre
+</div>
+
+<div class="value">
+Racing / Physics
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Players
+</div>
+
+<div class="value">
+Single Player
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Platform
+</div>
+
+<div class="value">
+Browser
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Type
+</div>
+
+<div class="value">
+Driving
+</div>
+
+</div>
+
+</div>
+
+
+<a
+class="play-button"
+href="DriveMad.html">
 
 View Game
 
