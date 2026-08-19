@@ -1,20 +1,28 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Games | Browser Games</title>
 
-<link rel="icon" type="image/png" href="logo.png">
+<link rel="icon"
+type="image/png"
+href="logo.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 
 <style>
@@ -30,14 +38,18 @@ html{
 }
 
 body{
+
     font-family:'Space Grotesk',sans-serif;
+
     background:#020617;
+
     color:white;
+
     overflow-x:hidden;
 }
 
 
-/* STAR BACKGROUND */
+/* STARS */
 
 body::before{
 
@@ -45,11 +57,7 @@ body::before{
 
     position:fixed;
 
-    top:0;
-    left:0;
-
-    width:100%;
-    height:100%;
+    inset:0;
 
     background-image:
         radial-gradient(white 1px,transparent 1px),
@@ -61,7 +69,7 @@ body::before{
         180px 180px,
         250px 250px;
 
-    opacity:.45;
+    opacity:.4;
 
     z-index:-1;
 
@@ -81,13 +89,14 @@ body::before{
 }
 
 
-/* NAVIGATION */
+/* NAV */
 
 nav{
 
     position:fixed;
 
     top:0;
+    left:0;
 
     width:100%;
 
@@ -99,13 +108,15 @@ nav{
 
     align-items:center;
 
-    background:rgba(0,0,0,.45);
+    background:rgba(0,0,0,.5);
 
     backdrop-filter:blur(14px);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
 
-    z-index:100;
+    z-index:1000;
 }
 
 .logo{
@@ -139,33 +150,28 @@ nav a{
     transition:.3s;
 }
 
-nav a:hover{
-
-    color:#5ab0ff;
-}
-
+nav a:hover,
 nav a.active{
 
     color:#5ab0ff;
 }
 
 
-/* PAGE HEADER */
+/* HEADER */
 
 .games-header{
 
-    padding:170px 10% 80px;
+    padding:
+        165px 10% 75px;
 
     text-align:center;
 
     background:
-
         radial-gradient(
             circle at top,
             #163d7a 0%,
             transparent 55%
         ),
-
         linear-gradient(
             #020617,
             #000814
@@ -183,7 +189,7 @@ nav a.active{
 
     max-width:700px;
 
-    margin:0 auto;
+    margin:auto;
 
     color:#b9cbed;
 
@@ -193,14 +199,14 @@ nav a.active{
 }
 
 
-/* GAMES PAGE */
+/* MAIN */
 
 .games-page{
 
-    padding:70px 10% 120px;
+    padding:
+        70px 10% 120px;
 
     background:
-
         linear-gradient(
             #000814,
             #07142b
@@ -214,22 +220,8 @@ nav a.active{
 
     max-width:1100px;
 
-    margin:0 auto 35px;
-
-    display:flex;
-
-    gap:15px;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-}
-
-.search-box{
-
-    width:100%;
-
-    position:relative;
+    margin:
+        0 auto 30px;
 }
 
 .search-box input{
@@ -240,9 +232,12 @@ nav a.active{
 
     border-radius:12px;
 
-    border:1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background:rgba(255,255,255,.06);
+    background:
+        rgba(255,255,255,.06);
 
     color:white;
 
@@ -253,13 +248,6 @@ nav a.active{
     outline:none;
 
     backdrop-filter:blur(10px);
-
-    transition:.3s;
-}
-
-.search-box input::placeholder{
-
-    color:#7890b7;
 }
 
 .search-box input:focus{
@@ -284,7 +272,7 @@ nav a.active{
 
     justify-content:center;
 
-    margin-bottom:65px;
+    margin-bottom:60px;
 }
 
 .category{
@@ -293,7 +281,8 @@ nav a.active{
 
     border-radius:30px;
 
-    border:1px solid
+    border:
+        1px solid
         rgba(255,255,255,.1);
 
     background:
@@ -305,10 +294,13 @@ nav a.active{
 
     font-size:14px;
 
+    cursor:pointer;
+
     transition:.3s;
 }
 
-.category:hover{
+.category:hover,
+.category.active{
 
     color:white;
 
@@ -319,21 +311,8 @@ nav a.active{
     transform:translateY(-2px);
 }
 
-.category.active{
 
-    background:#2563eb;
-
-    color:white;
-
-    border-color:#3b82f6;
-
-    box-shadow:
-        0 0 20px
-        rgba(37,99,235,.25);
-}
-
-
-/* DIRECTORY HEADER */
+/* DIRECTORY */
 
 .directory-header{
 
@@ -347,7 +326,8 @@ nav a.active{
 
     margin-bottom:30px;
 
-    border-bottom:1px solid
+    border-bottom:
+        1px solid
         rgba(255,255,255,.08);
 
     padding-bottom:20px;
@@ -366,7 +346,7 @@ nav a.active{
 }
 
 
-/* GAME GRID */
+/* GRID */
 
 .games-grid{
 
@@ -382,13 +362,14 @@ nav a.active{
 }
 
 
-/* GAME CARD */
+/* CARD */
 
 .game-card{
 
     border-radius:20px;
 
-    border:1px solid
+    border:
+        1px solid
         rgba(255,255,255,.08);
 
     background:
@@ -439,10 +420,32 @@ nav a.active{
     font-weight:600;
 
     letter-spacing:1px;
+
+    text-align:center;
 }
 
 
-/* GAME CONTENT */
+/* SMASH KARTS IMAGE */
+
+.game-card.smash-karts
+.game-image{
+
+    background:
+        radial-gradient(
+            circle at center,
+            #1457a6,
+            #07152d 70%
+        );
+
+    color:#fff;
+
+    text-shadow:
+        0 0 15px
+        rgba(77,163,255,.8);
+}
+
+
+/* CONTENT */
 
 .game-content{
 
@@ -472,7 +475,8 @@ nav a.active{
 
     display:grid;
 
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:
+        1fr 1fr;
 
     gap:12px;
 
@@ -506,7 +510,7 @@ nav a.active{
 }
 
 
-/* PLAY BUTTON */
+/* BUTTON */
 
 .play-button{
 
@@ -535,7 +539,7 @@ nav a.active{
 }
 
 
-/* DEVELOPER CTA */
+/* CTA */
 
 .developer-cta{
 
@@ -548,16 +552,15 @@ nav a.active{
     border-radius:22px;
 
     background:
-
         radial-gradient(
             circle at top,
             rgba(37,99,235,.25),
             transparent 70%
         ),
-
         rgba(255,255,255,.035);
 
-    border:1px solid
+    border:
+        1px solid
         rgba(77,163,255,.15);
 }
 
@@ -572,7 +575,8 @@ nav a.active{
 
     max-width:650px;
 
-    margin:0 auto 30px;
+    margin:
+        0 auto 30px;
 
     color:#a5badb;
 
@@ -618,7 +622,8 @@ footer{
 
     color:#8aa7d6;
 
-    border-top:1px solid
+    border-top:
+        1px solid
         rgba(255,255,255,.06);
 }
 
@@ -636,7 +641,8 @@ footer h2{
 
     nav{
 
-        padding:20px 6%;
+        padding:
+            20px 6%;
     }
 
     nav ul{
@@ -679,6 +685,7 @@ footer h2{
 
 }
 
+
 @media(max-width:550px){
 
     .games-header h1{
@@ -696,14 +703,10 @@ footer h2{
         grid-template-columns:1fr;
     }
 
-    .info{
-
-        grid-template-columns:1fr 1fr;
-    }
-
     .developer-cta{
 
-        padding:40px 25px;
+        padding:
+            40px 25px;
     }
 
 }
@@ -720,8 +723,11 @@ footer h2{
 
 <nav>
 
-<a href="index.html" class="logo">
+<a href="index.html"
+class="logo">
+
 Browser GAMES
+
 </a>
 
 
@@ -734,7 +740,8 @@ Home
 </li>
 
 <li>
-<a href="games.html" class="active">
+<a href="games.html"
+class="active">
 Games
 </a>
 </li>
@@ -746,14 +753,8 @@ Developers
 </li>
 
 <li>
-<a href="#">
+<a href="submit.html">
 Submit
-</a>
-</li>
-
-<li>
-<a href="#">
-About
 </a>
 </li>
 
@@ -762,7 +763,7 @@ About
 </nav>
 
 
-<!-- PAGE HEADER -->
+<!-- HEADER -->
 
 <header class="games-header">
 
@@ -771,17 +772,15 @@ Games
 </h1>
 
 <p>
-
 Explore the Browser Games library and
 discover games created by students and
 developers from the community.
-
 </p>
 
 </header>
 
 
-<!-- GAMES -->
+<!-- MAIN -->
 
 <main class="games-page">
 
@@ -793,10 +792,10 @@ developers from the community.
 <div class="search-box">
 
 <input
-    type="search"
-    placeholder="Search games..."
-    aria-label="Search games"
->
+type="search"
+id="gameSearch"
+placeholder="Search games..."
+aria-label="Search games">
 
 </div>
 
@@ -807,46 +806,58 @@ developers from the community.
 
 <div class="categories">
 
-<a href="#" class="category active">
+<button
+class="category active"
+data-category="all">
+
 All
-</a>
 
-<a href="#" class="category">
+</button>
+
+<button
+class="category"
+data-category="action">
+
 Action
-</a>
 
-<a href="#" class="category">
+</button>
+
+<button
+class="category"
+data-category="arcade">
+
 Arcade
-</a>
 
-<a href="#" class="category">
+</button>
+
+<button
+class="category"
+data-category="adventure">
+
 Adventure
-</a>
 
-<a href="#" class="category">
-Puzzle
-</a>
+</button>
 
-<a href="#" class="category">
+<button
+class="category"
+data-category="racing">
+
 Racing
-</a>
 
-<a href="#" class="category">
-Sports
-</a>
+</button>
 
-<a href="#" class="category">
-Strategy
-</a>
+<button
+class="category"
+data-category="sandbox">
 
-<a href="#" class="category">
 Sandbox
-</a>
+
+</button>
 
 </div>
 
 
-<!-- DIRECTORY HEADER -->
+<!-- DIRECTORY -->
 
 <div class="directory-header">
 
@@ -854,8 +865,8 @@ Sandbox
 All Games
 </h2>
 
-<p>
-2 games available
+<p id="gameCount">
+3 games available
 </p>
 
 </div>
@@ -863,13 +874,17 @@ All Games
 
 <!-- GAME GRID -->
 
-<div class="games-grid">
+<div class="games-grid"
+id="gamesGrid">
 
 
-<!-- LEMONOID INVASION -->
+<!-- =========================
+     LEMONOID INVASION
+========================= -->
 
-<div class="game-card">
-
+<div class="game-card"
+data-category="arcade action"
+data-name="lemonoid invasion">
 
 <div class="game-image">
 
@@ -879,7 +894,6 @@ LEMONOID INVASION
 
 
 <div class="game-content">
-
 
 <h3 class="game-title">
 
@@ -955,24 +969,25 @@ Version
 
 
 <a
-    class="play-button"
-    href="lemonoid-invasion-Game.html"
->
+class="play-button"
+href="lemonoid-invasion-Game.html">
 
 View Game
 
 </a>
 
-
 </div>
 
 </div>
 
 
-<!-- EAGLERCRAFT -->
+<!-- =========================
+     EAGLERCRAFT
+========================= -->
 
-<div class="game-card">
-
+<div class="game-card"
+data-category="sandbox adventure"
+data-name="eaglercraft">
 
 <div class="game-image">
 
@@ -982,7 +997,6 @@ EAGLERCRAFT
 
 
 <div class="game-content">
-
 
 <h3 class="game-title">
 
@@ -1058,14 +1072,115 @@ Browser
 
 
 <a
-    class="play-button"
-    href="Eagler-Craft.html"
->
+class="play-button"
+href="Eagler-Craft.html">
 
 View Game
 
 </a>
 
+</div>
+
+</div>
+
+
+<!-- =========================
+     SMASH KARTS
+========================= -->
+
+<div class="game-card smash-karts"
+data-category="racing action"
+data-name="smash karts">
+
+<div class="game-image">
+
+SMASH KARTS
+
+</div>
+
+
+<div class="game-content">
+
+<h3 class="game-title">
+
+Smash Karts
+
+</h3>
+
+
+<p class="game-description">
+
+Race, collect weapons, and battle
+other players in this fast-paced
+multiplayer kart game.
+
+</p>
+
+
+<div class="info">
+
+
+<div class="info-box">
+
+<div class="label">
+Genre
+</div>
+
+<div class="value">
+Racing / Action
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Players
+</div>
+
+<div class="value">
+Multiplayer
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Platform
+</div>
+
+<div class="value">
+Browser
+</div>
+
+</div>
+
+
+<div class="info-box">
+
+<div class="label">
+Type
+</div>
+
+<div class="value">
+Kart Battle
+</div>
+
+</div>
+
+</div>
+
+
+<a
+class="play-button"
+href="Smashkarts.html">
+
+View Game
+
+</a>
 
 </div>
 
@@ -1079,29 +1194,24 @@ View Game
 
 <section class="developer-cta">
 
-
 <h2>
-
 Have a game to share?
-
 </h2>
 
-
 <p>
-
 Create something awesome and submit it
 to Browser Games. Your game could become
 part of the community library.
-
 </p>
 
 
-<a href="#" class="dev-button">
+<a
+href="submit.html"
+class="dev-button">
 
 Submit a Game
 
 </a>
-
 
 </section>
 
@@ -1113,29 +1223,130 @@ Submit a Game
 
 <footer>
 
-
 <h2>
 Browser Games
 </h2>
-
 
 <p>
 Student-created games for everyone.
 </p>
 
-
 <br>
-
 
 <p>
 © 2026 Browser Games
 </p>
 
-
 </footer>
+
+
+<!-- SEARCH + CATEGORY SCRIPT -->
+
+<script>
+
+const searchInput =
+    document.getElementById("gameSearch");
+
+const cards =
+    document.querySelectorAll(".game-card");
+
+const count =
+    document.getElementById("gameCount");
+
+const categoryButtons =
+    document.querySelectorAll(".category");
+
+let currentCategory = "all";
+
+
+function updateGames(){
+
+    const search =
+        searchInput.value
+        .toLowerCase()
+        .trim();
+
+    let visible = 0;
+
+
+    cards.forEach(card => {
+
+        const name =
+            card.dataset.name
+            .toLowerCase();
+
+        const categories =
+            card.dataset.category
+            .toLowerCase();
+
+        const matchesSearch =
+            name.includes(search);
+
+        const matchesCategory =
+            currentCategory === "all" ||
+            categories.includes(currentCategory);
+
+
+        if(
+            matchesSearch &&
+            matchesCategory
+        ){
+
+            card.style.display = "";
+
+            visible++;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+
+    count.textContent =
+        visible +
+        (visible === 1
+            ? " game available"
+            : " games available");
+
+}
+
+
+searchInput.addEventListener(
+    "input",
+    updateGames
+);
+
+
+categoryButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            categoryButtons
+                .forEach(btn =>
+                    btn.classList.remove("active")
+                );
+
+            button.classList.add("active");
+
+            currentCategory =
+                button.dataset.category;
+
+            updateGames();
+
+        }
+    );
+
+});
+
+
+</script>
 
 
 </body>
 
 </html>
-```
