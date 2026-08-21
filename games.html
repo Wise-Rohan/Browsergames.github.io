@@ -4,28 +4,24 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Games | Browser Games</title>
 
-<link rel="icon"
-type="image/png"
-href="logo.png">
+<link rel="icon" type="image/png" href="logo.png">
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com"
-crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+<link
+href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
 rel="stylesheet">
 
-
 <style>
+
+/* =========================================
+   RESET
+========================================= */
 
 *{
     margin:0;
@@ -41,55 +37,119 @@ body{
 
     font-family:'Space Grotesk',sans-serif;
 
-    background:#020617;
+    background:#030712;
 
-    color:white;
+    color:#ffffff;
 
     overflow-x:hidden;
+
 }
 
 
-/* STARS */
+/* =========================================
+   BACKGROUND
+========================================= */
 
-body::before{
+body{
 
-    content:"";
+    background:
+
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(37,99,235,.12),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(99,102,241,.10),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            180deg,
+            #030712 0%,
+            #06101f 50%,
+            #030712 100%
+        );
+
+}
+
+
+/* AMBIENT LIGHT */
+
+.background-glow{
 
     position:fixed;
 
-    inset:0;
+    width:500px;
+    height:500px;
 
-    background-image:
-        radial-gradient(white 1px,transparent 1px),
-        radial-gradient(#8ab4ff 1px,transparent 1px),
-        radial-gradient(white 2px,transparent 2px);
+    border-radius:50%;
 
-    background-size:
-        120px 120px,
-        180px 180px,
-        250px 250px;
+    pointer-events:none;
 
-    opacity:.4;
+    filter:blur(120px);
 
-    z-index:-1;
+    opacity:.18;
 
-    animation:stars 180s linear infinite;
-}
-
-@keyframes stars{
-
-    from{
-        transform:translateY(0);
-    }
-
-    to{
-        transform:translateY(-600px);
-    }
+    z-index:-2;
 
 }
 
+.glow-one{
 
-/* NAV */
+    background:#2563eb;
+
+    top:-200px;
+    left:-150px;
+
+    animation:
+        floatGlow 14s ease-in-out infinite;
+
+}
+
+.glow-two{
+
+    background:#7c3aed;
+
+    right:-200px;
+    top:35%;
+
+    animation:
+        floatGlowTwo 18s ease-in-out infinite;
+
+}
+
+
+@keyframes floatGlow{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(80px,50px);
+    }
+
+}
+
+@keyframes floatGlowTwo{
+
+    0%,100%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-70px,-50px);
+    }
+
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
 
 nav{
 
@@ -100,219 +160,493 @@ nav{
 
     width:100%;
 
-    padding:22px 10%;
+    height:78px;
+
+    padding:
+        0 7%;
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
 
-    background:rgba(0,0,0,.5);
+    justify-content:space-between;
 
-    backdrop-filter:blur(14px);
+    background:
+        rgba(3,7,18,.72);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.07);
 
     z-index:1000;
+
 }
+
 
 .logo{
 
-    font-size:28px;
+    display:flex;
 
-    font-weight:700;
+    align-items:center;
 
-    letter-spacing:2px;
+    gap:11px;
 
     color:white;
 
     text-decoration:none;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
 }
+
+
+.logo-mark{
+
+    width:11px;
+
+    height:11px;
+
+    border-radius:50%;
+
+    background:#60a5fa;
+
+    box-shadow:
+        0 0 15px
+        rgba(96,165,250,.9);
+
+}
+
 
 nav ul{
 
     display:flex;
 
+    align-items:center;
+
+    gap:8px;
+
     list-style:none;
 
-    gap:35px;
-}
-
-nav a{
-
-    color:white;
-
-    text-decoration:none;
-
-    transition:.3s;
-}
-
-nav a:hover,
-nav a.active{
-
-    color:#5ab0ff;
 }
 
 
-/* HEADER */
+nav a.nav-link{
 
-.games-header{
+    display:block;
 
     padding:
-        165px 10% 75px;
+        9px 15px;
 
-    text-align:center;
+    border-radius:9px;
 
-    background:
-        radial-gradient(
-            circle at top,
-            #163d7a 0%,
-            transparent 55%
-        ),
-        linear-gradient(
-            #020617,
-            #000814
-        );
-}
-
-.games-header h1{
-
-    font-size:64px;
-
-    margin-bottom:20px;
-}
-
-.games-header p{
-
-    max-width:700px;
-
-    margin:auto;
-
-    color:#b9cbed;
-
-    font-size:19px;
-
-    line-height:1.8;
-}
-
-
-/* MAIN */
-
-.games-page{
-
-    padding:
-        70px 10% 120px;
-
-    background:
-        linear-gradient(
-            #000814,
-            #07142b
-        );
-}
-
-
-/* SEARCH */
-
-.games-tools{
-
-    max-width:1100px;
-
-    margin:
-        0 auto 30px;
-}
-
-.search-box input{
-
-    width:100%;
-
-    padding:17px 20px;
-
-    border-radius:12px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    background:
-        rgba(255,255,255,.06);
-
-    color:white;
-
-    font-family:inherit;
-
-    font-size:16px;
-
-    outline:none;
-
-    backdrop-filter:blur(10px);
-}
-
-.search-box input:focus{
-
-    border-color:#4da3ff;
-
-    box-shadow:
-        0 0 20px
-        rgba(70,140,255,.15);
-}
-
-
-/* CATEGORIES */
-
-.categories{
-
-    display:flex;
-
-    gap:10px;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    margin-bottom:60px;
-}
-
-.category{
-
-    padding:11px 20px;
-
-    border-radius:30px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.1);
-
-    background:
-        rgba(255,255,255,.04);
-
-    color:#cbd9ef;
+    color:#aebed7;
 
     text-decoration:none;
 
     font-size:14px;
 
-    cursor:pointer;
+    transition:
+        color .25s,
+        background .25s,
+        transform .25s;
 
-    transition:.3s;
 }
 
-.category:hover,
+
+nav a.nav-link:hover{
+
+    color:white;
+
+    background:
+        rgba(255,255,255,.06);
+
+}
+
+
+nav a.nav-link.active{
+
+    color:#ffffff;
+
+    background:
+        rgba(59,130,246,.15);
+
+}
+
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.games-header{
+
+    position:relative;
+
+    padding:
+        155px 7% 75px;
+
+    text-align:center;
+
+    overflow:hidden;
+
+}
+
+
+.header-content{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+
+.header-label{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:
+        8px 14px;
+
+    border:
+        1px solid
+        rgba(96,165,250,.22);
+
+    background:
+        rgba(37,99,235,.08);
+
+    border-radius:30px;
+
+    color:#8dbdff;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    margin-bottom:22px;
+
+}
+
+
+.header-label span{
+
+    width:6px;
+
+    height:6px;
+
+    border-radius:50%;
+
+    background:#60a5fa;
+
+    box-shadow:
+        0 0 10px #60a5fa;
+
+}
+
+
+.games-header h1{
+
+    font-size:
+        clamp(48px,7vw,76px);
+
+    line-height:1;
+
+    letter-spacing:-3px;
+
+    margin-bottom:22px;
+
+}
+
+
+.games-header h1 span{
+
+    color:#60a5fa;
+
+    text-shadow:
+        0 0 35px
+        rgba(59,130,246,.35);
+
+}
+
+
+.games-header p{
+
+    max-width:680px;
+
+    margin:auto;
+
+    color:#9fb3d1;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+}
+
+
+/* HEADER GLOW */
+
+.games-header::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+
+    height:300px;
+
+    left:50%;
+
+    top:40px;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(37,99,235,.16),
+            transparent 70%
+        );
+
+    filter:
+        blur(30px);
+
+    pointer-events:none;
+
+    z-index:-1;
+
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.games-page{
+
+    width:100%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    padding:
+        35px 7% 110px;
+
+}
+
+
+/* =========================================
+   SEARCH AREA
+========================================= */
+
+.games-tools{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-bottom:20px;
+
+}
+
+
+.search-box{
+
+    width:100%;
+
+    max-width:720px;
+
+    position:relative;
+
+}
+
+
+.search-icon{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:
+        translateY(-50%);
+
+    color:#6f87a8;
+
+    font-size:17px;
+
+    pointer-events:none;
+
+}
+
+
+.search-box input{
+
+    width:100%;
+
+    height:56px;
+
+    padding:
+        0 20px 0 48px;
+
+    border-radius:14px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    outline:none;
+
+    background:
+        rgba(255,255,255,.045);
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    backdrop-filter:
+        blur(15px);
+
+    transition:
+        border-color .25s,
+        background .25s,
+        box-shadow .25s;
+
+}
+
+
+.search-box input::placeholder{
+
+    color:#7185a4;
+
+}
+
+
+.search-box input:focus{
+
+    background:
+        rgba(255,255,255,.065);
+
+    border-color:
+        rgba(96,165,250,.55);
+
+    box-shadow:
+        0 0 30px
+        rgba(37,99,235,.12);
+
+}
+
+
+/* =========================================
+   CATEGORIES
+========================================= */
+
+.categories{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:9px;
+
+    margin-bottom:70px;
+
+}
+
+
+.category{
+
+    padding:
+        9px 17px;
+
+    border-radius:30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.035);
+
+    color:#91a5c2;
+
+    font-family:inherit;
+
+    font-size:13px;
+
+    cursor:pointer;
+
+    transition:
+        .25s;
+
+}
+
+
+.category:hover{
+
+    color:white;
+
+    border-color:
+        rgba(96,165,250,.35);
+
+    background:
+        rgba(59,130,246,.08);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
 .category.active{
 
     color:white;
 
-    background:#2563eb;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+        );
 
-    border-color:#3b82f6;
+    border-color:
+        #3b82f6;
 
-    transform:translateY(-2px);
+    box-shadow:
+        0 7px 20px
+        rgba(37,99,235,.22);
+
 }
 
 
-/* DIRECTORY */
+/* =========================================
+   DIRECTORY HEADER
+========================================= */
 
 .directory-header{
 
@@ -320,33 +654,68 @@ nav a.active{
 
     justify-content:space-between;
 
-    align-items:end;
+    align-items:flex-end;
 
-    gap:20px;
+    padding-bottom:18px;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 
     border-bottom:
         1px solid
-        rgba(255,255,255,.08);
+        rgba(255,255,255,.07);
 
-    padding-bottom:20px;
 }
 
-.directory-header h2{
 
-    font-size:32px;
+.directory-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
 }
+
+
+.directory-title h2{
+
+    font-size:27px;
+
+    letter-spacing:-.5px;
+
+}
+
+
+.directory-line{
+
+    width:5px;
+
+    height:25px;
+
+    border-radius:5px;
+
+    background:#3b82f6;
+
+    box-shadow:
+        0 0 15px
+        rgba(59,130,246,.5);
+
+}
+
 
 .directory-header p{
 
-    color:#819bc4;
+    color:#7187a8;
 
-    font-size:14px;
+    font-size:13px;
+
 }
 
 
-/* GRID */
+/* =========================================
+   GAME GRID
+========================================= */
 
 .games-grid{
 
@@ -355,50 +724,70 @@ nav a.active{
     grid-template-columns:
         repeat(
             auto-fill,
-            minmax(280px,1fr)
+            minmax(275px,1fr)
         );
 
-    gap:30px;
+    gap:24px;
+
 }
 
 
-/* CARD */
+/* =========================================
+   GAME CARD
+========================================= */
 
 .game-card{
 
-    border-radius:20px;
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:
+        rgba(255,255,255,.045);
 
     border:
         1px solid
         rgba(255,255,255,.08);
 
-    background:
-        rgba(255,255,255,.05);
+    backdrop-filter:
+        blur(15px);
 
-    overflow:hidden;
+    transition:
+        transform .35s,
+        border-color .35s,
+        box-shadow .35s;
 
-    backdrop-filter:blur(12px);
-
-    transition:.35s;
 }
+
 
 .game-card:hover{
 
-    transform:translateY(-10px);
+    transform:
+        translateY(-8px);
 
-    border-color:#4da3ff;
+    border-color:
+        rgba(96,165,250,.5);
 
     box-shadow:
-        0 0 35px
-        rgba(70,140,255,.4);
+        0 20px 45px
+        rgba(0,0,0,.3),
+        0 0 30px
+        rgba(37,99,235,.13);
+
 }
 
 
-/* GAME IMAGE */
+/* =========================================
+   GAME IMAGE
+========================================= */
 
 .game-image{
 
-    height:210px;
+    height:205px;
+
+    position:relative;
 
     display:flex;
 
@@ -406,239 +795,482 @@ nav a.active{
 
     justify-content:center;
 
-    background:
-        linear-gradient(
-            135deg,
-            #14305f,
-            #08111f
-        );
-
-    color:#8fb9ff;
-
-    font-size:25px;
-
-    font-weight:600;
-
-    letter-spacing:1px;
-
-    text-align:center;
-
-    position:relative;
-
     overflow:hidden;
-}
-
-
-/* SMASH KARTS IMAGE */
-
-.game-card.smash-karts
-.game-image{
 
     background:
+
         radial-gradient(
-            circle at center,
-            #1457a6,
-            #07152d 70%
+            circle at 50% 40%,
+            #1c447d,
+            #081321 75%
         );
 
-    color:#fff;
+    color:#d9e9ff;
 
-    text-shadow:
-        0 0 15px
-        rgba(77,163,255,.8);
-}
-
-
-/* DRIVE MAD IMAGE */
-
-.game-card.drive-mad
-.game-image{
-
-    background:
-        radial-gradient(
-            circle at center,
-            #e85d04,
-            #7f2704 45%,
-            #160b05 100%
-        );
-
-    color:#fff;
-
-    text-shadow:
-        0 0 15px
-        rgba(255,140,40,.9);
+    font-size:22px;
 
     font-weight:700;
 
-    letter-spacing:2px;
+    letter-spacing:1.5px;
+
+    text-align:center;
+
 }
 
 
-/* DRIVE MAD GLOW */
+/* IMAGE SHINE */
 
-.game-card.drive-mad
-.game-image::before{
+.game-image::after{
 
     content:"";
 
     position:absolute;
 
-    width:180px;
+    top:0;
+    left:-120%;
 
-    height:180px;
+    width:70%;
 
-    border-radius:50%;
-
-    background:
-        rgba(255,180,50,.18);
-
-    filter:blur(25px);
-}
-
-
-/* CONTENT */
-
-.game-content{
-
-    padding:25px;
-}
-
-.game-title{
-
-    font-size:28px;
-
-    margin-bottom:12px;
-}
-
-.game-description{
-
-    color:#cdd9ee;
-
-    line-height:1.7;
-
-    margin-bottom:22px;
-}
-
-
-/* INFO */
-
-.info{
-
-    display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
-    gap:12px;
-
-    margin-bottom:22px;
-}
-
-.info-box{
+    height:100%;
 
     background:
-        rgba(255,255,255,.05);
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.10),
+            transparent
+        );
 
-    padding:11px;
+    transform:
+        skewX(-20deg);
 
-    border-radius:10px;
-}
+    transition:
+        left .65s;
 
-.label{
-
-    font-size:11px;
-
-    color:#82a5d5;
-
-    text-transform:uppercase;
-
-    margin-bottom:4px;
-}
-
-.value{
-
-    font-size:14px;
 }
 
 
-/* BUTTON */
+.game-card:hover
+.game-image::after{
 
-.play-button{
+    left:140%;
 
-    display:inline-block;
+}
 
-    padding:14px 28px;
 
-    background:#2563eb;
+/* =========================================
+   GAME THEMES
+========================================= */
 
-    border-radius:10px;
+.game-card.lemonoid
+.game-image{
 
-    text-decoration:none;
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            #d8f238 0%,
+            #63730c 30%,
+            #17220d 62%,
+            #070e16 100%
+        );
 
     color:white;
 
+    text-shadow:
+        0 0 18px
+        rgba(220,255,50,.7);
+
+}
+
+
+.game-card.eaglercraft
+.game-image{
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #347b38,
+            #15361c 50%,
+            #08150c
+        );
+
+    color:#c5ffc9;
+
+}
+
+
+.game-card.smash-karts
+.game-image{
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            #1768c5,
+            #0c3160 42%,
+            #071321 85%
+        );
+
+    color:white;
+
+    text-shadow:
+        0 0 18px
+        rgba(96,165,250,.9);
+
+}
+
+
+.game-card.drive-mad
+.game-image{
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            #ff7a18,
+            #9a3507 40%,
+            #230d05 80%,
+            #0d0704 100%
+        );
+
+    color:white;
+
+    text-shadow:
+        0 0 20px
+        rgba(255,170,70,.8);
+
+}
+
+
+/* IMAGE BADGE */
+
+.game-badge{
+
+    position:absolute;
+
+    top:14px;
+    left:14px;
+
+    z-index:2;
+
+    padding:
+        6px 10px;
+
+    border-radius:7px;
+
+    background:
+        rgba(0,0,0,.38);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(8px);
+
+    color:#dceaff;
+
+    font-size:10px;
+
     font-weight:600;
 
-    transition:.3s;
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
 }
+
+
+/* =========================================
+   GAME CONTENT
+========================================= */
+
+.game-content{
+
+    padding:21px;
+
+}
+
+
+.game-title{
+
+    font-size:22px;
+
+    letter-spacing:-.3px;
+
+    margin-bottom:13px;
+
+}
+
+
+/* TAGS */
+
+.game-tags{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin-bottom:20px;
+
+}
+
+
+.game-tag{
+
+    padding:
+        5px 9px;
+
+    border-radius:6px;
+
+    background:
+        rgba(59,130,246,.09);
+
+    border:
+        1px solid
+        rgba(96,165,250,.14);
+
+    color:#91bdf5;
+
+    font-size:10px;
+
+    font-weight:600;
+
+    letter-spacing:.7px;
+
+    text-transform:uppercase;
+
+}
+
+
+/* =========================================
+   PLAY BUTTON
+========================================= */
+
+.play-button{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    width:100%;
+
+    padding:13px;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+        );
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    box-shadow:
+        0 8px 20px
+        rgba(37,99,235,.16);
+
+    transition:
+        transform .25s,
+        box-shadow .25s,
+        background .25s;
+
+}
+
 
 .play-button:hover{
 
-    background:#3b82f6;
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #60a5fa
+        );
 
-    transform:translateY(-3px);
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 27px
+        rgba(37,99,235,.3);
+
 }
 
 
-/* CTA */
+.play-arrow{
+
+    font-size:13px;
+
+}
+
+
+/* =========================================
+   NO RESULTS
+========================================= */
+
+.no-results{
+
+    display:none;
+
+    text-align:center;
+
+    padding:
+        70px 20px;
+
+    color:#7187a8;
+
+}
+
+
+.no-results-icon{
+
+    font-size:40px;
+
+    margin-bottom:15px;
+
+    opacity:.6;
+
+}
+
+
+.no-results h3{
+
+    color:#c9d7ea;
+
+    font-size:21px;
+
+    margin-bottom:7px;
+
+}
+
+
+/* =========================================
+   DEVELOPER CTA
+========================================= */
 
 .developer-cta{
 
-    margin-top:70px;
+    position:relative;
 
-    padding:55px;
+    overflow:hidden;
+
+    margin-top:75px;
+
+    padding:
+        60px 30px;
 
     text-align:center;
 
     border-radius:22px;
 
-    background:
-        radial-gradient(
-            circle at top,
-            rgba(37,99,235,.25),
-            transparent 70%
-        ),
-        rgba(255,255,255,.035);
-
     border:
         1px solid
-        rgba(77,163,255,.15);
+        rgba(96,165,250,.14);
+
+    background:
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(37,99,235,.22),
+            transparent 65%
+        ),
+
+        rgba(255,255,255,.035);
+
 }
+
+
+.developer-cta::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    background:
+        rgba(59,130,246,.08);
+
+    border-radius:50%;
+
+    filter:
+        blur(80px);
+
+    top:-200px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.developer-cta-content{
+
+    position:relative;
+
+    z-index:1;
+
+}
+
 
 .developer-cta h2{
 
-    font-size:32px;
+    font-size:
+        clamp(27px,4vw,36px);
 
-    margin-bottom:15px;
+    margin-bottom:13px;
+
 }
+
 
 .developer-cta p{
 
-    max-width:650px;
+    max-width:600px;
 
     margin:
-        0 auto 30px;
+        0 auto 27px;
 
-    color:#a5badb;
+    color:#8fa5c4;
 
     line-height:1.8;
+
+    font-size:15px;
+
 }
+
 
 .dev-button{
 
-    display:inline-block;
+    display:inline-flex;
 
-    padding:15px 32px;
+    align-items:center;
+
+    gap:8px;
+
+    padding:
+        13px 23px;
+
+    border-radius:10px;
 
     background:#2563eb;
 
@@ -646,76 +1278,125 @@ nav a.active{
 
     text-decoration:none;
 
-    border-radius:10px;
+    font-size:14px;
 
     font-weight:600;
 
-    transition:.3s;
+    transition:.25s;
+
 }
+
 
 .dev-button:hover{
 
     background:#3b82f6;
 
-    transform:translateY(-4px);
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(37,99,235,.25);
+
 }
 
 
-/* FOOTER */
+/* =========================================
+   FOOTER
+========================================= */
 
 footer{
 
-    padding:50px;
-
-    background:#020617;
+    padding:
+        45px 20px;
 
     text-align:center;
 
-    color:#8aa7d6;
+    background:#02050c;
 
     border-top:
         1px solid
         rgba(255,255,255,.06);
+
+    color:#637895;
+
 }
+
 
 footer h2{
 
     color:white;
 
-    margin-bottom:10px;
+    font-size:20px;
+
+    margin-bottom:9px;
+
 }
 
 
-/* MOBILE */
+footer p{
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:900px){
 
     nav{
 
         padding:
-            20px 6%;
+            0 6%;
+
     }
 
     nav ul{
 
         display:none;
+
     }
 
     .games-header{
 
         padding:
-            140px 6% 65px;
-    }
+            135px 6% 65px;
 
-    .games-header h1{
-
-        font-size:45px;
     }
 
     .games-page{
 
         padding:
-            55px 6% 90px;
+            30px 6% 85px;
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .logo{
+
+        font-size:19px;
+
+    }
+
+    .games-header h1{
+
+        letter-spacing:-2px;
+
+    }
+
+    .games-header p{
+
+        font-size:16px;
+
     }
 
     .directory-header{
@@ -723,41 +1404,49 @@ footer h2{
         align-items:flex-start;
 
         flex-direction:column;
-    }
 
-    .games-grid{
+        gap:7px;
 
-        grid-template-columns:
-            repeat(
-                auto-fill,
-                minmax(240px,1fr)
-            );
-    }
-
-}
-
-
-@media(max-width:550px){
-
-    .games-header h1{
-
-        font-size:38px;
-    }
-
-    .games-header p{
-
-        font-size:16px;
     }
 
     .games-grid{
 
         grid-template-columns:1fr;
+
+    }
+
+    .game-image{
+
+        height:215px;
+
     }
 
     .developer-cta{
 
         padding:
-            40px 25px;
+            45px 22px;
+
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+
+        scroll-behavior:auto !important;
+
+        animation:none !important;
+
+        transition:none !important;
+
     }
 
 }
@@ -770,14 +1459,23 @@ footer h2{
 <body>
 
 
-<!-- NAVIGATION -->
+<!-- AMBIENT BACKGROUND -->
+
+<div class="background-glow glow-one"></div>
+<div class="background-glow glow-two"></div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <nav>
 
-<a href="index.html"
-class="logo">
+<a href="index.html" class="logo">
 
-Browser GAMES
+<span class="logo-mark"></span>
+
+Browser Games
 
 </a>
 
@@ -785,27 +1483,56 @@ Browser GAMES
 <ul>
 
 <li>
-<a href="index.html">
+<a
+href="index.html"
+class="nav-link">
+
 Home
+
 </a>
 </li>
 
+
 <li>
-<a href="games.html"
-class="active">
+<a
+href="games.html"
+class="nav-link active">
+
 Games
+
 </a>
 </li>
 
+
 <li>
-<a href="index.html#developers">
+<a
+href="developers.html"
+class="nav-link">
+
 Developers
+
 </a>
 </li>
 
+
 <li>
-<a href="submit.html">
+<a
+href="submit.html"
+class="nav-link">
+
 Submit
+
+</a>
+</li>
+
+
+<li>
+<a
+href="about.html"
+class="nav-link">
+
+About
+
 </a>
 </li>
 
@@ -814,24 +1541,46 @@ Submit
 </nav>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <header class="games-header">
 
+<div class="header-content">
+
+<div class="header-label">
+
+<span></span>
+
+Game Library
+
+</div>
+
+
 <h1>
-Games
+
+Play something <span>awesome.</span>
+
 </h1>
 
+
 <p>
-Explore the Browser Games library and
-discover games created by students and
-developers from the community.
+
+Explore the Browser Games library.
+Discover games created by students and
+developers and jump straight into the action.
+
 </p>
+
+</div>
 
 </header>
 
 
-<!-- MAIN -->
+<!-- =========================================
+     MAIN
+========================================= -->
 
 <main class="games-page">
 
@@ -841,6 +1590,12 @@ developers from the community.
 <div class="games-tools">
 
 <div class="search-box">
+
+<div class="search-icon">
+
+⌕
+
+</div>
 
 <input
 type="search"
@@ -865,6 +1620,7 @@ All
 
 </button>
 
+
 <button
 class="category"
 data-category="action">
@@ -872,6 +1628,7 @@ data-category="action">
 Action
 
 </button>
+
 
 <button
 class="category"
@@ -881,6 +1638,7 @@ Arcade
 
 </button>
 
+
 <button
 class="category"
 data-category="adventure">
@@ -889,6 +1647,7 @@ Adventure
 
 </button>
 
+
 <button
 class="category"
 data-category="racing">
@@ -896,6 +1655,7 @@ data-category="racing">
 Racing
 
 </button>
+
 
 <button
 class="category"
@@ -908,36 +1668,50 @@ Sandbox
 </div>
 
 
-<!-- DIRECTORY -->
+<!-- DIRECTORY HEADER -->
 
 <div class="directory-header">
 
-<h2>
-All Games
-</h2>
+<div class="directory-title">
+
+<div class="directory-line"></div>
+
+<h2>All Games</h2>
+
+</div>
+
 
 <p id="gameCount">
+
 4 games available
+
 </p>
 
 </div>
 
 
-<!-- GAME GRID -->
+<!-- =========================================
+     GAME GRID
+========================================= -->
 
-<div class="games-grid"
+<div
+class="games-grid"
 id="gamesGrid">
 
 
-<!-- =========================
-     LEMONOID INVASION
-========================= -->
+<!-- LEMONOID -->
 
-<div class="game-card"
+<div
+class="game-card le­monoid"
 data-category="arcade action"
 data-name="lemonoid invasion">
 
+
 <div class="game-image">
+
+<div class="game-badge">
+Arcade
+</div>
 
 LEMONOID INVASION
 
@@ -953,77 +1727,26 @@ Lemonoid Invasion
 </h3>
 
 
-<p class="game-description">
+<div class="game-tags">
 
-A fast-paced arcade shooter where
-you defend the galaxy against
-invading lemons.
+<span class="game-tag">
+Arcade
+</span>
 
-</p>
-
-
-<div class="info">
-
-
-<div class="info-box">
-
-<div class="label">
-Developer
-</div>
-
-<div class="value">
-Rohan_Playz_Scratch
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Genre
-</div>
-
-<div class="value">
-Arcade Shooter
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Difficulty
-</div>
-
-<div class="value">
-Medium
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Version
-</div>
-
-<div class="value">
-1.0
-</div>
-
-</div>
+<span class="game-tag">
+Action
+</span>
 
 </div>
 
 
 <a
-class="play-button"
-href="lemonoid-invasion-Game.html">
+href="lemonoid-invasion-Game.html"
+class="play-button">
 
-View Game
+<span class="play-arrow">▶</span>
+
+Play Game
 
 </a>
 
@@ -1032,15 +1755,19 @@ View Game
 </div>
 
 
-<!-- =========================
-     EAGLERCRAFT
-========================= -->
+<!-- EAGLERCRAFT -->
 
-<div class="game-card"
+<div
+class="game-card eaglercraft"
 data-category="sandbox adventure"
 data-name="eaglercraft">
 
+
 <div class="game-image">
+
+<div class="game-badge">
+Sandbox
+</div>
 
 EAGLERCRAFT
 
@@ -1056,77 +1783,26 @@ Eaglercraft
 </h3>
 
 
-<p class="game-description">
+<div class="game-tags">
 
-Explore, build, and survive in a
-block-based world directly in
-your browser.
-
-</p>
-
-
-<div class="info">
-
-
-<div class="info-box">
-
-<div class="label">
-Genre
-</div>
-
-<div class="value">
+<span class="game-tag">
 Sandbox
-</div>
+</span>
 
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Version
-</div>
-
-<div class="value">
-1.12.2
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Players
-</div>
-
-<div class="value">
-Single / Multiplayer
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Platform
-</div>
-
-<div class="value">
-Browser
-</div>
-
-</div>
+<span class="game-tag">
+Adventure
+</span>
 
 </div>
 
 
 <a
-class="play-button"
-href="Eagler-Craft.html">
+href="Eagler-Craft.html"
+class="play-button">
 
-View Game
+<span class="play-arrow">▶</span>
+
+Play Game
 
 </a>
 
@@ -1135,15 +1811,19 @@ View Game
 </div>
 
 
-<!-- =========================
-     SMASH KARTS
-========================= -->
+<!-- SMASH KARTS -->
 
-<div class="game-card smash-karts"
+<div
+class="game-card smash-karts"
 data-category="racing action"
 data-name="smash karts">
 
+
 <div class="game-image">
+
+<div class="game-badge">
+Racing
+</div>
 
 SMASH KARTS
 
@@ -1159,77 +1839,26 @@ Smash Karts
 </h3>
 
 
-<p class="game-description">
+<div class="game-tags">
 
-Race, collect weapons, and battle
-other players in this fast-paced
-multiplayer kart game.
+<span class="game-tag">
+Racing
+</span>
 
-</p>
-
-
-<div class="info">
-
-
-<div class="info-box">
-
-<div class="label">
-Genre
-</div>
-
-<div class="value">
-Racing / Action
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Players
-</div>
-
-<div class="value">
-Multiplayer
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Platform
-</div>
-
-<div class="value">
-Browser
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Type
-</div>
-
-<div class="value">
-Kart Battle
-</div>
-
-</div>
+<span class="game-tag">
+Action
+</span>
 
 </div>
 
 
 <a
-class="play-button"
-href="Smashkarts.html">
+href="Smashkarts.html"
+class="play-button">
 
-View Game
+<span class="play-arrow">▶</span>
+
+Play Game
 
 </a>
 
@@ -1238,15 +1867,19 @@ View Game
 </div>
 
 
-<!-- =========================
-     DRIVE MAD
-========================= -->
+<!-- DRIVE MAD -->
 
-<div class="game-card drive-mad"
+<div
+class="game-card drive-mad"
 data-category="racing action"
 data-name="drive mad">
 
+
 <div class="game-image">
+
+<div class="game-badge">
+Racing
+</div>
 
 DRIVE MAD
 
@@ -1262,77 +1895,26 @@ Drive Mad
 </h3>
 
 
-<p class="game-description">
+<div class="game-tags">
 
-Drive through challenging obstacle
-courses, balance your vehicle, and
-make it to the finish without crashing.
+<span class="game-tag">
+Racing
+</span>
 
-</p>
-
-
-<div class="info">
-
-
-<div class="info-box">
-
-<div class="label">
-Genre
-</div>
-
-<div class="value">
-Racing / Physics
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Players
-</div>
-
-<div class="value">
-Single Player
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Platform
-</div>
-
-<div class="value">
-Browser
-</div>
-
-</div>
-
-
-<div class="info-box">
-
-<div class="label">
-Type
-</div>
-
-<div class="value">
-Driving
-</div>
-
-</div>
+<span class="game-tag">
+Action
+</span>
 
 </div>
 
 
 <a
-class="play-button"
-href="DriveMad.html">
+href="DriveMad.html"
+class="play-button">
 
-View Game
+<span class="play-arrow">▶</span>
+
+Play Game
 
 </a>
 
@@ -1344,18 +1926,46 @@ View Game
 </div>
 
 
-<!-- DEVELOPER CTA -->
+<!-- NO RESULTS -->
+
+<div
+class="no-results"
+id="noResults">
+
+<div class="no-results-icon">
+⌕
+</div>
+
+<h3>
+No games found
+</h3>
+
+<p>
+Try a different search or category.
+</p>
+
+</div>
+
+
+<!-- =========================================
+     DEVELOPER CTA
+========================================= -->
 
 <section class="developer-cta">
+
+<div class="developer-cta-content">
 
 <h2>
 Have a game to share?
 </h2>
 
+
 <p>
-Create something awesome and submit it
-to Browser Games. Your game could become
+
+Build something great and submit it to
+Browser Games. Your game could become
 part of the community library.
+
 </p>
 
 
@@ -1363,9 +1973,11 @@ part of the community library.
 href="submit.html"
 class="dev-button">
 
-Submit a Game
+Submit a Game →
 
 </a>
+
+</div>
 
 </section>
 
@@ -1373,7 +1985,9 @@ Submit a Game
 </main>
 
 
-<!-- FOOTER -->
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
@@ -1394,7 +2008,9 @@ Student-created games for everyone.
 </footer>
 
 
-<!-- SEARCH + CATEGORY SCRIPT -->
+<!-- =========================================
+     SEARCH + FILTER
+========================================= -->
 
 <script>
 
@@ -1406,6 +2022,9 @@ const cards =
 
 const count =
     document.getElementById("gameCount");
+
+const noResults =
+    document.getElementById("noResults");
 
 const categoryButtons =
     document.querySelectorAll(".category");
@@ -1433,8 +2052,10 @@ function updateGames(){
             card.dataset.category
             .toLowerCase();
 
+
         const matchesSearch =
             name.includes(search);
+
 
         const matchesCategory =
             currentCategory === "all" ||
@@ -1450,7 +2071,9 @@ function updateGames(){
 
             visible++;
 
-        }else{
+        }
+
+        else{
 
             card.style.display = "none";
 
@@ -1461,9 +2084,24 @@ function updateGames(){
 
     count.textContent =
         visible +
-        (visible === 1
-            ? " game available"
-            : " games available");
+        (
+            visible === 1
+                ? " game available"
+                : " games available"
+        );
+
+
+    if(visible === 0){
+
+        noResults.style.display = "block";
+
+    }
+
+    else{
+
+        noResults.style.display = "none";
+
+    }
 
 }
 
@@ -1480,15 +2118,18 @@ categoryButtons.forEach(button => {
         "click",
         () => {
 
-            categoryButtons
-                .forEach(btn =>
-                    btn.classList.remove("active")
-                );
+            categoryButtons.forEach(
+                btn =>
+                btn.classList.remove("active")
+            );
+
 
             button.classList.add("active");
 
+
             currentCategory =
                 button.dataset.category;
+
 
             updateGames();
 
