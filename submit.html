@@ -20,9 +20,9 @@ rel="stylesheet">
 
 <style>
 
-/* =========================================
+/* ========================================
    RESET
-========================================= */
+======================================== */
 
 *{
     margin:0;
@@ -48,9 +48,9 @@ body{
 }
 
 
-/* =========================================
-   BACKGROUND
-========================================= */
+/* ========================================
+   STAR BACKGROUND
+======================================== */
 
 body::before{
 
@@ -60,41 +60,9 @@ body::before{
 
     inset:0;
 
-    background:
-
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(37,99,235,.12),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(59,130,246,.10),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 50% 80%,
-            rgba(37,99,235,.10),
-            transparent 35%
-        );
-
     pointer-events:none;
 
-    z-index:-2;
-}
-
-
-/* STARS */
-
-body::after{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
+    z-index:-1;
 
     background-image:
 
@@ -109,29 +77,21 @@ body::after{
         ),
 
         radial-gradient(
-            white 1.5px,
-            transparent 1.5px
+            white 2px,
+            transparent 2px
         );
 
     background-size:
-        110px 110px,
-        170px 170px,
+        120px 120px,
+        180px 180px,
         250px 250px;
 
-    background-position:
-        0 0,
-        40px 70px,
-        100px 30px;
-
-    opacity:.35;
-
-    pointer-events:none;
-
-    z-index:-1;
+    opacity:.4;
 
     animation:
-        stars 160s linear infinite;
+        stars 180s linear infinite;
 }
+
 
 @keyframes stars{
 
@@ -146,9 +106,9 @@ body::after{
 }
 
 
-/* =========================================
+/* ========================================
    NAVIGATION
-========================================= */
+======================================== */
 
 nav{
 
@@ -159,7 +119,7 @@ nav{
 
     width:100%;
 
-    padding:20px 8%;
+    padding:22px 10%;
 
     display:flex;
 
@@ -168,10 +128,10 @@ nav{
     align-items:center;
 
     background:
-        rgba(2,6,23,.70);
+        rgba(2,6,23,.7);
 
     backdrop-filter:
-        blur(18px);
+        blur(15px);
 
     border-bottom:
         1px solid
@@ -193,7 +153,7 @@ nav{
 
     text-decoration:none;
 
-    font-size:25px;
+    font-size:28px;
 
     font-weight:700;
 
@@ -204,6 +164,7 @@ nav{
 .logo-dot{
 
     width:10px;
+
     height:10px;
 
     border-radius:50%;
@@ -211,8 +172,7 @@ nav{
     background:#3b82f6;
 
     box-shadow:
-        0 0 15px
-        #3b82f6;
+        0 0 15px #3b82f6;
 }
 
 
@@ -222,7 +182,7 @@ nav ul{
 
     list-style:none;
 
-    gap:30px;
+    gap:35px;
 }
 
 
@@ -231,8 +191,6 @@ nav a{
     color:#dbeafe;
 
     text-decoration:none;
-
-    font-size:15px;
 
     transition:.3s;
 }
@@ -245,39 +203,37 @@ nav a.active{
 }
 
 
-/* =========================================
+/* ========================================
    MAIN
-========================================= */
+======================================== */
 
 main{
 
-    max-width:1150px;
+    max-width:1100px;
 
     margin:auto;
 
     padding:
-        145px 8% 100px;
+        155px 30px 100px;
 }
 
 
-/* =========================================
-   HEADER
-========================================= */
+/* ========================================
+   HERO
+======================================== */
 
-.page-header{
+.submit-hero{
 
     text-align:center;
 
     max-width:800px;
 
     margin:
-        0 auto 60px;
+        0 auto 70px;
 }
 
 
-.page-tag{
-
-    display:inline-block;
+.submit-tag{
 
     color:#60a5fa;
 
@@ -285,225 +241,114 @@ main{
 
     font-weight:600;
 
-    text-transform:uppercase;
-
     letter-spacing:2px;
+
+    text-transform:uppercase;
 
     margin-bottom:15px;
 }
 
 
-.page-header h1{
+.submit-hero h1{
 
     font-size:
-        clamp(45px,7vw,70px);
+        clamp(45px,7vw,65px);
 
     line-height:1;
 
-    letter-spacing:-3px;
-
     margin-bottom:22px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #7db7ff
+        );
+
+    -webkit-background-clip:text;
+
+    -webkit-text-fill-color:transparent;
 }
 
 
-.page-header h1 span{
+.submit-hero p{
 
-    color:#60a5fa;
+    color:#b9cbed;
 
-    text-shadow:
-        0 0 30px
-        rgba(59,130,246,.5);
-}
-
-
-.page-header p{
-
-    color:#aebfda;
-
-    font-size:18px;
+    font-size:19px;
 
     line-height:1.8;
 }
 
 
-/* =========================================
-   SUBMIT LAYOUT
-========================================= */
+/* ========================================
+   SUBMISSION CARD
+======================================== */
 
-.submit-layout{
+.submit-card{
 
     display:grid;
 
     grid-template-columns:
-        1.4fr
-        .8fr;
+        1fr 280px;
 
-    gap:28px;
+    gap:45px;
 
-    align-items:stretch;
-}
+    align-items:center;
 
-
-/* =========================================
-   FORM CARD
-========================================= */
-
-.submit-card{
-
-    padding:35px;
+    padding:45px;
 
     border-radius:22px;
 
     background:
+        radial-gradient(
+            circle at top left,
+            rgba(37,99,235,.18),
+            transparent 55%
+        ),
         rgba(255,255,255,.045);
 
     border:
         1px solid
-        rgba(255,255,255,.08);
+        rgba(77,163,255,.18);
 
     backdrop-filter:
-        blur(15px);
+        blur(14px);
 
     box-shadow:
         0 20px 60px
-        rgba(0,0,0,.15);
+        rgba(0,0,0,.2);
 }
 
 
-.submit-card h2{
+.submit-content h2{
 
-    font-size:28px;
+    font-size:32px;
 
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
 
-.submit-card-intro{
+.submit-content p{
 
-    color:#8fa8ca;
+    color:#b9cbe4;
 
-    line-height:1.7;
+    line-height:1.8;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 
-/* =========================================
-   FORM
-========================================= */
-
-.form-group{
-
-    margin-bottom:20px;
-}
-
-
-.form-group label{
-
-    display:block;
-
-    margin-bottom:8px;
-
-    color:#dbeafe;
-
-    font-size:14px;
-
-    font-weight:600;
-}
-
-
-.form-group input,
-.form-group textarea,
-.form-group select{
-
-    width:100%;
-
-    padding:14px 15px;
-
-    border-radius:10px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.10);
-
-    background:
-        rgba(255,255,255,.05);
-
-    color:white;
-
-    font-family:inherit;
-
-    font-size:15px;
-
-    outline:none;
-
-    transition:.3s;
-}
-
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-
-    border-color:#4da3ff;
-
-    box-shadow:
-        0 0 20px
-        rgba(70,140,255,.12);
-}
-
-
-.form-group textarea{
-
-    min-height:120px;
-
-    resize:vertical;
-}
-
-
-.form-group select{
-
-    appearance:none;
-
-    cursor:pointer;
-}
-
-
-.form-group select option{
-
-    background:#07142b;
-
-    color:white;
-}
-
-
-.form-note{
-
-    color:#7189aa;
-
-    font-size:12px;
-
-    margin-top:6px;
-
-    line-height:1.5;
-}
-
-
-/* =========================================
-   SUBMIT BUTTON
-========================================= */
+/* ========================================
+   BUTTON
+======================================== */
 
 .submit-button{
 
-    width:100%;
+    display:inline-block;
 
-    padding:15px;
-
-    margin-top:5px;
-
-    border:0;
-
-    border-radius:11px;
+    padding:
+        16px 28px;
 
     background:
         linear-gradient(
@@ -514,13 +359,15 @@ main{
 
     color:white;
 
-    font-family:inherit;
-
-    font-size:15px;
+    text-decoration:none;
 
     font-weight:600;
 
-    cursor:pointer;
+    border-radius:12px;
+
+    box-shadow:
+        0 10px 30px
+        rgba(37,99,235,.25);
 
     transition:.3s;
 }
@@ -528,90 +375,32 @@ main{
 
 .submit-button:hover{
 
-    background:
-        linear-gradient(
-            135deg,
-            #3b82f6,
-            #60a5fa
-        );
-
     transform:
-        translateY(-3px);
+        translateY(-4px);
 
     box-shadow:
-        0 12px 30px
-        rgba(37,99,235,.30);
+        0 15px 35px
+        rgba(37,99,235,.45);
 }
 
 
-/* =========================================
-   QR CARD
-========================================= */
+/* ========================================
+   QR CODE
+======================================== */
 
-.qr-card{
-
-    padding:35px;
-
-    border-radius:22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(37,99,235,.14),
-            rgba(255,255,255,.035)
-        );
-
-    border:
-        1px solid
-        rgba(96,165,250,.18);
+.qr-section{
 
     text-align:center;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
 }
 
 
-.qr-card h2{
-
-    font-size:27px;
-
-    margin-bottom:10px;
-}
-
-
-.qr-card p{
-
-    color:#9fb5d5;
-
-    line-height:1.7;
-
-    font-size:14px;
-
-    margin-bottom:25px;
-}
-
-
-/* =========================================
-   QR CODE
-========================================= */
-
-.qr-code{
+.qr-box{
 
     width:220px;
 
     height:220px;
 
-    padding:14px;
-
-    background:white;
-
-    border-radius:14px;
+    margin:auto;
 
     display:flex;
 
@@ -619,72 +408,144 @@ main{
 
     justify-content:center;
 
+    border-radius:16px;
+
+    background:white;
+
+    border:
+        6px solid white;
+
     box-shadow:
-        0 15px 40px
-        rgba(0,0,0,.35);
+        0 0 35px
+        rgba(59,130,246,.25);
+
+    overflow:hidden;
 }
 
 
-.qr-code svg{
+/*
+   PLACEHOLDER QR CODE
+
+   Replace this div with your real QR
+   image later.
+*/
+
+.qr-placeholder{
 
     width:100%;
 
     height:100%;
 
-    display:block;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:#111827;
+
+    font-weight:700;
+
+    font-size:18px;
+
+    padding:20px;
+
+    background:
+
+        repeating-linear-gradient(
+            45deg,
+            #111827 0px,
+            #111827 5px,
+            white 5px,
+            white 10px
+        );
 }
 
 
-.qr-placeholder{
+.qr-text{
 
-    margin-top:18px;
+    background:white;
 
-    color:#7189aa;
+    padding:10px;
 
-    font-size:12px;
+    border-radius:8px;
 
-    line-height:1.5;
+    font-size:13px;
 }
 
 
-/* =========================================
-   INSTRUCTIONS
-========================================= */
+/* ========================================
+   REQUIREMENTS
+======================================== */
 
-.instructions{
+.requirements{
 
-    margin-top:50px;
+    margin-top:65px;
+}
+
+
+.requirements h2{
+
+    font-size:32px;
+
+    margin-bottom:30px;
+}
+
+
+.requirements-grid{
 
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(
+            auto-fit,
+            minmax(240px,1fr)
+        );
 
     gap:20px;
 }
 
 
-.instruction{
+.requirement{
 
     padding:25px;
 
     border-radius:17px;
 
     background:
-        rgba(255,255,255,.035);
+        rgba(255,255,255,.045);
 
     border:
         1px solid
-        rgba(255,255,255,.07);
+        rgba(255,255,255,.08);
+
+    transition:.3s;
 }
 
 
-.instruction-number{
+.requirement:hover{
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(77,163,255,.5);
+
+    box-shadow:
+        0 15px 35px
+        rgba(37,99,235,.15);
+}
+
+
+.requirement-number{
+
+    display:inline-flex;
 
     width:38px;
-    height:38px;
 
-    display:flex;
+    height:38px;
 
     align-items:center;
 
@@ -700,7 +561,7 @@ main{
 }
 
 
-.instruction h3{
+.requirement h3{
 
     font-size:19px;
 
@@ -708,34 +569,65 @@ main{
 }
 
 
-.instruction p{
+.requirement p{
 
-    color:#9fb5d5;
-
-    line-height:1.7;
+    color:#aebfda;
 
     font-size:14px;
+
+    line-height:1.7;
 }
 
 
-/* =========================================
+/* ========================================
+   NOTE
+======================================== */
+
+.note{
+
+    margin-top:50px;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    background:
+        rgba(37,99,235,.08);
+
+    border:
+        1px solid
+        rgba(96,165,250,.18);
+
+    color:#bcd0ef;
+
+    line-height:1.7;
+}
+
+
+.note strong{
+
+    color:#8dbaff;
+}
+
+
+/* ========================================
    FOOTER
-========================================= */
+======================================== */
 
 footer{
 
     padding:
-        50px 20px;
-
-    text-align:center;
+        55px 20px;
 
     background:#020617;
+
+    text-align:center;
 
     color:#7189aa;
 
     border-top:
         1px solid
-        rgba(255,255,255,.06);
+        rgba(255,255,255,.07);
 }
 
 
@@ -747,11 +639,17 @@ footer h2{
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+footer p{
 
-@media(max-width:850px){
+    line-height:1.7;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media(max-width:800px){
 
     nav{
 
@@ -770,42 +668,48 @@ footer h2{
             130px 6% 80px;
     }
 
-    .submit-layout{
+    .submit-card{
 
         grid-template-columns:1fr;
+
+        text-align:center;
+
+        padding:35px 25px;
     }
 
-    .instructions{
+    .submit-content p{
 
-        grid-template-columns:1fr;
+        max-width:650px;
+
+        margin-left:auto;
+
+        margin-right:auto;
     }
 
 }
 
 
-@media(max-width:550px){
+@media(max-width:500px){
 
-    .page-header h1{
+    .submit-hero h1{
 
-        font-size:45px;
-
-        letter-spacing:-2px;
+        font-size:43px;
     }
 
-    .page-header p{
+    .submit-hero p{
 
         font-size:16px;
     }
 
-    .submit-card,
-    .qr-card{
+    .submit-card{
 
-        padding:25px;
+        padding:30px 20px;
     }
 
-    .qr-code{
+    .qr-box{
 
         width:190px;
+
         height:190px;
     }
 
@@ -819,9 +723,9 @@ footer h2{
 <body>
 
 
-<!-- =========================================
+<!-- ========================================
      NAVIGATION
-========================================= -->
+======================================== -->
 
 <nav>
 
@@ -871,336 +775,107 @@ About
 </nav>
 
 
-<!-- =========================================
+<!-- ========================================
      MAIN
-========================================= -->
+======================================== -->
 
 <main>
 
 
-<!-- =========================================
-     HEADER
-========================================= -->
+<!-- HERO -->
 
-<section class="page-header">
+<section class="submit-hero">
 
-<div class="page-tag">
-✦ SUBMIT YOUR GAME
+<div class="submit-tag">
+✦ GAME SUBMISSIONS
 </div>
 
-
 <h1>
-
-Share your <span>game.</span>
-
+Share Your Game
 </h1>
-
 
 <p>
 
 Have you created a game?
-Submit it to Browser Games and
-your project could be featured in
-the community game library.
+
+Submit it to Browser Games and your
+project could become part of the
+community game library.
 
 </p>
 
 </section>
 
 
-<!-- =========================================
-     SUBMIT AREA
-========================================= -->
+<!-- ========================================
+     SUBMISSION CARD
+======================================== -->
 
-<section class="submit-layout">
+<section class="submit-card">
 
 
-<!-- =========================================
-     FORM
-     
-     IMPORTANT:
-     Replace the action URL with your
-     Google Forms submission URL later.
-========================================= -->
-
-<div class="submit-card">
+<div class="submit-content">
 
 <h2>
-Game Submission
+Ready to Submit?
 </h2>
-
-
-<p class="submit-card-intro">
-
-Fill out the information below to
-submit your game for review.
-
-</p>
-
-
-<form
-action="#"
-method="POST">
-
-
-<div class="form-group">
-
-<label for="gameName">
-Game Name
-</label>
-
-<input
-type="text"
-id="gameName"
-name="gameName"
-placeholder="Enter your game name"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="developer">
-Developer Name
-</label>
-
-<input
-type="text"
-id="developer"
-name="developer"
-placeholder="Your developer name"
-required>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="category">
-Game Category
-</label>
-
-<select
-id="category"
-name="category"
-required>
-
-<option value="">
-Select a category
-</option>
-
-<option value="action">
-Action
-</option>
-
-<option value="arcade">
-Arcade
-</option>
-
-<option value="adventure">
-Adventure
-</option>
-
-<option value="racing">
-Racing
-</option>
-
-<option value="sandbox">
-Sandbox
-</option>
-
-<option value="other">
-Other
-</option>
-
-</select>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="description">
-Game Description
-</label>
-
-<textarea
-id="description"
-name="description"
-placeholder="Tell us about your game..."
-required></textarea>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="gameUrl">
-Game URL
-</label>
-
-<input
-type="url"
-id="gameUrl"
-name="gameUrl"
-placeholder="https://example.com/game"
-required>
-
-<p class="form-note">
-Enter the URL where your game can be played.
-</p>
-
-</div>
-
-
-<div class="form-group">
-
-<label for="version">
-Version
-</label>
-
-<input
-type="text"
-id="version"
-name="version"
-placeholder="Example: 1.0">
-
-</div>
-
-
-<button
-type="submit"
-class="submit-button">
-
-Submit Game
-
-</button>
-
-
-</form>
-
-</div>
-
-
-<!-- =========================================
-     QR CODE
-     
-     PLACEHOLDER:
-     Replace this entire .qr-code section
-     with your real QR code later.
-========================================= -->
-
-<div class="qr-card">
-
-<h2>
-Scan to Submit
-</h2>
-
 
 <p>
 
-You can also scan the QR code
-with your phone to open the
-game submission form.
+Click the button below to open the
+Browser Games game submission form.
+
+The form will open in a new tab, so you
+can return to the website whenever you
+need to.
 
 </p>
 
 
-<div class="qr-code">
-
 <!--
-    PLACEHOLDER QR CODE
+    TEMPORARY LINK
 
-    Replace this SVG later with
-    your real QR code.
-
-    Example:
-
-    <img
-    src="submit-qr.png"
-    alt="Scan to submit a game">
+    Replace the URL below with your
+    real Google Forms URL later.
 -->
 
-<svg
-viewBox="0 0 210 210"
-xmlns="http://www.w3.org/2000/svg">
+<a
+href="https://forms.google.com/"
+target="_blank"
+rel="noopener noreferrer"
+class="submit-button">
 
-<rect
-width="210"
-height="210"
-fill="white"/>
+Open Submission Form →
 
-
-<!-- TOP LEFT -->
-
-<rect x="10" y="10" width="60" height="60" fill="black"/>
-<rect x="20" y="20" width="40" height="40" fill="white"/>
-<rect x="30" y="30" width="20" height="20" fill="black"/>
-
-
-<!-- TOP RIGHT -->
-
-<rect x="140" y="10" width="60" height="60" fill="black"/>
-<rect x="150" y="20" width="40" height="40" fill="white"/>
-<rect x="160" y="30" width="20" height="20" fill="black"/>
-
-
-<!-- BOTTOM LEFT -->
-
-<rect x="10" y="140" width="60" height="60" fill="black"/>
-<rect x="20" y="150" width="40" height="40" fill="white"/>
-<rect x="30" y="160" width="20" height="20" fill="black"/>
-
-
-<!-- RANDOM MODULES -->
-
-<rect x="80" y="10" width="10" height="10" fill="black"/>
-<rect x="100" y="10" width="10" height="10" fill="black"/>
-<rect x="120" y="20" width="10" height="10" fill="black"/>
-
-<rect x="80" y="35" width="20" height="10" fill="black"/>
-<rect x="105" y="35" width="10" height="20" fill="black"/>
-<rect x="120" y="45" width="10" height="10" fill="black"/>
-
-<rect x="75" y="75" width="15" height="15" fill="black"/>
-<rect x="100" y="70" width="10" height="20" fill="black"/>
-<rect x="120" y="80" width="20" height="10" fill="black"/>
-<rect x="150" y="80" width="10" height="15" fill="black"/>
-<rect x="175" y="75" width="15" height="15" fill="black"/>
-
-<rect x="85" y="100" width="10" height="20" fill="black"/>
-<rect x="105" y="100" width="20" height="10" fill="black"/>
-<rect x="135" y="105" width="15" height="15" fill="black"/>
-<rect x="165" y="100" width="20" height="10" fill="black"/>
-
-<rect x="75" y="125" width="20" height="10" fill="black"/>
-<rect x="105" y="125" width="10" height="15" fill="black"/>
-<rect x="125" y="130" width="20" height="10" fill="black"/>
-<rect x="155" y="125" width="10" height="20" fill="black"/>
-<rect x="180" y="130" width="15" height="10" fill="black"/>
-
-<rect x="80" y="150" width="10" height="20" fill="black"/>
-<rect x="100" y="150" width="20" height="10" fill="black"/>
-<rect x="125" y="155" width="10" height="20" fill="black"/>
-<rect x="145" y="150" width="20" height="10" fill="black"/>
-<rect x="175" y="155" width="15" height="15" fill="black"/>
-
-<rect x="75" y="180" width="20" height="10" fill="black"/>
-<rect x="105" y="180" width="10" height="15" fill="black"/>
-<rect x="125" y="185" width="20" height="10" fill="black"/>
-<rect x="155" y="180" width="10" height="15" fill="black"/>
-<rect x="180" y="180" width="15" height="15" fill="black"/>
-
-</svg>
+</a>
 
 </div>
 
 
-<p class="qr-placeholder">
+<!-- QR CODE -->
 
-⚠ Placeholder QR code — replace
-with your real submission QR code.
+<div class="qr-section">
+
+<div class="qr-box">
+
+<div class="qr-placeholder">
+
+<span class="qr-text">
+QR CODE<br>
+PLACEHOLDER
+</span>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:15px;
+color:#8fa8ca;
+font-size:13px;
+">
+
+Scan to submit a game
 
 </p>
 
@@ -1210,84 +885,121 @@ with your real submission QR code.
 </section>
 
 
-<!-- =========================================
-     HOW TO SUBMIT
-========================================= -->
+<!-- ========================================
+     WHAT YOU WILL NEED
+======================================== -->
 
-<section class="instructions">
+<section class="requirements">
+
+<h2>
+What You'll Need
+</h2>
 
 
-<div class="instruction">
+<div class="requirements-grid">
 
-<div class="instruction-number">
+
+<div class="requirement">
+
+<div class="requirement-number">
 1
 </div>
 
 <h3>
-Create Your Game
+Game Information
 </h3>
 
 <p>
-
-Make a game using HTML, JavaScript,
-Scratch, or whatever tools you enjoy.
-
+Your game's title, description,
+category, and version number.
 </p>
 
 </div>
 
 
-<div class="instruction">
+<div class="requirement">
 
-<div class="instruction-number">
+<div class="requirement-number">
 2
 </div>
 
 <h3>
-Prepare Your Information
+Developer Information
 </h3>
 
 <p>
-
-Have your game name, description,
-developer name, category, controls,
-and playable URL ready.
-
+Your developer name or username
+and any other required information.
 </p>
 
 </div>
 
 
-<div class="instruction">
+<div class="requirement">
 
-<div class="instruction-number">
+<div class="requirement-number">
 3
 </div>
 
 <h3>
-Submit for Review
+Game Link
 </h3>
 
 <p>
-
-Send your submission to Browser Games.
-After review, your game can be added
-to the public games library.
-
+A link to where your game is hosted
+so it can be tested.
 </p>
 
 </div>
 
 
+<div class="requirement">
+
+<div class="requirement-number">
+4
+</div>
+
+<h3>
+Screenshot
+</h3>
+
+<p>
+A screenshot or thumbnail showing
+what your game looks like.
+</p>
+
+</div>
+
+
+</div>
+
 </section>
+
+
+<!-- ========================================
+     NOTE
+======================================== -->
+
+<div class="note">
+
+<strong>Before submitting:</strong>
+
+Make sure your game works correctly,
+your game link is accessible, and your
+information is complete.
+
+Submitted games may be reviewed before
+being added to the Browser Games library.
+
+</div>
 
 
 </main>
 
 
-<!-- =========================================
+<!-- ========================================
      FOOTER
-========================================= -->
+======================================== -->
 
 <footer>
 
