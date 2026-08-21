@@ -8,7 +8,6 @@
 
 <title>Browser Games</title>
 
-<!-- FAVICON -->
 <link rel="icon" href="./logo.png" type="image/png">
 <link rel="shortcut icon" href="./logo.png" type="image/png">
 <link rel="apple-touch-icon" href="./logo.png">
@@ -17,8 +16,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
-rel="stylesheet">
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
 
 
 <style>
@@ -47,6 +46,7 @@ body{
 
     overflow-x:hidden;
 
+    position:relative;
 }
 
 
@@ -54,118 +54,245 @@ body{
    STAR BACKGROUND
 ========================================= */
 
-.stars,
-.stars::before,
-.stars::after{
+#starfield{
 
     position:fixed;
 
-    top:0;
-    left:0;
+    inset:0;
 
     width:100%;
     height:100%;
 
     pointer-events:none;
 
-}
+    overflow:hidden;
 
-.stars{
-
-    z-index:-5;
+    z-index:-10;
 
     background:
 
         radial-gradient(
-            circle at 20% 20%,
-            rgba(59,130,246,.15),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 80% 30%,
-            rgba(96,165,250,.12),
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 50% 80%,
-            rgba(37,99,235,.12),
+            circle at 50% 20%,
+            rgba(37,99,235,.08),
             transparent 35%
-        );
-
-}
-
-
-/* SMALL STARS */
-
-.stars::before{
-
-    content:"";
-
-    background-image:
+        ),
 
         radial-gradient(
-            white 1px,
-            transparent 1px
-        );
-
-    background-size:
-        70px 70px;
-
-    opacity:.45;
-
-    animation:
-        starMove 100s linear infinite;
-
-}
-
-
-/* MEDIUM STARS */
-
-.stars::after{
-
-    content:"";
-
-    background-image:
+            circle at 15% 60%,
+            rgba(59,130,246,.06),
+            transparent 30%
+        ),
 
         radial-gradient(
-            #8ab4ff 1.5px,
-            transparent 1.5px
-        );
+            circle at 85% 75%,
+            rgba(96,165,250,.05),
+            transparent 30%
+        ),
 
-    background-size:
-        140px 140px;
+        #020617;
+}
 
-    opacity:.3;
+
+/* STAR */
+
+.star{
+
+    position:absolute;
+
+    width:var(--size);
+
+    height:var(--size);
+
+    left:var(--x);
+
+    top:var(--y);
+
+    border-radius:50%;
+
+    background:var(--color);
+
+    opacity:var(--opacity);
+
+    box-shadow:
+        0 0 var(--glow)
+        var(--color);
 
     animation:
-        starMoveReverse 150s linear infinite;
+        twinkle var(--duration)
+        ease-in-out infinite;
+
+    animation-delay:var(--delay);
 
 }
 
 
-@keyframes starMove{
+/* LARGER STARS */
+
+.star.large{
+
+    width:var(--size);
+
+    height:var(--size);
+
+    box-shadow:
+        0 0 5px var(--color),
+        0 0 12px var(--color),
+        0 0 25px rgba(59,130,246,.45);
+
+}
+
+
+/* TWINKLE */
+
+@keyframes twinkle{
+
+    0%,
+    100%{
+
+        opacity:var(--opacity);
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        opacity:calc(var(--opacity) + .35);
+
+        transform:scale(1.35);
+
+    }
+
+}
+
+
+/* SLOW SPACE MOVEMENT */
+
+#starfield .star{
+
+    animation:
+        starFloat var(--float-duration)
+        linear infinite,
+        twinkle var(--duration)
+        ease-in-out infinite;
+
+    animation-delay:
+        var(--float-delay),
+        var(--delay);
+
+}
+
+
+@keyframes starFloat{
 
     from{
-        transform:translateY(0);
+
+        transform:
+            translate3d(0,0,0);
+
     }
 
     to{
-        transform:translateY(-700px);
+
+        transform:
+            translate3d(0,-120px,0);
+
     }
 
 }
 
 
-@keyframes starMoveReverse{
+/* =========================================
+   SHOOTING STAR
+========================================= */
 
-    from{
-        transform:translateY(-300px);
+.shooting-star{
+
+    position:absolute;
+
+    width:2px;
+
+    height:100px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(147,197,253,.9),
+            white
+        );
+
+    opacity:0;
+
+    transform:
+        rotate(-35deg);
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            #60a5fa
+        );
+
+    animation:
+        shootingStar 8s linear infinite;
+
+}
+
+
+.shooting-star:nth-child(1){
+
+    left:20%;
+
+    top:-120px;
+
+    animation-delay:3s;
+
+}
+
+
+.shooting-star:nth-child(2){
+
+    left:70%;
+
+    top:-150px;
+
+    animation-delay:10s;
+
+}
+
+
+@keyframes shootingStar{
+
+    0%{
+
+        opacity:0;
+
+        transform:
+            translate(0,0)
+            rotate(-35deg);
+
     }
 
-    to{
-        transform:translateY(400px);
+    5%{
+
+        opacity:1;
+
+    }
+
+    15%{
+
+        opacity:0;
+
+        transform:
+            translate(350px,500px)
+            rotate(-35deg);
+
+    }
+
+    100%{
+
+        opacity:0;
+
     }
 
 }
@@ -197,6 +324,9 @@ nav{
         rgba(2,6,23,.65);
 
     backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
         blur(18px);
 
     border-bottom:
@@ -310,8 +440,8 @@ nav a.active{
 
         linear-gradient(
             180deg,
-            #020617,
-            #030b1c 60%,
+            rgba(2,6,23,.55),
+            rgba(3,11,28,.72) 60%,
             #020617
         );
 
@@ -340,6 +470,8 @@ nav a.active{
 
     transform:
         translateX(-50%);
+
+    pointer-events:none;
 
 }
 
@@ -497,7 +629,7 @@ nav a.active{
 .secondary:hover{
 
     background:
-        rgba(37,99,235,.2);
+        rgba(37,99,250,.2);
 
     border-color:
         #3b82f6;
@@ -523,7 +655,7 @@ nav a.active{
 
         linear-gradient(
             180deg,
-            #020617,
+            rgba(2,6,23,.85),
             #07142b
         );
 
@@ -614,6 +746,9 @@ nav a.active{
     border-radius:20px;
 
     backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
         blur(14px);
 
     transition:
@@ -1025,7 +1160,7 @@ nav a.active{
     background:
 
         linear-gradient(
-            #07142b,
+            rgba(7,20,43,.95),
             #020617
         );
 
@@ -1082,6 +1217,12 @@ nav a.active{
     padding:30px;
 
     border-radius:18px;
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
 
     transition:.3s;
 
@@ -1270,6 +1411,38 @@ footer h2{
 
 }
 
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+    html{
+
+        scroll-behavior:auto;
+
+    }
+
+    .star,
+    .shooting-star{
+
+        animation:none !important;
+
+    }
+
+    .game-card,
+    .btn,
+    .play-button,
+    .dev-button,
+    .view-all-button{
+
+        transition:none;
+
+    }
+
+}
+
 </style>
 
 </head>
@@ -1278,9 +1451,16 @@ footer h2{
 <body>
 
 
-<!-- ANIMATED STARS -->
+<!-- =========================================
+     STARFIELD
+========================================= -->
 
-<div class="stars"></div>
+<div id="starfield">
+
+    <div class="shooting-star"></div>
+    <div class="shooting-star"></div>
+
+</div>
 
 
 <!-- =========================================
@@ -1437,7 +1617,7 @@ on Browser Games.
      LEMONOID INVASION
 ================================= -->
 
-<div class="game-card lemo­noid">
+<div class="game-card lemonoid">
 
 
 <div class="game-image">
@@ -1962,6 +2142,184 @@ Student-created games for everyone.
 </p>
 
 </footer>
+
+
+<!-- =========================================
+     STARFIELD JAVASCRIPT
+========================================= -->
+
+<script>
+
+const starfield =
+    document.getElementById("starfield");
+
+
+const starCount =
+    window.innerWidth < 600
+        ? 100
+        : 180;
+
+
+const colors = [
+
+    "#ffffff",
+    "#dbeafe",
+    "#bfdbfe",
+    "#93c5fd",
+    "#60a5fa"
+
+];
+
+
+for(let i = 0; i < starCount; i++){
+
+    const star =
+        document.createElement("div");
+
+    star.classList.add("star");
+
+
+    /* Random size */
+
+    const size =
+        Math.random() < 0.85
+            ? Math.random() * 1.8 + 0.5
+            : Math.random() * 3 + 2;
+
+
+    /* Random position */
+
+    const x =
+        Math.random() * 100;
+
+    const y =
+        Math.random() * 100;
+
+
+    /* Random opacity */
+
+    const opacity =
+        Math.random() * 0.55 + 0.25;
+
+
+    /* Random glow */
+
+    const glow =
+        size > 2
+            ? Math.random() * 8 + 5
+            : Math.random() * 4 + 1;
+
+
+    /* Random animation */
+
+    const duration =
+        Math.random() * 4 + 3;
+
+    const delay =
+        Math.random() * -8;
+
+    const floatDuration =
+        Math.random() * 100 + 100;
+
+    const floatDelay =
+        Math.random() * -150;
+
+
+    /* Random color */
+
+    const color =
+        colors[
+            Math.floor(
+                Math.random() *
+                colors.length
+            )
+        ];
+
+
+    star.style.setProperty(
+        "--size",
+        `${size}px`
+    );
+
+    star.style.setProperty(
+        "--x",
+        `${x}%`
+    );
+
+    star.style.setProperty(
+        "--y",
+        `${y}%`
+    );
+
+    star.style.setProperty(
+        "--opacity",
+        opacity
+    );
+
+    star.style.setProperty(
+        "--glow",
+        `${glow}px`
+    );
+
+    star.style.setProperty(
+        "--color",
+        color
+    );
+
+    star.style.setProperty(
+        "--duration",
+        `${duration}s`
+    );
+
+    star.style.setProperty(
+        "--delay",
+        `${delay}s`
+    );
+
+    star.style.setProperty(
+        "--float-duration",
+        `${floatDuration}s`
+    );
+
+    star.style.setProperty(
+        "--float-delay",
+        `${floatDelay}s`
+    );
+
+
+    if(size > 2){
+
+        star.classList.add("large");
+
+    }
+
+
+    starfield.appendChild(star);
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+if(
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+){
+
+    document
+        .querySelectorAll(".star")
+        .forEach(star => {
+
+            star.style.animation = "none";
+
+        });
+
+}
+
+</script>
 
 
 </body>
