@@ -6,592 +6,808 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Developer Dashboard | Browser Games</title>
+<title>Submit a Game | Browser Games</title>
 
 <link rel="icon" type="image/png" href="logo.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
-<script src="https://accounts.google.com/gsi/client" async></script>
 
 <style>
 
+/* =========================================
+   RESET
+========================================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
 
-font-family:'Space Grotesk',sans-serif;
+    font-family:'Space Grotesk',sans-serif;
 
-background:#020617;
+    background:#020617;
 
-color:white;
+    color:white;
 
-min-height:100vh;
+    overflow-x:hidden;
 
-overflow-x:hidden;
-
+    min-height:100vh;
 }
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
 
 body::before{
 
-content:"";
+    content:"";
 
-position:fixed;
+    position:fixed;
 
-inset:0;
+    inset:0;
 
-background-image:
+    background:
 
-radial-gradient(white 1px,transparent 1px),
-radial-gradient(#8ab4ff 1px,transparent 1px),
-radial-gradient(white 2px,transparent 2px);
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(37,99,235,.12),
+            transparent 30%
+        ),
 
-background-size:
-120px 120px,
-180px 180px,
-250px 250px;
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(59,130,246,.10),
+            transparent 30%
+        ),
 
-opacity:.4;
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(37,99,235,.10),
+            transparent 35%
+        );
 
-z-index:-1;
+    pointer-events:none;
 
-animation:stars 180s linear infinite;
+    z-index:-2;
+}
 
+
+/* STARS */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    background-image:
+
+        radial-gradient(
+            white 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            #8ab4ff 1px,
+            transparent 1px
+        ),
+
+        radial-gradient(
+            white 1.5px,
+            transparent 1.5px
+        );
+
+    background-size:
+        110px 110px,
+        170px 170px,
+        250px 250px;
+
+    background-position:
+        0 0,
+        40px 70px,
+        100px 30px;
+
+    opacity:.35;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    animation:
+        stars 160s linear infinite;
 }
 
 @keyframes stars{
 
-from{
-transform:translateY(0);
+    from{
+        transform:translateY(0);
+    }
+
+    to{
+        transform:translateY(-600px);
+    }
+
 }
 
-to{
-transform:translateY(-600px);
-}
 
-}
-
-/* NAV */
+/* =========================================
+   NAVIGATION
+========================================= */
 
 nav{
 
-position:fixed;
+    position:fixed;
 
-top:0;
+    top:0;
+    left:0;
 
-width:100%;
+    width:100%;
 
-padding:22px 10%;
+    padding:20px 8%;
 
-display:flex;
+    display:flex;
 
-justify-content:space-between;
+    justify-content:space-between;
 
-align-items:center;
+    align-items:center;
 
-background:rgba(0,0,0,.4);
+    background:
+        rgba(2,6,23,.70);
 
-backdrop-filter:blur(14px);
+    backdrop-filter:
+        blur(18px);
 
-border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
 
-z-index:100;
-
+    z-index:1000;
 }
+
 
 .logo{
 
-font-size:28px;
+    display:flex;
 
-font-weight:700;
+    align-items:center;
 
-letter-spacing:2px;
+    gap:10px;
 
+    color:white;
+
+    text-decoration:none;
+
+    font-size:25px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
 }
+
+
+.logo-dot{
+
+    width:10px;
+    height:10px;
+
+    border-radius:50%;
+
+    background:#3b82f6;
+
+    box-shadow:
+        0 0 15px
+        #3b82f6;
+}
+
 
 nav ul{
 
-display:flex;
+    display:flex;
 
-gap:30px;
+    list-style:none;
 
-list-style:none;
-
+    gap:30px;
 }
+
 
 nav a{
 
-color:white;
+    color:#dbeafe;
 
-text-decoration:none;
+    text-decoration:none;
 
+    font-size:15px;
+
+    transition:.3s;
 }
 
-nav a:hover{
 
-color:#5ab0ff;
+nav a:hover,
+nav a.active{
 
+    color:#60a5fa;
 }
 
-/* PAGE */
+
+/* =========================================
+   MAIN
+========================================= */
 
 main{
 
-padding:140px 8% 80px;
+    max-width:1150px;
 
-max-width:1400px;
+    margin:auto;
 
-margin:auto;
-
+    padding:
+        145px 8% 100px;
 }
 
-/* LOGIN */
 
-.login-container{
+/* =========================================
+   HEADER
+========================================= */
 
-max-width:550px;
+.page-header{
 
-margin:70px auto;
+    text-align:center;
 
-text-align:center;
+    max-width:800px;
 
-padding:50px 40px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.09);
-
-border-radius:25px;
-
-backdrop-filter:blur(15px);
-
-box-shadow:0 20px 70px rgba(0,0,0,.3);
-
+    margin:
+        0 auto 60px;
 }
 
-.login-container h1{
 
-font-size:42px;
+.page-tag{
 
-margin-bottom:15px;
+    display:inline-block;
 
+    color:#60a5fa;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
 }
 
-.login-container p{
 
-color:#aebfda;
+.page-header h1{
 
-line-height:1.7;
+    font-size:
+        clamp(45px,7vw,70px);
 
-margin-bottom:35px;
+    line-height:1;
 
+    letter-spacing:-3px;
+
+    margin-bottom:22px;
 }
 
-.google-button{
 
-display:flex;
+.page-header h1 span{
 
-justify-content:center;
+    color:#60a5fa;
 
+    text-shadow:
+        0 0 30px
+        rgba(59,130,246,.5);
 }
 
-/* DASHBOARD */
 
-.dashboard{
+.page-header p{
 
-display:none;
+    color:#aebfda;
 
+    font-size:18px;
+
+    line-height:1.8;
 }
 
-.dashboard-header{
 
-display:flex;
+/* =========================================
+   SUBMIT LAYOUT
+========================================= */
 
-justify-content:space-between;
+.submit-layout{
 
-align-items:center;
+    display:grid;
 
-gap:30px;
+    grid-template-columns:
+        1.4fr
+        .8fr;
 
-padding:30px;
+    gap:28px;
 
-margin-bottom:30px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:20px;
-
+    align-items:stretch;
 }
 
-.profile{
 
-display:flex;
+/* =========================================
+   FORM CARD
+========================================= */
 
-align-items:center;
+.submit-card{
 
-gap:18px;
+    padding:35px;
 
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    backdrop-filter:
+        blur(15px);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.15);
 }
 
-.profile-picture{
 
-width:70px;
+.submit-card h2{
 
-height:70px;
+    font-size:28px;
 
-border-radius:50%;
-
-object-fit:cover;
-
-border:3px solid #2563eb;
-
+    margin-bottom:10px;
 }
 
-.profile h1{
 
-font-size:28px;
+.submit-card-intro{
 
+    color:#8fa8ca;
+
+    line-height:1.7;
+
+    margin-bottom:30px;
 }
 
-.profile p{
 
-color:#8fa8ca;
-
-margin-top:5px;
-
-}
-
-.logout{
-
-padding:12px 22px;
-
-border:1px solid rgba(255,255,255,.15);
-
-background:rgba(255,255,255,.05);
-
-color:white;
-
-border-radius:10px;
-
-cursor:pointer;
-
-font-family:inherit;
-
-}
-
-.logout:hover{
-
-background:#ef4444;
-
-}
-
-/* DASHBOARD GRID */
-
-.dashboard-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(300px,1fr));
-
-gap:25px;
-
-}
-
-.dashboard-card{
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:20px;
-
-padding:30px;
-
-}
-
-.dashboard-card h2{
-
-margin-bottom:10px;
-
-}
-
-.dashboard-card p{
-
-color:#aebfd9;
-
-line-height:1.7;
-
-}
-
-/* CREATE BUTTON */
-
-.create-card{
-
-border-color:rgba(37,99,235,.5);
-
-background:
-
-linear-gradient(
-135deg,
-rgba(37,99,235,.18),
-rgba(255,255,255,.04)
-);
-
-}
-
-.create-button{
-
-width:100%;
-
-margin-top:25px;
-
-padding:18px;
-
-border:none;
-
-border-radius:12px;
-
-background:#2563eb;
-
-color:white;
-
-font-family:inherit;
-
-font-size:16px;
-
-font-weight:600;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.create-button:hover{
-
-background:#3b82f6;
-
-transform:translateY(-3px);
-
-}
-
-/* EMPTY */
-
-.empty{
-
-text-align:center;
-
-padding:45px;
-
-margin-top:30px;
-
-border:1px dashed rgba(255,255,255,.15);
-
-border-radius:20px;
-
-color:#8299b9;
-
-}
-
-/* FORM */
-
-.create-form{
-
-display:none;
-
-margin-top:35px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:20px;
-
-padding:35px;
-
-}
-
-.create-form h2{
-
-font-size:30px;
-
-margin-bottom:25px;
-
-}
-
-.form-grid{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:20px;
-
-}
+/* =========================================
+   FORM
+========================================= */
 
 .form-group{
 
-display:flex;
-
-flex-direction:column;
-
-gap:8px;
-
+    margin-bottom:20px;
 }
 
-.form-group.full{
 
-grid-column:1 / -1;
+.form-group label{
 
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#dbeafe;
+
+    font-size:14px;
+
+    font-weight:600;
 }
 
-label{
 
-font-size:14px;
+.form-group input,
+.form-group textarea,
+.form-group select{
 
-color:#9db5d9;
+    width:100%;
 
+    padding:14px 15px;
+
+    border-radius:10px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:white;
+
+    font-family:inherit;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.3s;
 }
 
-input,
-select,
-textarea{
 
-width:100%;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
 
-padding:14px;
+    border-color:#4da3ff;
 
-background:#07142b;
-
-border:1px solid rgba(255,255,255,.12);
-
-border-radius:10px;
-
-color:white;
-
-font-family:inherit;
-
-outline:none;
-
+    box-shadow:
+        0 0 20px
+        rgba(70,140,255,.12);
 }
 
-input:focus,
-select:focus,
-textarea:focus{
 
-border-color:#3b82f6;
+.form-group textarea{
 
+    min-height:120px;
+
+    resize:vertical;
 }
 
-textarea{
 
-min-height:130px;
+.form-group select{
 
-resize:vertical;
+    appearance:none;
 
+    cursor:pointer;
 }
+
+
+.form-group select option{
+
+    background:#07142b;
+
+    color:white;
+}
+
+
+.form-note{
+
+    color:#7189aa;
+
+    font-size:12px;
+
+    margin-top:6px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
 
 .submit-button{
 
-margin-top:25px;
+    width:100%;
 
-padding:16px 35px;
+    padding:15px;
 
-background:#2563eb;
+    margin-top:5px;
 
-border:none;
+    border:0;
 
-border-radius:10px;
+    border-radius:11px;
 
-color:white;
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #3b82f6
+        );
 
-font-family:inherit;
+    color:white;
 
-font-weight:600;
+    font-family:inherit;
 
-cursor:pointer;
+    font-size:15px;
 
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
 }
 
-.cancel-button{
 
-margin-left:10px;
+.submit-button:hover{
 
-padding:16px 25px;
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #60a5fa
+        );
 
-background:transparent;
+    transform:
+        translateY(-3px);
 
-border:1px solid rgba(255,255,255,.15);
-
-border-radius:10px;
-
-color:white;
-
-cursor:pointer;
-
-font-family:inherit;
-
+    box-shadow:
+        0 12px 30px
+        rgba(37,99,235,.30);
 }
 
-/* FOOTER */
+
+/* =========================================
+   QR CARD
+========================================= */
+
+.qr-card{
+
+    padding:35px;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(37,99,235,.14),
+            rgba(255,255,255,.035)
+        );
+
+    border:
+        1px solid
+        rgba(96,165,250,.18);
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+.qr-card h2{
+
+    font-size:27px;
+
+    margin-bottom:10px;
+}
+
+
+.qr-card p{
+
+    color:#9fb5d5;
+
+    line-height:1.7;
+
+    font-size:14px;
+
+    margin-bottom:25px;
+}
+
+
+/* =========================================
+   QR CODE
+========================================= */
+
+.qr-code{
+
+    width:220px;
+
+    height:220px;
+
+    padding:14px;
+
+    background:white;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.35);
+}
+
+
+.qr-code svg{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+}
+
+
+.qr-placeholder{
+
+    margin-top:18px;
+
+    color:#7189aa;
+
+    font-size:12px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   INSTRUCTIONS
+========================================= */
+
+.instructions{
+
+    margin-top:50px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+
+.instruction{
+
+    padding:25px;
+
+    border-radius:17px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.07);
+}
+
+
+.instruction-number{
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+
+.instruction h3{
+
+    font-size:19px;
+
+    margin-bottom:8px;
+}
+
+
+.instruction p{
+
+    color:#9fb5d5;
+
+    line-height:1.7;
+
+    font-size:14px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
 
 footer{
 
-padding:45px;
+    padding:
+        50px 20px;
 
-text-align:center;
+    text-align:center;
 
-color:#8aa7d6;
+    background:#020617;
 
-border-top:1px solid rgba(255,255,255,.07);
+    color:#7189aa;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.06);
+}
+
+
+footer h2{
+
+    color:white;
+
+    margin-bottom:10px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:850px){
+
+    nav{
+
+        padding:
+            20px 6%;
+    }
+
+    nav ul{
+
+        display:none;
+    }
+
+    main{
+
+        padding:
+            130px 6% 80px;
+    }
+
+    .submit-layout{
+
+        grid-template-columns:1fr;
+    }
+
+    .instructions{
+
+        grid-template-columns:1fr;
+    }
 
 }
 
-/* MOBILE */
 
-@media(max-width:800px){
+@media(max-width:550px){
 
-nav ul{
+    .page-header h1{
 
-display:none;
+        font-size:45px;
 
-}
+        letter-spacing:-2px;
+    }
 
-main{
+    .page-header p{
 
-padding:120px 5% 60px;
+        font-size:16px;
+    }
 
-}
+    .submit-card,
+    .qr-card{
 
-.dashboard-header{
+        padding:25px;
+    }
 
-align-items:flex-start;
+    .qr-code{
 
-flex-direction:column;
-
-}
-
-.form-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.form-group.full{
-
-grid-column:auto;
-
-}
+        width:190px;
+        height:190px;
+    }
 
 }
 
@@ -599,14 +815,24 @@ grid-column:auto;
 
 </head>
 
+
 <body>
 
 
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
 <nav>
 
-<div class="logo">
+<a href="index.html" class="logo">
+
+<span class="logo-dot"></span>
+
 Browser GAMES
-</div>
+
+</a>
+
 
 <ul>
 
@@ -617,20 +843,26 @@ Home
 </li>
 
 <li>
-<a href="index.html#games">
+<a href="games.html">
 Games
 </a>
 </li>
 
 <li>
-<a href="developer.html">
+<a href="developers.html">
 Developers
 </a>
 </li>
 
 <li>
-<a href="submit.html">
+<a href="submit.html" class="active">
 Submit
+</a>
+</li>
+
+<li>
+<a href="about.html">
+About
 </a>
 </li>
 
@@ -639,241 +871,146 @@ Submit
 </nav>
 
 
+<!-- =========================================
+     MAIN
+========================================= -->
+
 <main>
 
 
-<!-- LOGIN -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
-<section class="login-container" id="loginSection">
+<section class="page-header">
+
+<div class="page-tag">
+✦ SUBMIT YOUR GAME
+</div>
+
 
 <h1>
-Developer Login
+
+Share your <span>game.</span>
+
 </h1>
 
+
 <p>
-Sign in with your Google Account to create your
-Browser Games developer profile and submit games.
+
+Have you created a game?
+Submit it to Browser Games and
+your project could be featured in
+the community game library.
+
 </p>
-
-
-<div class="google-button">
-
-<div id="g_id_onload"
-
-data-client_id="YOUR_GOOGLE_CLIENT_ID"
-
-data-callback="handleGoogleLogin"
-
-data-auto_prompt="false">
-
-</div>
-
-
-<div class="g_id_signin"
-
-data-type="standard"
-
-data-size="large"
-
-data-theme="filled_blue"
-
-data-text="signin_with"
-
-data-shape="rectangular"
-
-data-logo_alignment="left">
-
-</div>
-
-</div>
 
 </section>
 
 
-<!-- DASHBOARD -->
+<!-- =========================================
+     SUBMIT AREA
+========================================= -->
 
-<section class="dashboard" id="dashboard">
-
-
-<div class="dashboard-header">
-
-<div class="profile">
-
-<img
-id="profilePicture"
-class="profile-picture"
-src="https://via.placeholder.com/100"
-alt="Profile picture"
->
-
-<div>
-
-<h1 id="profileName">
-Developer
-</h1>
-
-<p id="profileEmail">
-developer@example.com
-</p>
-
-</div>
-
-</div>
+<section class="submit-layout">
 
 
-<button
-class="logout"
-onclick="logout()">
+<!-- =========================================
+     FORM
+     
+     IMPORTANT:
+     Replace the action URL with your
+     Google Forms submission URL later.
+========================================= -->
 
-Log Out
-
-</button>
-
-</div>
-
-
-<div class="dashboard-grid">
-
-
-<div class="dashboard-card create-card">
+<div class="submit-card">
 
 <h2>
-Create a Game
-</h2>
-
-<p>
-Ready to submit something new?
-Create a game submission and send it
-to the Browser Games review team.
-</p>
-
-<button
-class="create-button"
-onclick="showCreateForm()">
-
-＋ Create Game
-
-</button>
-
-</div>
-
-
-<div class="dashboard-card">
-
-<h2>
-My Games
-</h2>
-
-<p>
-Games you submit will appear here with
-their current review status.
-</p>
-
-</div>
-
-
-<div class="dashboard-card">
-
-<h2>
-Developer Profile
-</h2>
-
-<p>
-Your Google profile is used to create
-your Browser Games developer identity.
-</p>
-
-</div>
-
-
-</div>
-
-
-<div class="empty" id="emptyGames">
-
-You haven't submitted any games yet.
-
-<br><br>
-
-Click <strong>＋ Create Game</strong>
-to start your first submission.
-
-</div>
-
-
-<!-- CREATE GAME FORM -->
-
-<div class="create-form" id="createForm">
-
-<h2>
-Create Game Submission
+Game Submission
 </h2>
 
 
-<div class="form-grid">
+<p class="submit-card-intro">
+
+Fill out the information below to
+submit your game for review.
+
+</p>
+
+
+<form
+action="#"
+method="POST">
 
 
 <div class="form-group">
 
-<label>
-Game Title
+<label for="gameName">
+Game Name
 </label>
 
 <input
 type="text"
-id="gameTitle"
-placeholder="My Awesome Game"
-required
->
+id="gameName"
+name="gameName"
+placeholder="Enter your game name"
+required>
 
 </div>
 
 
 <div class="form-group">
 
-<label>
-Category
+<label for="developer">
+Developer Name
 </label>
 
-<select id="gameCategory">
+<input
+type="text"
+id="developer"
+name="developer"
+placeholder="Your developer name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label for="category">
+Game Category
+</label>
+
+<select
+id="category"
+name="category"
+required>
 
 <option value="">
-Choose a category
+Select a category
 </option>
 
-<option>
+<option value="action">
 Action
 </option>
 
-<option>
-Adventure
-</option>
-
-<option>
+<option value="arcade">
 Arcade
 </option>
 
-<option>
-Puzzle
+<option value="adventure">
+Adventure
 </option>
 
-<option>
+<option value="racing">
 Racing
 </option>
 
-<option>
-Sports
+<option value="sandbox">
+Sandbox
 </option>
 
-<option>
-Strategy
-</option>
-
-<option>
-Educational
-</option>
-
-<option>
+<option value="other">
 Other
 </option>
 
@@ -884,112 +1021,260 @@ Other
 
 <div class="form-group">
 
-<label>
-Version
+<label for="description">
+Game Description
 </label>
 
-<input
-type="text"
-id="gameVersion"
-placeholder="1.0"
->
+<textarea
+id="description"
+name="description"
+placeholder="Tell us about your game..."
+required></textarea>
 
 </div>
 
 
 <div class="form-group">
 
-<label>
-Developer Name
-</label>
-
-<input
-type="text"
-id="developerName"
-placeholder="Your developer name"
->
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Game Description
-</label>
-
-<textarea
-id="gameDescription"
-placeholder="Tell players what your game is about..."
-></textarea>
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
+<label for="gameUrl">
 Game URL
 </label>
 
 <input
 type="url"
 id="gameUrl"
-placeholder="https://example.com/my-game"
->
+name="gameUrl"
+placeholder="https://example.com/game"
+required>
+
+<p class="form-note">
+Enter the URL where your game can be played.
+</p>
 
 </div>
 
 
-<div class="form-group full">
+<div class="form-group">
 
-<label>
-Game Thumbnail URL
+<label for="version">
+Version
 </label>
 
 <input
-type="url"
-id="gameThumbnail"
-placeholder="https://example.com/my-thumbnail.png"
->
-
-</div>
-
-
-<div class="form-group full">
-
-<label>
-Controls
-</label>
-
-<textarea
-id="gameControls"
-placeholder="Example: WASD to move, Space to jump..."
-></textarea>
-
-</div>
-
+type="text"
+id="version"
+name="version"
+placeholder="Example: 1.0">
 
 </div>
 
 
 <button
-class="submit-button"
-onclick="submitGame()">
+type="submit"
+class="submit-button">
 
 Submit Game
 
 </button>
 
 
-<button
-class="cancel-button"
-onclick="hideCreateForm()">
+</form>
 
-Cancel
+</div>
 
-</button>
 
+<!-- =========================================
+     QR CODE
+     
+     PLACEHOLDER:
+     Replace this entire .qr-code section
+     with your real QR code later.
+========================================= -->
+
+<div class="qr-card">
+
+<h2>
+Scan to Submit
+</h2>
+
+
+<p>
+
+You can also scan the QR code
+with your phone to open the
+game submission form.
+
+</p>
+
+
+<div class="qr-code">
+
+<!--
+    PLACEHOLDER QR CODE
+
+    Replace this SVG later with
+    your real QR code.
+
+    Example:
+
+    <img
+    src="submit-qr.png"
+    alt="Scan to submit a game">
+-->
+
+<svg
+viewBox="0 0 210 210"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect
+width="210"
+height="210"
+fill="white"/>
+
+
+<!-- TOP LEFT -->
+
+<rect x="10" y="10" width="60" height="60" fill="black"/>
+<rect x="20" y="20" width="40" height="40" fill="white"/>
+<rect x="30" y="30" width="20" height="20" fill="black"/>
+
+
+<!-- TOP RIGHT -->
+
+<rect x="140" y="10" width="60" height="60" fill="black"/>
+<rect x="150" y="20" width="40" height="40" fill="white"/>
+<rect x="160" y="30" width="20" height="20" fill="black"/>
+
+
+<!-- BOTTOM LEFT -->
+
+<rect x="10" y="140" width="60" height="60" fill="black"/>
+<rect x="20" y="150" width="40" height="40" fill="white"/>
+<rect x="30" y="160" width="20" height="20" fill="black"/>
+
+
+<!-- RANDOM MODULES -->
+
+<rect x="80" y="10" width="10" height="10" fill="black"/>
+<rect x="100" y="10" width="10" height="10" fill="black"/>
+<rect x="120" y="20" width="10" height="10" fill="black"/>
+
+<rect x="80" y="35" width="20" height="10" fill="black"/>
+<rect x="105" y="35" width="10" height="20" fill="black"/>
+<rect x="120" y="45" width="10" height="10" fill="black"/>
+
+<rect x="75" y="75" width="15" height="15" fill="black"/>
+<rect x="100" y="70" width="10" height="20" fill="black"/>
+<rect x="120" y="80" width="20" height="10" fill="black"/>
+<rect x="150" y="80" width="10" height="15" fill="black"/>
+<rect x="175" y="75" width="15" height="15" fill="black"/>
+
+<rect x="85" y="100" width="10" height="20" fill="black"/>
+<rect x="105" y="100" width="20" height="10" fill="black"/>
+<rect x="135" y="105" width="15" height="15" fill="black"/>
+<rect x="165" y="100" width="20" height="10" fill="black"/>
+
+<rect x="75" y="125" width="20" height="10" fill="black"/>
+<rect x="105" y="125" width="10" height="15" fill="black"/>
+<rect x="125" y="130" width="20" height="10" fill="black"/>
+<rect x="155" y="125" width="10" height="20" fill="black"/>
+<rect x="180" y="130" width="15" height="10" fill="black"/>
+
+<rect x="80" y="150" width="10" height="20" fill="black"/>
+<rect x="100" y="150" width="20" height="10" fill="black"/>
+<rect x="125" y="155" width="10" height="20" fill="black"/>
+<rect x="145" y="150" width="20" height="10" fill="black"/>
+<rect x="175" y="155" width="15" height="15" fill="black"/>
+
+<rect x="75" y="180" width="20" height="10" fill="black"/>
+<rect x="105" y="180" width="10" height="15" fill="black"/>
+<rect x="125" y="185" width="20" height="10" fill="black"/>
+<rect x="155" y="180" width="10" height="15" fill="black"/>
+<rect x="180" y="180" width="15" height="15" fill="black"/>
+
+</svg>
+
+</div>
+
+
+<p class="qr-placeholder">
+
+⚠ Placeholder QR code — replace
+with your real submission QR code.
+
+</p>
+
+</div>
+
+
+</section>
+
+
+<!-- =========================================
+     HOW TO SUBMIT
+========================================= -->
+
+<section class="instructions">
+
+
+<div class="instruction">
+
+<div class="instruction-number">
+1
+</div>
+
+<h3>
+Create Your Game
+</h3>
+
+<p>
+
+Make a game using HTML, JavaScript,
+Scratch, or whatever tools you enjoy.
+
+</p>
+
+</div>
+
+
+<div class="instruction">
+
+<div class="instruction-number">
+2
+</div>
+
+<h3>
+Prepare Your Information
+</h3>
+
+<p>
+
+Have your game name, description,
+developer name, category, controls,
+and playable URL ready.
+
+</p>
+
+</div>
+
+
+<div class="instruction">
+
+<div class="instruction-number">
+3
+</div>
+
+<h3>
+Submit for Review
+</h3>
+
+<p>
+
+Send your submission to Browser Games.
+After review, your game can be added
+to the public games library.
+
+</p>
 
 </div>
 
@@ -999,6 +1284,10 @@ Cancel
 
 </main>
 
+
+<!-- =========================================
+     FOOTER
+========================================= -->
 
 <footer>
 
@@ -1018,272 +1307,6 @@ Student-created games for everyone.
 
 </footer>
 
-
-<script>
-
-/*
-==========================================
-GOOGLE LOGIN
-==========================================
-
-Replace:
-
-YOUR_GOOGLE_CLIENT_ID
-
-with your Google OAuth Web Client ID.
-*/
-
-
-function handleGoogleLogin(response){
-
-try{
-
-const token = response.credential;
-
-const payload =
-JSON.parse(
-atob(
-token.split('.')[1]
-.replace(/-/g,'+')
-.replace(/_/g,'/')
-)
-);
-
-
-document.getElementById("loginSection").style.display="none";
-
-document.getElementById("dashboard").style.display="block";
-
-
-document.getElementById("profileName").textContent =
-payload.name || "Developer";
-
-
-document.getElementById("profileEmail").textContent =
-payload.email || "";
-
-
-if(payload.picture){
-
-document.getElementById("profilePicture").src =
-payload.picture;
-
-}
-
-
-localStorage.setItem(
-"browserGamesUser",
-JSON.stringify({
-name:payload.name,
-email:payload.email,
-picture:payload.picture
-})
-);
-
-}
-
-catch(error){
-
-console.error(error);
-
-alert(
-"Google sign-in could not be completed."
-);
-
-}
-
-}
-
-
-/* RESTORE LOGIN DISPLAY */
-
-window.addEventListener("load",function(){
-
-const savedUser =
-localStorage.getItem("browserGamesUser");
-
-if(!savedUser){
-
-return;
-
-}
-
-try{
-
-const user =
-JSON.parse(savedUser);
-
-
-document.getElementById("loginSection").style.display="none";
-
-document.getElementById("dashboard").style.display="block";
-
-
-document.getElementById("profileName").textContent =
-user.name || "Developer";
-
-
-document.getElementById("profileEmail").textContent =
-user.email || "";
-
-
-if(user.picture){
-
-document.getElementById("profilePicture").src =
-user.picture;
-
-}
-
-}
-catch(error){
-
-localStorage.removeItem("browserGamesUser");
-
-}
-
-});
-
-
-/* LOGOUT */
-
-function logout(){
-
-localStorage.removeItem("browserGamesUser");
-
-location.reload();
-
-}
-
-
-/* CREATE GAME */
-
-function showCreateForm(){
-
-document.getElementById("createForm").style.display="block";
-
-document.getElementById("emptyGames").style.display="none";
-
-window.scrollTo({
-
-top:document.getElementById("createForm").offsetTop - 120,
-
-behavior:"smooth"
-
-});
-
-}
-
-
-/* CANCEL */
-
-function hideCreateForm(){
-
-document.getElementById("createForm").style.display="none";
-
-document.getElementById("emptyGames").style.display="block";
-
-}
-
-
-/* SUBMIT */
-
-function submitGame(){
-
-const title =
-document.getElementById("gameTitle").value.trim();
-
-const category =
-document.getElementById("gameCategory").value;
-
-const version =
-document.getElementById("gameVersion").value.trim();
-
-const developer =
-document.getElementById("developerName").value.trim();
-
-const description =
-document.getElementById("gameDescription").value.trim();
-
-const url =
-document.getElementById("gameUrl").value.trim();
-
-const thumbnail =
-document.getElementById("gameThumbnail").value.trim();
-
-const controls =
-document.getElementById("gameControls").value.trim();
-
-
-if(!title ||
-!category ||
-!description ||
-!url){
-
-alert(
-"Please fill in the game title, category, description, and game URL."
-);
-
-return;
-
-}
-
-
-const submission = {
-
-title:title,
-
-category:category,
-
-version:version,
-
-developer:developer,
-
-description:description,
-
-url:url,
-
-thumbnail:thumbnail,
-
-controls:controls,
-
-status:"Pending Review",
-
-submittedAt:new Date().toISOString()
-
-};
-
-
-localStorage.setItem(
-"browserGamesSubmission",
-JSON.stringify(submission)
-);
-
-
-alert(
-"Your game submission has been created!"
-);
-
-
-document.getElementById("createForm").style.display="none";
-
-
-document.getElementById("emptyGames").innerHTML =
-
-"<strong>" +
-title +
-"</strong>" +
-
-"<br><br>" +
-
-"Status: <span style='color:#fbbf24'>" +
-"Pending Review" +
-"</span>";
-
-document.getElementById("emptyGames").style.display="block";
-
-}
-
-</script>
 
 </body>
 
